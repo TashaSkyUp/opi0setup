@@ -1,3 +1,4 @@
+#ver 2
 #!/bin/bash
 # list device holding current system root
 awk '$2=="/"{print $1}' /proc/mounts
