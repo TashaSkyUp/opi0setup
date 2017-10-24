@@ -19,3 +19,4 @@ echo "doing 2"
 echo "$a" |tee $xs
 cat ~/.vnc/xstartup
 chmod +x $xs
+nmtui
