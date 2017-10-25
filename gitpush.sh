@@ -1,4 +1,4 @@
-#ver 2
+#ver .1
 #!/bin/bash
 git stage --all
 git commit -m "$*"
