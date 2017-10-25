@@ -1,3 +1,4 @@
+#ver 2
 #!/bin/bash
 git stage --all
 git commit -m $1
