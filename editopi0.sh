@@ -13,5 +13,5 @@ ln -sf /boot/bin/orangepizerotest.bin /boot/script.bin
 
 echo "ENABLE=true
 MIN_SPEED=480000
-MAX_SPEED=912000
+MAX_SPEED=1200000
 GOVERNOR=performance" > /etc/default/cpufrequtils
