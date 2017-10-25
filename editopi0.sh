@@ -9,4 +9,9 @@ echo "fex->bin"
 fex2bin temp.fex /boot/bin/orangepizerotest.bin
 rm temp.fex
 
+ln -sf /boot/bin/orangepizerotest.bin /boot/script.bin
 
+echo "ENABLE=true
+MIN_SPEED=480000
+MAX_SPEED=912000
+GOVERNOR=performance" > /etc/default/cpufrequtils
