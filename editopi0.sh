@@ -28,7 +28,7 @@ nano ./temp.fex
 echo "fex->bin"
 fex2bin ./temp.fex /boot/bin/orangepizerotest.bin
 rm ./temp.fex
-
+#cp -f /boot/bin/orangepizerotest.bin /boot/script.bin
 ln -sf /boot/bin/orangepizerotest.bin /boot/script.bin
 
 echo "ENABLE=true
