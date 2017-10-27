@@ -2,10 +2,13 @@
 a="$(lscpu | grep "x86_64")"
 b="$(lscpu | grep "armv7l")"
 if [ ${#a} -eq 0 ]
+then
+
 else
 c="x86_64"
 fi
 if [ ${#b} -eq 0 ]
+then
 else
 c="armv7l"
 fi
