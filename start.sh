@@ -1,6 +1,6 @@
 #!/bin/bash
 
-case "$(umame -m)" in
+case "$(uname -m)" in
 "x86_64")
 echo "64"
 d="wolf-amd64"
