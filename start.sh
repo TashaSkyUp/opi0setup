@@ -1,3 +1,15 @@
+#!/bin/bash
+a="$(lscpu | grep "Architecture:")"
+case "$a" in
+"Architecture:        x86_64")
+echo "64"
+;;
+"Architecture:        armv71")
+echo "arm"
+;;
+*)
+esac
+exit 0
 a=$(service rpimonitor status)
 a=$(echo "$a" | grep "not-found" -o)
 echo "-$a-"
