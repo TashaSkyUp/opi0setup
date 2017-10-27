@@ -1,6 +1,6 @@
 #!/bin/bash
 
-case "$c" in
+case "$(umame -m)" in
 "x86_64")
 echo "64"
 d="wolf-amd64"
@@ -13,7 +13,7 @@ d="wolf-arm"
 echo "nada"
 ;;
 esac
-
+exit 0
 a="$(service rpimonitor status)"
 if [ ${#a} -eq 0 ]
 then
