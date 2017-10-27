@@ -8,6 +8,8 @@ echo "64"
 echo "arm"
 ;;
 *)
+echo "nada"
+;;
 esac
 exit 0
 a=$(service rpimonitor status)
