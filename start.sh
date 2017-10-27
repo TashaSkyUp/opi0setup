@@ -27,7 +27,6 @@ echo "-$a-"
 if [ ${#a} -eq 0 ]
 then
 echo "is already installed"
-
 cd $d
 ./start.sh
 armbianmonitor -m
@@ -46,8 +45,6 @@ apt-get install rpimonitor -y
 armbianmonitor -r
 ;;
 esac
-
-
 
 cd $d
 ./start.sh
