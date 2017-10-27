@@ -4,7 +4,7 @@ case "$a" in
 "Architecture:        x86_64")
 echo "64"
 ;;
-"Architecture:        armv71")
+"Architecture:        armv7l")
 echo "arm"
 ;;
 *)
