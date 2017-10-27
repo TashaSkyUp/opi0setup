@@ -1,10 +1,21 @@
 #!/bin/bash
-a="$(lscpu | grep "Architecture:")"
-case "$a" in
-"Architecture:        x86_64")
+a="$(lscpu | grep "x86_64")"
+b="$(lscpu | grep "armv7l")"
+if [ ${#a} -eq 0 ]
+then
+else
+c="x86_64"
+fi
+if [ ${#b} -eq 0 ]
+then
+else
+c="armv7l"
+fi
+case "$c" in
+"x86_64")
 echo "64"
 ;;
-"Architecture:        armv7l")
+"armv7l")
 echo "arm"
 ;;
 *)
