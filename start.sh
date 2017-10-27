@@ -45,11 +45,17 @@ cd $d
 armbianmonitor -m
 
 else
-armbianmonitor -r
 echo "not yet installed - will install"
+case 
+armbianmonitor -r
+
 cd $d
 ./start.sh
 armbianmonitor -m
 
 fi
 
+wget http://goo.gl/vewCLL -O /etc/apt/sources.list.d/rpimonitor.list
+apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2C0D3C0F
+apt-get update
+apt-get install rpimonitor -y
