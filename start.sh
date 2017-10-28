@@ -2,34 +2,27 @@
 
 echo "$(uname -m)"
 
-case "$(uname -m)" in
-"x86_64")
-
-d="wolf-amd64"
-;;
-"armv7l")
-echo "armv7l"
-d="wolf-arm"
-;;
-*)
-echo "nada"
-;;
-esac
+d="wolf$(uname -m)"
 
 a="$(service rpimonitor status)"
 if [ ${#a} -eq 0 ]
 then
 a="not-found"
 fi
+
+function startMiner {
+echo "using directory $d"
+cd $d
+./start.sh
+armbianmonitor -m
+}
+
 a="$(echo "$a" | grep "not-found" -o)"
 echo "-$a-"
 
 if [ ${#a} -eq 0 ]
 then
 echo "is already installed"
-cd $d
-./start.sh
-armbianmonitor -m
 
 else
 echo "not yet installed - will install"
@@ -45,11 +38,6 @@ apt-get install rpimonitor -y
 armbianmonitor -r
 ;;
 esac
-
-cd $d
-./start.sh
-armbianmonitor -m
-
 fi
 
-
+startMiner
