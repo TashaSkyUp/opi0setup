@@ -5,6 +5,15 @@ opiTestFile="/boot/bin/orangepizerotest.bin"
 opiTmpFile="./temp.fex"
 opiScriptBinFile="/boot/script.bin"
 
+function updateTmpFile{
+	echo "$1"
+	exit 0
+	line=$(cat $opiTmpFile | grep "cooler0 = ........" -o)
+	echo $line
+	last=$(echo $line | cut -d'"' -f 2)
+	echo "($last)"
+	sed -i "s/$last/$2/g" $opiTmpFile
+}
 echo "show dialog"
 whiptail --title "orangepizero.bin" --msgbox "save and exit"  10 25
 echo "bin->fex"
@@ -17,8 +26,8 @@ echo  "revert"
 echo "no params"
 ;;
 *)
-echo "default"
-updateTmpFile
+	echo "default"
+	updateTmpFile
 
 ;;
 esac
@@ -42,15 +51,7 @@ else
 echo "new run"
 bin2fex $opiFile $opiTmpFile
 fi
-function updateTmpFile{
-	echo "$1"
-	exit 0
-	line=$(cat $opiTmpFile | grep "cooler0 = ........" -o)
-	echo $line
-	last=$(echo $line | cut -d'"' -f 2)
-	echo "($last)"
-	sed -i "s/$last/$2/g" $opiTmpFile
-}
+
 
 echo "nano"
 nano $opiTempFile
