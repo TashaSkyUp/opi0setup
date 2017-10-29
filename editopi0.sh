@@ -1,37 +1,73 @@
 #!/bin/bash
-if [ -z "$*" ]
-then
-exit 0
-fi
+
 opiFile="/boot/bin/orangepizero.bin"
 opiTestFile="/boot/bin/orangepizerotest.bin"
-echo "show dialog"
-whiptail --title "orangepizero.bin" --msgbox "save and exit"  10 25
-echo "bin->fex"
-
-if [ -e $opiTestFile ]
+opiTmpFile="./temp.fex"
+opiScriptBinFile="/boot/script.bin"
+opiUseFile=$opiTestFile
+a="$(bin2fex -h)"
+if [ ${#a} -ge 0 ];
 then 
-echo "exists"
-bin2fex /boot/bin/orangepizerotest.bin ./temp.fex
-else
-echo "new run"
-bin2fex /boot/bin/orangepizero.bin ./temp.fex
+	echo "error"
+	exit 0
+else 
+	echo "bin2fex installed"
 fi
 
-line=$(cat ./temp.fex | grep "cooler0 = ........" -o)
-echo $line
-last=$(echo $line | cut -d'"' -f 2)
-echo "($last)"
-sed -i "s/$last/$2/g" ./temp.fex
-echo "nano"
-nano ./temp.fex
-echo "fex->bin"
-fex2bin ./temp.fex /boot/bin/orangepizerotest.bin
-rm ./temp.fex
-#cp -f /boot/bin/orangepizerotest.bin /boot/script.bin
-ln -sf /boot/bin/orangepizerotest.bin /boot/script.bin
+function updateTmpFile {
+	line=$(cat $opiTmpFile | grep "cooler0 = ........" -o)
+	echo $line
+	last=$(echo $line | cut -d'"' -f 2)
+	echo "($last)"
+	sed -i "s/$last/$1/g" $opiTmpFile
+}
+function fexToBin {
+	echo "$globalfex->bin"
+	exit 0
+	fex2bin $opiTmpFile $opiTestFile 
+	rm $opiTmpFile
+	ln -sf $opiTestFile $opiScriptBinFile
+}
 
+function updateMinMaxFile {
 echo "ENABLE=true
 MIN_SPEED=$1
 MAX_SPEED=$2
 GOVERNOR=performance" > /etc/default/cpufrequtils
+}
+
+echo "show dialog"
+whiptail --title "orangepizero.bin" --msgbox "save and exit"  10 25
+
+echo "bin->fex"
+if [ -e $opiTestFile ]
+then 
+echo "exists"
+bin2fex $opiTestFile $opiTmpFile
+else
+echo "new run"
+bin2fex $opiFile $opiTmpFile
+fi
+
+case $1 in
+"--revert")
+	echo  "revert to base config"
+;;
+"")
+	echo "no params - please edit"
+	echo "nano"
+	nano $opiTempFile
+	nano /etc/default/cpufrequtils
+	fexToBin
+;;
+*)
+	echo "auto updating "
+	$global="testG"
+	fexToBin $global
+	updateMinMaxFile $1 $2
+	updateTmpFile $2
+
+;;
+esac
+exit 0
+
