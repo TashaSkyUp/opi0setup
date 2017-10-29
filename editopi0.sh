@@ -1,7 +1,8 @@
 #!/bin/bash
-if [ -z "$*" ]
+
+if [ -z "$*" ] #if no arguments exit
 then
-exit 0
+exit
 fi
 opiFile="/boot/bin/orangepizero.bin"
 opiTestFile="/boot/bin/orangepizerotest.bin"
