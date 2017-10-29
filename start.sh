@@ -32,7 +32,7 @@ case "$(uname -m)" in
 wget http://goo.gl/vewCLL -O /etc/apt/sources.list.d/rpimonitor.list
 apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2C0D3C0F
 apt-get update
-apt-get install rpimonitor -y
+apt-get install rpimonitor -y --allow-unauthenticated
 ;;
 "armv7l")
 armbianmonitor -r
