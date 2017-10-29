@@ -1,37 +1,67 @@
 #!/bin/bash
-if [ -z "$*" ]
-then
-exit 0
-fi
+
 opiFile="/boot/bin/orangepizero.bin"
 opiTestFile="/boot/bin/orangepizerotest.bin"
+opiTmpFile="./temp.fex"
+opiScriptBinFile="/boot/script.bin"
+
 echo "show dialog"
 whiptail --title "orangepizero.bin" --msgbox "save and exit"  10 25
 echo "bin->fex"
 
+case $1 in
+"--revert")
+echo  "revert"
+;;
+"")
+echo "no params"
+;;
+*)
+echo "default"
+updateTmpFile
+
+;;
+esac
+exit 0
+
+if [ -z "$*" ]
+	then #no arguments passed
+	opiUseFile=$opiTestFile
+	else
+
+	opiUseFile=opi
+fi
+
+exit 0
+
 if [ -e $opiTestFile ]
 then 
 echo "exists"
-bin2fex /boot/bin/orangepizerotest.bin ./temp.fex
+bin2fex $opiTestFile $opiTmpFile
 else
 echo "new run"
-bin2fex /boot/bin/orangepizero.bin ./temp.fex
+bin2fex $opiFile $opiTmpFile
 fi
+function updateTmpFile{
+	echo "$1"
+	exit 0
+	line=$(cat $opiTmpFile | grep "cooler0 = ........" -o)
+	echo $line
+	last=$(echo $line | cut -d'"' -f 2)
+	echo "($last)"
+	sed -i "s/$last/$2/g" $opiTmpFile
+}
 
-line=$(cat ./temp.fex | grep "cooler0 = ........" -o)
-echo $line
-last=$(echo $line | cut -d'"' -f 2)
-echo "($last)"
-sed -i "s/$last/$2/g" ./temp.fex
 echo "nano"
-nano ./temp.fex
+nano $opiTempFile
 echo "fex->bin"
-fex2bin ./temp.fex /boot/bin/orangepizerotest.bin
-rm ./temp.fex
-#cp -f /boot/bin/orangepizerotest.bin /boot/script.bin
-ln -sf /boot/bin/orangepizerotest.bin /boot/script.bin
+fex2bin $opiTmpFile $opiTestFile 
+rm $opiTmpFile
+ln -sf $opiTestFile $opiScriptBinFile
 
+function updateMinMaxFile{
 echo "ENABLE=true
 MIN_SPEED=$1
 MAX_SPEED=$2
 GOVERNOR=performance" > /etc/default/cpufrequtils
+}
