@@ -5,7 +5,7 @@ opiTestFile="/boot/bin/orangepizerotest.bin"
 opiTmpFile="./temp.fex"
 opiScriptBinFile="/boot/script.bin"
 
-function updateTmpFile{
+function updateTmpFile {
 	echo "$1"
 	exit 0
 	line=$(cat $opiTmpFile | grep "cooler0 = ........" -o)
