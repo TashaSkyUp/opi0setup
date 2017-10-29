@@ -11,7 +11,7 @@ a="not-found"
 fi
 
 function startMiner {
-./startMiner.sh
+./startMiner.sh $1
 armbianmonitor -m
 }
 
@@ -38,4 +38,4 @@ armbianmonitor -r
 esac
 fi
 
-startMiner
+startMiner $1
