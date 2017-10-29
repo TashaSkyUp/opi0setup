@@ -59,7 +59,7 @@ case $1 in
 "")
 	echo "no params - please edit"
 	echo "nano"
-	nano $opiTempFile
+	nano $opiTmpFile
 	nano /etc/default/cpufrequtils
 	fexToBin
 ;;
