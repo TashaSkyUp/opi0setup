@@ -11,9 +11,7 @@ a="not-found"
 fi
 
 function startMiner {
-echo "using directory $d"
-cd $d
-./start.sh
+./startMiner.sh
 armbianmonitor -m
 }
 
