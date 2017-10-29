@@ -13,7 +13,7 @@ function updateTmpFile {
 	echo "($last)"
 	sed -i "s/$last/$1/g" $opiTmpFile
 }
-function fexToBin{
+function fexToBin {
 	echo "$globalfex->bin"
 	exit 0
 	fex2bin $opiTmpFile $opiTestFile 
@@ -21,7 +21,7 @@ function fexToBin{
 	ln -sf $opiTestFile $opiScriptBinFile
 }
 
-function updateMinMaxFile{
+function updateMinMaxFile {
 echo "ENABLE=true
 MIN_SPEED=$1
 MAX_SPEED=$2
