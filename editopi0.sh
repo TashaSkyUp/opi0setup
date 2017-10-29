@@ -7,7 +7,7 @@ opiScriptBinFile="/boot/script.bin"
 opiUseFile=$opiTestFile
 
 a="$(command -v bin2fex)"
-if [ ${#a} -ge 0 ];
+if [ ${#a} -ge 0 ]
 then 
 	echo "error"
 	exit 0
