@@ -6,6 +6,13 @@ opiTmpFile="./temp.fex"
 opiScriptBinFile="/boot/script.bin"
 opiUseFile=$opiTestFile
 
+if [ $(bin2fex -h) -ge 0 ];
+then 
+	echo "error"
+else 
+	echo "done"
+fi
+exit 0
 function updateTmpFile {
 	line=$(cat $opiTmpFile | grep "cooler0 = ........" -o)
 	echo $line
