@@ -9,7 +9,7 @@ opiUseFile=$opiTestFile
 a="$(command -v bin2fex)"
 echo "$a"
 echo "${#a}"
-if [ ${#a} -ge 0 ]
+if [ ${#a} -le 0 ]
 then 
 	echo "error"
 	exit 0
