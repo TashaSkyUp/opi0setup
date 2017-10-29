@@ -9,10 +9,11 @@ a="$(bin2fex -h)"
 if [ ${#a} -ge 0 ];
 then 
 	echo "error"
+	exit 0
 else 
-	echo "done"
+	echo "bin2fex installed"
 fi
-exit 0
+
 function updateTmpFile {
 	line=$(cat $opiTmpFile | grep "cooler0 = ........" -o)
 	echo $line
