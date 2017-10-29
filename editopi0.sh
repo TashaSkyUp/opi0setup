@@ -5,8 +5,8 @@ opiTestFile="/boot/bin/orangepizerotest.bin"
 opiTmpFile="./temp.fex"
 opiScriptBinFile="/boot/script.bin"
 opiUseFile=$opiTestFile
-
-if [ ${#$(bin2fex -h)} -ge 0 ];
+a="$(bin2fex -h)"
+if [ ${#a} -ge 0 ];
 then 
 	echo "error"
 else 
