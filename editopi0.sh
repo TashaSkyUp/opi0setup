@@ -27,7 +27,7 @@ echo "no params"
 ;;
 *)
 	echo "default"
-	updateTmpFile
+	updateTmpFile what
 
 ;;
 esac
