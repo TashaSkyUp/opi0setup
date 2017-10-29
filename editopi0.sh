@@ -4,45 +4,34 @@ opiFile="/boot/bin/orangepizero.bin"
 opiTestFile="/boot/bin/orangepizerotest.bin"
 opiTmpFile="./temp.fex"
 opiScriptBinFile="/boot/script.bin"
+opiUseFile=$opiTestFile
 
 function updateTmpFile {
-	echo "$1"
-	exit 0
 	line=$(cat $opiTmpFile | grep "cooler0 = ........" -o)
 	echo $line
 	last=$(echo $line | cut -d'"' -f 2)
 	echo "($last)"
-	sed -i "s/$last/$2/g" $opiTmpFile
+	sed -i "s/$last/$1/g" $opiTmpFile
 }
+function fexToBin{
+	echo "$globalfex->bin"
+	exit 0
+	fex2bin $opiTmpFile $opiTestFile 
+	rm $opiTmpFile
+	ln -sf $opiTestFile $opiScriptBinFile
+}
+
+function updateMinMaxFile{
+echo "ENABLE=true
+MIN_SPEED=$1
+MAX_SPEED=$2
+GOVERNOR=performance" > /etc/default/cpufrequtils
+}
+
 echo "show dialog"
 whiptail --title "orangepizero.bin" --msgbox "save and exit"  10 25
+
 echo "bin->fex"
-
-case $1 in
-"--revert")
-echo  "revert"
-;;
-"")
-echo "no params"
-;;
-*)
-	echo "default"
-	updateTmpFile what
-
-;;
-esac
-exit 0
-
-if [ -z "$*" ]
-	then #no arguments passed
-	opiUseFile=$opiTestFile
-	else
-
-	opiUseFile=opi
-fi
-
-exit 0
-
 if [ -e $opiTestFile ]
 then 
 echo "exists"
@@ -52,17 +41,25 @@ echo "new run"
 bin2fex $opiFile $opiTmpFile
 fi
 
+case $1 in
+"--revert")
+	echo  "revert to base config"
+;;
+"")
+	echo "no params - please edit"
+	echo "nano"
+	nano $opiTempFile
+	nano /etc/default/cpufrequtils
+	fexToBin
+;;
+*)
+	echo "auto updating "
+	$global="testG"
+	fexToBin $global
+	updateMinMaxFile $1 $2
+	updateTmpFile $2
 
-echo "nano"
-nano $opiTempFile
-echo "fex->bin"
-fex2bin $opiTmpFile $opiTestFile 
-rm $opiTmpFile
-ln -sf $opiTestFile $opiScriptBinFile
+;;
+esac
+exit 0
 
-function updateMinMaxFile{
-echo "ENABLE=true
-MIN_SPEED=$1
-MAX_SPEED=$2
-GOVERNOR=performance" > /etc/default/cpufrequtils
-}
