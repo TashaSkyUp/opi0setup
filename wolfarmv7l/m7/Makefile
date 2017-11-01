@@ -173,13 +173,13 @@ ETAGS = etags
 CTAGS = ctags
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/depcomp
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/tasha/wolf-m7m-cpuminer/missing aclocal-1.15
+ACLOCAL = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing aclocal-1.15
 ALLOCA = 
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
-AUTOCONF = ${SHELL} /home/tasha/wolf-m7m-cpuminer/missing autoconf
-AUTOHEADER = ${SHELL} /home/tasha/wolf-m7m-cpuminer/missing autoheader
-AUTOMAKE = ${SHELL} /home/tasha/wolf-m7m-cpuminer/missing automake-1.15
+AUTOCONF = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing autoconf
+AUTOHEADER = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing autoheader
+AUTOMAKE = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing automake-1.15
 AWK = mawk
 CC = gcc
 CCAS = gcc
@@ -213,7 +213,7 @@ LIBS =
 LTLIBOBJS = 
 M7M_LIBS = m7/libm7m.a
 MAINT = #
-MAKEINFO = ${SHELL} /home/tasha/wolf-m7m-cpuminer/missing makeinfo
+MAKEINFO = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
 PACKAGE = cpuminer
@@ -232,10 +232,10 @@ SHELL = /bin/bash
 STRIP = 
 VERSION = 2.4
 WS2_LIBS = 
-abs_builddir = /home/tasha/wolf-m7m-cpuminer/m7
-abs_srcdir = /home/tasha/wolf-m7m-cpuminer/m7
-abs_top_builddir = /home/tasha/wolf-m7m-cpuminer
-abs_top_srcdir = /home/tasha/wolf-m7m-cpuminer
+abs_builddir = /root/opi0setup/wolf-m7m-cpuminer/m7
+abs_srcdir = /root/opi0setup/wolf-m7m-cpuminer/m7
+abs_top_builddir = /root/opi0setup/wolf-m7m-cpuminer
+abs_top_srcdir = /root/opi0setup/wolf-m7m-cpuminer
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 am__include = include
@@ -263,7 +263,7 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/tasha/wolf-m7m-cpuminer/install-sh
+install_sh = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -295,7 +295,7 @@ libm7m_a_SOURCES = haval.c keccak.c \
 		sph_sha2.h sph_tiger.h sph_whirlpool.h \
 		tiger.c whirlpool.c
 
-libm7m_a_CFLAGS = -Ofast -march=native -flto
+libm7m_a_CFLAGS = -Ofast -mcpu=cortex-a7 -flto
 all: all-am
 
 .SUFFIXES:

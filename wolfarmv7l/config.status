@@ -437,7 +437,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/tasha/wolf-m7m-cpuminer'
+ac_pwd='/root/opi0setup/wolf-m7m-cpuminer'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/bin/mkdir -p'
@@ -688,12 +688,12 @@ S["mkdir_p"]="$(MKDIR_P)"
 S["MKDIR_P"]="/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
 S["STRIP"]=""
-S["install_sh"]="${SHELL} /home/tasha/wolf-m7m-cpuminer/install-sh"
-S["MAKEINFO"]="${SHELL} /home/tasha/wolf-m7m-cpuminer/missing makeinfo"
-S["AUTOHEADER"]="${SHELL} /home/tasha/wolf-m7m-cpuminer/missing autoheader"
-S["AUTOMAKE"]="${SHELL} /home/tasha/wolf-m7m-cpuminer/missing automake-1.15"
-S["AUTOCONF"]="${SHELL} /home/tasha/wolf-m7m-cpuminer/missing autoconf"
-S["ACLOCAL"]="${SHELL} /home/tasha/wolf-m7m-cpuminer/missing aclocal-1.15"
+S["install_sh"]="${SHELL} /root/opi0setup/wolf-m7m-cpuminer/install-sh"
+S["MAKEINFO"]="${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing makeinfo"
+S["AUTOHEADER"]="${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing autoheader"
+S["AUTOMAKE"]="${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing automake-1.15"
+S["AUTOCONF"]="${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing autoconf"
+S["ACLOCAL"]="${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing aclocal-1.15"
 S["VERSION"]="2.4"
 S["PACKAGE"]="cpuminer"
 S["CYGPATH_W"]="echo"
