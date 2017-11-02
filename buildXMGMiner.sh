@@ -5,6 +5,7 @@ function defaultConfig {
       echo "ok"
   else
     echo "./autogen.sh && ./configure"
+    cd wolf-m7m-cpuminer
      ./autogen.sh
      ./configure
   fi
@@ -16,14 +17,15 @@ case $1 in
     git clone https://github.com/novaspirit/wolf-m7m-cpuminer
     ;;
   "--replace")
-    ./wolf-m7m-cpuminer/autogen.sh
-    CFLAG="-O2 mfpu=neon-vfpv4" ./wolf-m7m-cpuminer/configure
+    cd wolf-m7m-cpuminer
+    ./autogen.sh
+    CFLAG="-O2 mfpu=neon-vfpv4" ./configure
 
-    cp  ./wolf-m7m-cpuminer/Makefile ./wolf-m7m-cpuminer/Makefile.old
-    cp  ./m7/wolf-m7m-cpuminer/Makefile ./m7/wolf-m7m-cpuminer/Makefile.old
+    cp  ./Makefile ./Makefile.old
+    cp  ./m7/Makefile ./m7/Makefile.old
   
-    sed -i 's/-march=native/-mcpu=cortex-a53/g'  ./wolf-m7m-cpuminer/Makefile
-    sed -i 's/-march=native/-mcpu=cortex-a53/g' ./wolf-m7m-cpuminer/m7/Makefile     
+    sed -i 's/-march=native/-mcpu=cortex-a53/g' ./Makefile
+    sed -i 's/-march=native/-mcpu=cortex-a53/g' ./m7/Makefile     
     ;;
  
   "--build")
