@@ -52,5 +52,14 @@ case $1 in
         
           echo "verified $arch"
           ;;
+          
+        "aarch64")
+        defaultConfig
+         cd wolf-m7m-cpuminer 
+         make -j4
+        
+          echo "verified $arch"
+        
+        ;;
       esac
 esac
