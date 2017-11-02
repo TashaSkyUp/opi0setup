@@ -1,4 +1,5 @@
 #!/bin/bash
+arch="$(uname -m)"
 function defaultConfig {
   if [ -e ./wolf-m7m-cpuminer/Makefile ]
   then
@@ -12,7 +13,7 @@ function defaultConfig {
 }
 case $1 in
   "--download")
-    arch="$(uname -m)"
+
     apt-get install automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev make g++ git libgmp-dev -y
     git clone https://github.com/novaspirit/wolf-m7m-cpuminer
     ;;
