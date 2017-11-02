@@ -1,4 +1,14 @@
 #!/bin/bash
+function defaultConfig {
+  if [ -e ./wolf-m7m-cpuminer/Makefile ]
+  then
+      echo "ok"
+  else
+    echo "./autogen.sh && ./configure"
+     ./autogen.sh
+     ./configure
+  fi
+}
 case $1 in
   "--download")
     arch="$(uname -m)"
@@ -11,14 +21,18 @@ case $1 in
   
     sed -i 's/-march=native/-mcpu=cortex-a53/g'  ./wolf-m7m-cpuminer/Makefile
     sed -i 's/-march=native/-mcpu=cortex-a53/g' ./wolf-m7m-cpuminer/m7/Makefile
+    
+     ./autogen.sh
+     CFLAG="-O2 mfpu=neon-vfpv4" ./configure
+     
     ;;
  
   "--build")
     case $arch in
       "x86_64")
+        defaultConfig
         cd wolf-m7m-cpuminer 
-        ./autogen.sh
-        ./configure
+       
         make -j4
       
         echo "verified $arch"
@@ -29,9 +43,8 @@ case $1 in
         ;;
         
         "armv7l")
+         defaultConfig
          cd wolf-m7m-cpuminer 
-         ./autogen.sh
-         CFLAG="-O2 mfpu=neon-vfpv4" ./configure
          make -j4
         
           echo "verified $arch"
