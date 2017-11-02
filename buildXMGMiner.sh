@@ -1,5 +1,6 @@
 #!/bin/bash
 arch="$(uname -m)"
+echo $arch
 function defaultConfig {
   if [ -e ./wolf-m7m-cpuminer/Makefile ]
   then
