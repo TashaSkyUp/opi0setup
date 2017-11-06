@@ -15,9 +15,11 @@ case $1 in
 "--log")
 rm -f log
 script -c "./minerd -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123" ../log
+;;
 "-v")
 ./minerd -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123 
 ;;
+
 *)
 ./minerd -S -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123 --background
 ;;
