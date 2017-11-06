@@ -1,13 +1,14 @@
 #!/bin/bash
 arch="$(uname -m)"
 echo $arch
+md="wolf-m7m-cpuminer-V2"
 function defaultConfig {
-  if [ -e ./wolf-m7m-cpuminer/Makefile ]
+  if [ -e ./$md/Makefile ]
   then
       echo "ok"
   else
     echo "./autogen.sh && ./configure"
-    cd wolf-m7m-cpuminer
+    cd $md
      ./autogen.sh
      ./configure
   fi
@@ -16,10 +17,10 @@ case $1 in
   "--download")
 
     apt-get install automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev make g++ git libgmp-dev -y
-    git clone https://github.com/novaspirit/wolf-m7m-cpuminer
+    git clone https://github.com/magi-project/wolf-m7m-cpuminer-V2
     ;;
   "--replace")
-    cd wolf-m7m-cpuminer
+    cd $md
     ./autogen.sh
     CFLAG="-O2 mfpu=neon-vfpv4" ./configure
 
@@ -34,20 +35,20 @@ case $1 in
     case $arch in
       "x86_64")
         defaultConfig
-        cd wolf-m7m-cpuminer 
+        cd $md 
        
         make -j4
       
         echo "verified $arch"
         cd ..
         rm ./wolf$arch -R -f
-        cp ./wolf-m7m-cpuminer ./wolf$arch -R
-        rm ./wolf-m7m-cpuminer -R -f
+        cp ./$md ./wolf$arch -R
+        rm ./$md -R -f
         ;;
         
         "armv7l")
          defaultConfig
-         cd wolf-m7m-cpuminer 
+         cd $md 
          make -j4
         
           echo "verified $arch"
@@ -55,7 +56,7 @@ case $1 in
           
         "aarch64")
         defaultConfig
-         cd wolf-m7m-cpuminer 
+         cd $md 
          make -j4
         
           echo "verified $arch"
