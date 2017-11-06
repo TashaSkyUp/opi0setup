@@ -19,7 +19,8 @@ case $1 in
     apt-get install automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev make g++ git libgmp-dev -y
     git clone https://github.com/magi-project/wolf-m7m-cpuminer-V2
     ;;
-  "--replace")
+  "--replace-a53")
+    #needs work see readme in  wolf v2 repo
     cd $md
     ./autogen.sh
     CFLAG="-O2 mfpu=neon-vfpv4" ./configure
