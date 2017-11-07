@@ -33,7 +33,7 @@ case $1 in
     cd $md
     ./autogen.sh
     CFLAG="-O2 mfpu=neon-vfpv4" ./configure
-    for f in $mfiles do
+    for f in $mfiles; do
       cp  $f $f.old
       sed -i 's/-march=native/-mcpu=cortex-a7/g' $f > $f.old   
     done
