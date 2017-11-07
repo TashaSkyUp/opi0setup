@@ -36,6 +36,7 @@ case $1 in
     for f in $mfiles; do
       cp  $f $f.old
       sed -i 's/-march=native/-mcpu=cortex-a7/g' $f > $f.old   
+      sed -i 's/-flto//g' $f > $f.old 
     done
     ;;
    "--replace-a53")
