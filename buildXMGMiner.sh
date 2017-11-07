@@ -49,12 +49,11 @@ case $1 in
     cd $md
     ./autogen.sh
     CFLAG="-O2 mfpu=neon-vfpv4" ./configure
-
-    cp  ./Makefile ./Makefile.old
-    cp  ./m7/Makefile ./m7/Makefile.old
-  
-    sed -i 's/-march=native/-mcpu=cortex-a53/g' ./Makefile
-    sed -i 's/-march=native/-mcpu=cortex-a53/g' ./m7/Makefile     
+    for f in $mfiles; do
+      cp  $f $f.old
+      sed -i 's/-march=native/-mcpu=cortex-a53/g' $f > $f.old   
+      #sed -i 's/-flto//g' $f > $f.old 
+    done    
     ;;
   "--build")
     case $arch in
