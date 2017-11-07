@@ -1,7 +1,16 @@
 #!/bin/bash
 arch="$(uname -m)"
-echo $arch
+echo "-=Arch=($arch)=-"
+for f in 
 md="wolf-m7m-cpuminer-V2"
+
+cd $md
+mfiles=$(find -name "Makefile")
+for f in $mfiles
+  do echo "crap $f";
+done
+cd ..
+exit 0
 function defaultConfig {
   if [ -e ./$md/Makefile ]
   then
