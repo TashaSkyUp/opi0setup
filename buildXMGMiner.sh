@@ -1,9 +1,7 @@
 #!/bin/bash
 arch="$(uname -m)"
 echo "-=Arch=($arch)=-"
-for f in 
 md="wolf-m7m-cpuminer-V2"
-
 cd $md
 mfiles=$(find -name "Makefile")
 for f in $mfiles
