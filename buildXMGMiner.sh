@@ -3,6 +3,11 @@ arch="$(uname -m)"
 echo "-=Arch=($arch)=-"
 md="wolf-m7m-cpuminer-V2"
 
+#clean make
+  cd $md
+  make clean
+  cd ..
+  
 #collect make file locations into an array
   cd $md
   mfiles=$(find -name "Makefile")
