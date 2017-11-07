@@ -2,13 +2,15 @@
 arch="$(uname -m)"
 echo "-=Arch=($arch)=-"
 md="wolf-m7m-cpuminer-V2"
-cd $md
-mfiles=$(find -name "Makefile")
-for f in $mfiles
-  do echo "crap $f";
-done
-cd ..
-exit 0
+
+#collect make file locations into an array
+  cd $md
+  mfiles=$(find -name "Makefile")
+  for f in $mfiles
+      do echo "Makefile $f";
+  done
+  cd ..
+
 function defaultConfig {
   if [ -e ./$md/Makefile ]
   then
@@ -31,12 +33,10 @@ case $1 in
     cd $md
     ./autogen.sh
     CFLAG="-O2 mfpu=neon-vfpv4" ./configure
-
-    cp  ./Makefile ./Makefile.old
-    cp  ./m7/Makefile ./m7/Makefile.old
-  
-    sed -i 's/-march=native/-mcpu=cortex-a7/g' ./Makefile
-    sed -i 's/-march=native/-mcpu=cortex-a7/g' ./m7/Makefile     
+    for f in $mfiles
+      cp  $f $f.old
+      sed -i 's/-march=native/-mcpu=cortex-a7/g' $f > $f.old   
+    done
     ;;
    "--replace-a53")
     #needs work see readme in  wolf v2 repo
