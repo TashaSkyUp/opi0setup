@@ -13,10 +13,15 @@ echo "using full path: $DIR/$minerDir"
 cd $DIR/$minerDir
 
 ip="$(hostname -I)"
-
+case $1 in
+  "--workername")
+  ip="$2"
+  ;;
+esac
 case $ip in
   "")
     echo "no ip detected use --workername"
+    exit 0
     ;;
   *)
     echo "using IP $ip"
@@ -28,9 +33,6 @@ esac
 case $1 in
 "--benchmark")
 ./minerd -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123 --benchmark
-;;
-"--workername")
-
 ;;
 
 "--log")
