@@ -45,6 +45,6 @@ script -c "./minerd -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaS
 ;;
 
 *)
-./minerd -S -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123 --background
+./minerd -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123
 ;;
 esac
