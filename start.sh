@@ -44,4 +44,4 @@ else
   esac
 fi
 
-startMiner $1
+startMiner $1 $2
