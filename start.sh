@@ -18,7 +18,7 @@ a="not-found"
 fi
 
 function startMiner {
-$DIR/startMiner.sh $1
+$DIR/startMiner.sh $1 $2
 armbianmonitor -m
 }
 
