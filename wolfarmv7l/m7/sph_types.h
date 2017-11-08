@@ -1974,4 +1974,3 @@ sph_dec64le_aligned(const void *src)
 #endif /* Doxygen excluded block */
 
 #endif
-

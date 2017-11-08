@@ -41,43 +41,43 @@ PATH: /usr/local/games
 ## Core tests. ##
 ## ----------- ##
 
-configure:2384: checking build system type
-configure:2398: result: armv7l-unknown-linux-gnueabihf
-configure:2418: checking host system type
-configure:2431: result: armv7l-unknown-linux-gnueabihf
-configure:2451: checking target system type
-configure:2464: result: armv7l-unknown-linux-gnueabihf
-configure:2508: checking for a BSD-compatible install
-configure:2576: result: /usr/bin/install -c
-configure:2587: checking whether build environment is sane
-configure:2642: result: yes
-configure:2793: checking for a thread-safe mkdir -p
-configure:2832: result: /bin/mkdir -p
-configure:2839: checking for gawk
-configure:2869: result: no
-configure:2839: checking for mawk
-configure:2855: found /usr/bin/mawk
-configure:2866: result: mawk
-configure:2877: checking whether make sets $(MAKE)
-configure:2899: result: yes
-configure:2928: checking whether make supports nested variables
-configure:2945: result: yes
-configure:3075: checking whether to enable maintainer-specific portions of Makefiles
-configure:3084: result: no
-configure:3110: checking for style of include used by make
-configure:3138: result: GNU
-configure:3209: checking for gcc
-configure:3225: found /usr/bin/gcc
-configure:3236: result: gcc
-configure:3465: checking for C compiler version
-configure:3474: gcc --version >&5
+configure:2396: checking build system type
+configure:2410: result: armv7l-unknown-linux-gnueabihf
+configure:2430: checking host system type
+configure:2443: result: armv7l-unknown-linux-gnueabihf
+configure:2463: checking target system type
+configure:2476: result: armv7l-unknown-linux-gnueabihf
+configure:2520: checking for a BSD-compatible install
+configure:2588: result: /usr/bin/install -c
+configure:2599: checking whether build environment is sane
+configure:2654: result: yes
+configure:2805: checking for a thread-safe mkdir -p
+configure:2844: result: /bin/mkdir -p
+configure:2851: checking for gawk
+configure:2881: result: no
+configure:2851: checking for mawk
+configure:2867: found /usr/bin/mawk
+configure:2878: result: mawk
+configure:2889: checking whether make sets $(MAKE)
+configure:2911: result: yes
+configure:2940: checking whether make supports nested variables
+configure:2957: result: yes
+configure:3087: checking whether to enable maintainer-specific portions of Makefiles
+configure:3096: result: no
+configure:3122: checking for style of include used by make
+configure:3150: result: GNU
+configure:3221: checking for gcc
+configure:3237: found /usr/bin/gcc
+configure:3248: result: gcc
+configure:3477: checking for C compiler version
+configure:3486: gcc --version >&5
 gcc (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.5) 5.4.0 20160609
 Copyright (C) 2015 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-configure:3485: $? = 0
-configure:3474: gcc -v >&5
+configure:3497: $? = 0
+configure:3486: gcc -v >&5
 Using built-in specs.
 COLLECT_GCC=gcc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/arm-linux-gnueabihf/5/lto-wrapper
@@ -85,68 +85,68 @@ Target: arm-linux-gnueabihf
 Configured with: ../src/configure -v --with-pkgversion='Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.5' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libitm --disable-libquadmath --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-armhf/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-armhf --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-armhf --with-arch-directory=arm --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --enable-multilib --disable-sjlj-exceptions --with-arch=armv7-a --with-fpu=vfpv3-d16 --with-float=hard --with-mode=thumb --disable-werror --enable-multilib --enable-checking=release --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf
 Thread model: posix
 gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.5) 
-configure:3485: $? = 0
-configure:3474: gcc -V >&5
+configure:3497: $? = 0
+configure:3486: gcc -V >&5
 gcc: error: unrecognized command line option '-V'
 gcc: fatal error: no input files
 compilation terminated.
-configure:3485: $? = 1
-configure:3474: gcc -qversion >&5
+configure:3497: $? = 1
+configure:3486: gcc -qversion >&5
 gcc: error: unrecognized command line option '-qversion'
 gcc: fatal error: no input files
 compilation terminated.
-configure:3485: $? = 1
-configure:3505: checking whether the C compiler works
-configure:3527: gcc    conftest.c  >&5
-configure:3531: $? = 0
-configure:3579: result: yes
-configure:3582: checking for C compiler default output file name
-configure:3584: result: a.out
-configure:3590: checking for suffix of executables
-configure:3597: gcc -o conftest    conftest.c  >&5
-configure:3601: $? = 0
-configure:3623: result: 
-configure:3645: checking whether we are cross compiling
-configure:3653: gcc -o conftest    conftest.c  >&5
-configure:3657: $? = 0
-configure:3664: ./conftest
-configure:3668: $? = 0
-configure:3683: result: no
-configure:3688: checking for suffix of object files
-configure:3710: gcc -c   conftest.c >&5
-configure:3714: $? = 0
-configure:3735: result: o
-configure:3739: checking whether we are using the GNU C compiler
-configure:3758: gcc -c   conftest.c >&5
-configure:3758: $? = 0
-configure:3767: result: yes
-configure:3776: checking whether gcc accepts -g
-configure:3796: gcc -c -g  conftest.c >&5
-configure:3796: $? = 0
-configure:3837: result: yes
-configure:3854: checking for gcc option to accept ISO C89
-configure:3917: gcc  -c -g -O2  conftest.c >&5
-configure:3917: $? = 0
-configure:3930: result: none needed
-configure:3955: checking whether gcc understands -c and -o together
-configure:3977: gcc -c conftest.c -o conftest2.o
-configure:3980: $? = 0
-configure:3977: gcc -c conftest.c -o conftest2.o
-configure:3980: $? = 0
-configure:3992: result: yes
-configure:4011: checking dependency style of gcc
-configure:4122: result: gcc3
-configure:4137: checking for gcc option to accept ISO C99
-configure:4286: gcc  -c -g -O2  conftest.c >&5
-configure:4286: $? = 0
-configure:4299: result: none needed
-configure:4320: checking how to run the C preprocessor
-configure:4351: gcc -E  conftest.c
-configure:4351: $? = 0
-configure:4365: gcc -E  conftest.c
+configure:3497: $? = 1
+configure:3517: checking whether the C compiler works
+configure:3539: gcc    conftest.c  >&5
+configure:3543: $? = 0
+configure:3591: result: yes
+configure:3594: checking for C compiler default output file name
+configure:3596: result: a.out
+configure:3602: checking for suffix of executables
+configure:3609: gcc -o conftest    conftest.c  >&5
+configure:3613: $? = 0
+configure:3635: result: 
+configure:3657: checking whether we are cross compiling
+configure:3665: gcc -o conftest    conftest.c  >&5
+configure:3669: $? = 0
+configure:3676: ./conftest
+configure:3680: $? = 0
+configure:3695: result: no
+configure:3700: checking for suffix of object files
+configure:3722: gcc -c   conftest.c >&5
+configure:3726: $? = 0
+configure:3747: result: o
+configure:3751: checking whether we are using the GNU C compiler
+configure:3770: gcc -c   conftest.c >&5
+configure:3770: $? = 0
+configure:3779: result: yes
+configure:3788: checking whether gcc accepts -g
+configure:3808: gcc -c -g  conftest.c >&5
+configure:3808: $? = 0
+configure:3849: result: yes
+configure:3866: checking for gcc option to accept ISO C89
+configure:3929: gcc  -c -g -O2  conftest.c >&5
+configure:3929: $? = 0
+configure:3942: result: none needed
+configure:3967: checking whether gcc understands -c and -o together
+configure:3989: gcc -c conftest.c -o conftest2.o
+configure:3992: $? = 0
+configure:3989: gcc -c conftest.c -o conftest2.o
+configure:3992: $? = 0
+configure:4004: result: yes
+configure:4023: checking dependency style of gcc
+configure:4134: result: gcc3
+configure:4149: checking for gcc option to accept ISO C99
+configure:4298: gcc  -c -g -O2  conftest.c >&5
+configure:4298: $? = 0
+configure:4311: result: none needed
+configure:4332: checking how to run the C preprocessor
+configure:4363: gcc -E  conftest.c
+configure:4363: $? = 0
+configure:4377: gcc -E  conftest.c
 conftest.c:11:28: fatal error: ac_nonexistent.h: No such file or directory
 compilation terminated.
-configure:4365: $? = 1
+configure:4377: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "cpuminer"
@@ -159,13 +159,13 @@ configure: failed program was:
 | #define VERSION "2.4"
 | /* end confdefs.h.  */
 | #include <ac_nonexistent.h>
-configure:4390: result: gcc -E
-configure:4410: gcc -E  conftest.c
-configure:4410: $? = 0
-configure:4424: gcc -E  conftest.c
+configure:4402: result: gcc -E
+configure:4422: gcc -E  conftest.c
+configure:4422: $? = 0
+configure:4436: gcc -E  conftest.c
 conftest.c:11:28: fatal error: ac_nonexistent.h: No such file or directory
 compilation terminated.
-configure:4424: $? = 1
+configure:4436: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "cpuminer"
@@ -178,29 +178,29 @@ configure: failed program was:
 | #define VERSION "2.4"
 | /* end confdefs.h.  */
 | #include <ac_nonexistent.h>
-configure:4453: checking for grep that handles long lines and -e
-configure:4511: result: /bin/grep
-configure:4516: checking for egrep
-configure:4578: result: /bin/grep -E
-configure:4584: checking whether gcc needs -traditional
-configure:4618: result: no
-configure:4635: checking dependency style of gcc
-configure:4744: result: gcc3
-configure:4802: checking for ranlib
-configure:4818: found /usr/bin/ranlib
-configure:4829: result: ranlib
-configure:4909: checking for g++
-configure:4925: found /usr/bin/g++
-configure:4936: result: g++
-configure:4963: checking for C++ compiler version
-configure:4972: g++ --version >&5
+configure:4465: checking for grep that handles long lines and -e
+configure:4523: result: /bin/grep
+configure:4528: checking for egrep
+configure:4590: result: /bin/grep -E
+configure:4596: checking whether gcc needs -traditional
+configure:4630: result: no
+configure:4647: checking dependency style of gcc
+configure:4756: result: gcc3
+configure:4814: checking for ranlib
+configure:4830: found /usr/bin/ranlib
+configure:4841: result: ranlib
+configure:4921: checking for g++
+configure:4937: found /usr/bin/g++
+configure:4948: result: g++
+configure:4975: checking for C++ compiler version
+configure:4984: g++ --version >&5
 g++ (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.5) 5.4.0 20160609
 Copyright (C) 2015 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-configure:4983: $? = 0
-configure:4972: g++ -v >&5
+configure:4995: $? = 0
+configure:4984: g++ -v >&5
 Using built-in specs.
 COLLECT_GCC=g++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/arm-linux-gnueabihf/5/lto-wrapper
@@ -208,76 +208,76 @@ Target: arm-linux-gnueabihf
 Configured with: ../src/configure -v --with-pkgversion='Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.5' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libitm --disable-libquadmath --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-armhf/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-armhf --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-armhf --with-arch-directory=arm --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --enable-multilib --disable-sjlj-exceptions --with-arch=armv7-a --with-fpu=vfpv3-d16 --with-float=hard --with-mode=thumb --disable-werror --enable-multilib --enable-checking=release --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf
 Thread model: posix
 gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.5) 
-configure:4983: $? = 0
-configure:4972: g++ -V >&5
+configure:4995: $? = 0
+configure:4984: g++ -V >&5
 g++: error: unrecognized command line option '-V'
 g++: fatal error: no input files
 compilation terminated.
-configure:4983: $? = 1
-configure:4972: g++ -qversion >&5
+configure:4995: $? = 1
+configure:4984: g++ -qversion >&5
 g++: error: unrecognized command line option '-qversion'
 g++: fatal error: no input files
 compilation terminated.
-configure:4983: $? = 1
-configure:4987: checking whether we are using the GNU C++ compiler
-configure:5006: g++ -c   conftest.cpp >&5
-configure:5006: $? = 0
-configure:5015: result: yes
-configure:5024: checking whether g++ accepts -g
-configure:5044: g++ -c -g  conftest.cpp >&5
-configure:5044: $? = 0
-configure:5085: result: yes
-configure:5110: checking dependency style of g++
-configure:5221: result: gcc3
-configure:5237: checking for ANSI C header files
-configure:5257: gcc -c -g -O2  conftest.c >&5
-configure:5257: $? = 0
-configure:5330: gcc -o conftest -g -O2   conftest.c  >&5
-configure:5330: $? = 0
-configure:5330: ./conftest
-configure:5330: $? = 0
-configure:5341: result: yes
-configure:5354: checking for sys/types.h
-configure:5354: gcc -c -g -O2  conftest.c >&5
-configure:5354: $? = 0
-configure:5354: result: yes
-configure:5354: checking for sys/stat.h
-configure:5354: gcc -c -g -O2  conftest.c >&5
-configure:5354: $? = 0
-configure:5354: result: yes
-configure:5354: checking for stdlib.h
-configure:5354: gcc -c -g -O2  conftest.c >&5
-configure:5354: $? = 0
-configure:5354: result: yes
-configure:5354: checking for string.h
-configure:5354: gcc -c -g -O2  conftest.c >&5
-configure:5354: $? = 0
-configure:5354: result: yes
-configure:5354: checking for memory.h
-configure:5354: gcc -c -g -O2  conftest.c >&5
-configure:5354: $? = 0
-configure:5354: result: yes
-configure:5354: checking for strings.h
-configure:5354: gcc -c -g -O2  conftest.c >&5
-configure:5354: $? = 0
-configure:5354: result: yes
-configure:5354: checking for inttypes.h
-configure:5354: gcc -c -g -O2  conftest.c >&5
-configure:5354: $? = 0
-configure:5354: result: yes
-configure:5354: checking for stdint.h
-configure:5354: gcc -c -g -O2  conftest.c >&5
-configure:5354: $? = 0
-configure:5354: result: yes
-configure:5354: checking for unistd.h
-configure:5354: gcc -c -g -O2  conftest.c >&5
-configure:5354: $? = 0
-configure:5354: result: yes
-configure:5369: checking sys/endian.h usability
-configure:5369: gcc -c -g -O2  conftest.c >&5
+configure:4995: $? = 1
+configure:4999: checking whether we are using the GNU C++ compiler
+configure:5018: g++ -c   conftest.cpp >&5
+configure:5018: $? = 0
+configure:5027: result: yes
+configure:5036: checking whether g++ accepts -g
+configure:5056: g++ -c -g  conftest.cpp >&5
+configure:5056: $? = 0
+configure:5097: result: yes
+configure:5122: checking dependency style of g++
+configure:5233: result: gcc3
+configure:5249: checking for ANSI C header files
+configure:5269: gcc -c -g -O2  conftest.c >&5
+configure:5269: $? = 0
+configure:5342: gcc -o conftest -g -O2   conftest.c  >&5
+configure:5342: $? = 0
+configure:5342: ./conftest
+configure:5342: $? = 0
+configure:5353: result: yes
+configure:5366: checking for sys/types.h
+configure:5366: gcc -c -g -O2  conftest.c >&5
+configure:5366: $? = 0
+configure:5366: result: yes
+configure:5366: checking for sys/stat.h
+configure:5366: gcc -c -g -O2  conftest.c >&5
+configure:5366: $? = 0
+configure:5366: result: yes
+configure:5366: checking for stdlib.h
+configure:5366: gcc -c -g -O2  conftest.c >&5
+configure:5366: $? = 0
+configure:5366: result: yes
+configure:5366: checking for string.h
+configure:5366: gcc -c -g -O2  conftest.c >&5
+configure:5366: $? = 0
+configure:5366: result: yes
+configure:5366: checking for memory.h
+configure:5366: gcc -c -g -O2  conftest.c >&5
+configure:5366: $? = 0
+configure:5366: result: yes
+configure:5366: checking for strings.h
+configure:5366: gcc -c -g -O2  conftest.c >&5
+configure:5366: $? = 0
+configure:5366: result: yes
+configure:5366: checking for inttypes.h
+configure:5366: gcc -c -g -O2  conftest.c >&5
+configure:5366: $? = 0
+configure:5366: result: yes
+configure:5366: checking for stdint.h
+configure:5366: gcc -c -g -O2  conftest.c >&5
+configure:5366: $? = 0
+configure:5366: result: yes
+configure:5366: checking for unistd.h
+configure:5366: gcc -c -g -O2  conftest.c >&5
+configure:5366: $? = 0
+configure:5366: result: yes
+configure:5381: checking sys/endian.h usability
+configure:5381: gcc -c -g -O2  conftest.c >&5
 conftest.c:54:24: fatal error: sys/endian.h: No such file or directory
 compilation terminated.
-configure:5369: $? = 1
+configure:5381: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "cpuminer"
@@ -333,12 +333,12 @@ configure: failed program was:
 | # include <unistd.h>
 | #endif
 | #include <sys/endian.h>
-configure:5369: result: no
-configure:5369: checking sys/endian.h presence
-configure:5369: gcc -E  conftest.c
+configure:5381: result: no
+configure:5381: checking sys/endian.h presence
+configure:5381: gcc -E  conftest.c
 conftest.c:21:24: fatal error: sys/endian.h: No such file or directory
 compilation terminated.
-configure:5369: $? = 1
+configure:5381: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "cpuminer"
@@ -361,41 +361,41 @@ configure: failed program was:
 | #define HAVE_UNISTD_H 1
 | /* end confdefs.h.  */
 | #include <sys/endian.h>
-configure:5369: result: no
-configure:5369: checking for sys/endian.h
-configure:5369: result: no
-configure:5369: checking sys/param.h usability
-configure:5369: gcc -c -g -O2  conftest.c >&5
-configure:5369: $? = 0
-configure:5369: result: yes
-configure:5369: checking sys/param.h presence
-configure:5369: gcc -E  conftest.c
-configure:5369: $? = 0
-configure:5369: result: yes
-configure:5369: checking for sys/param.h
-configure:5369: result: yes
-configure:5369: checking syslog.h usability
-configure:5369: gcc -c -g -O2  conftest.c >&5
-configure:5369: $? = 0
-configure:5369: result: yes
-configure:5369: checking syslog.h presence
-configure:5369: gcc -E  conftest.c
-configure:5369: $? = 0
-configure:5369: result: yes
-configure:5369: checking for syslog.h
-configure:5369: result: yes
-configure:5383: checking for sys/sysctl.h
-configure:5383: gcc -c -g -O2  conftest.c >&5
-configure:5383: $? = 0
-configure:5383: result: yes
-configure:5399: checking whether be32dec is declared
-configure:5399: gcc -c -g -O2  conftest.c >&5
+configure:5381: result: no
+configure:5381: checking for sys/endian.h
+configure:5381: result: no
+configure:5381: checking sys/param.h usability
+configure:5381: gcc -c -g -O2  conftest.c >&5
+configure:5381: $? = 0
+configure:5381: result: yes
+configure:5381: checking sys/param.h presence
+configure:5381: gcc -E  conftest.c
+configure:5381: $? = 0
+configure:5381: result: yes
+configure:5381: checking for sys/param.h
+configure:5381: result: yes
+configure:5381: checking syslog.h usability
+configure:5381: gcc -c -g -O2  conftest.c >&5
+configure:5381: $? = 0
+configure:5381: result: yes
+configure:5381: checking syslog.h presence
+configure:5381: gcc -E  conftest.c
+configure:5381: $? = 0
+configure:5381: result: yes
+configure:5381: checking for syslog.h
+configure:5381: result: yes
+configure:5395: checking for sys/sysctl.h
+configure:5395: gcc -c -g -O2  conftest.c >&5
+configure:5395: $? = 0
+configure:5395: result: yes
+configure:5411: checking whether be32dec is declared
+configure:5411: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
 conftest.c:69:10: error: 'be32dec' undeclared (first use in this function)
    (void) be32dec;
           ^
 conftest.c:69:10: note: each undeclared identifier is reported only once for each function it appears in
-configure:5399: $? = 1
+configure:5411: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "cpuminer"
@@ -472,15 +472,15 @@ configure: failed program was:
 |   ;
 |   return 0;
 | }
-configure:5399: result: no
-configure:5414: checking whether le32dec is declared
-configure:5414: gcc -c -g -O2  conftest.c >&5
+configure:5411: result: no
+configure:5426: checking whether le32dec is declared
+configure:5426: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
 conftest.c:70:10: error: 'le32dec' undeclared (first use in this function)
    (void) le32dec;
           ^
 conftest.c:70:10: note: each undeclared identifier is reported only once for each function it appears in
-configure:5414: $? = 1
+configure:5426: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "cpuminer"
@@ -558,15 +558,15 @@ configure: failed program was:
 |   ;
 |   return 0;
 | }
-configure:5414: result: no
-configure:5429: checking whether be32enc is declared
-configure:5429: gcc -c -g -O2  conftest.c >&5
+configure:5426: result: no
+configure:5441: checking whether be32enc is declared
+configure:5441: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
 conftest.c:71:10: error: 'be32enc' undeclared (first use in this function)
    (void) be32enc;
           ^
 conftest.c:71:10: note: each undeclared identifier is reported only once for each function it appears in
-configure:5429: $? = 1
+configure:5441: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "cpuminer"
@@ -645,15 +645,15 @@ configure: failed program was:
 |   ;
 |   return 0;
 | }
-configure:5429: result: no
-configure:5444: checking whether le32enc is declared
-configure:5444: gcc -c -g -O2  conftest.c >&5
+configure:5441: result: no
+configure:5456: checking whether le32enc is declared
+configure:5456: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
 conftest.c:72:10: error: 'le32enc' undeclared (first use in this function)
    (void) le32enc;
           ^
 conftest.c:72:10: note: each undeclared identifier is reported only once for each function it appears in
-configure:5444: $? = 1
+configure:5456: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "cpuminer"
@@ -733,16 +733,16 @@ configure: failed program was:
 |   ;
 |   return 0;
 | }
-configure:5444: result: no
-configure:5461: checking for size_t
-configure:5461: gcc -c -g -O2  conftest.c >&5
-configure:5461: $? = 0
-configure:5461: gcc -c -g -O2  conftest.c >&5
+configure:5456: result: no
+configure:5473: checking for size_t
+configure:5473: gcc -c -g -O2  conftest.c >&5
+configure:5473: $? = 0
+configure:5473: gcc -c -g -O2  conftest.c >&5
 conftest.c: In function 'main':
 conftest.c:64:21: error: expected expression before ')' token
  if (sizeof ((size_t)))
                      ^
-configure:5461: $? = 1
+configure:5473: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "cpuminer"
@@ -812,30 +812,61 @@ configure: failed program was:
 |   ;
 |   return 0;
 | }
-configure:5461: result: yes
-configure:5474: checking for working alloca.h
-configure:5491: gcc -o conftest -g -O2   conftest.c  >&5
-configure:5491: $? = 0
-configure:5499: result: yes
-configure:5507: checking for alloca
-configure:5544: gcc -o conftest -g -O2   conftest.c  >&5
-configure:5544: $? = 0
-configure:5552: result: yes
-configure:5660: checking for getopt_long
-configure:5660: gcc -o conftest -g -O2   conftest.c  >&5
-configure:5660: $? = 0
-configure:5660: result: yes
-configure:5701: checking for json_loads in -ljansson
-configure:5726: gcc -o conftest -g -O2   conftest.c -ljansson   >&5
-configure:5726: $? = 0
-configure:5735: result: yes
-configure:5743: checking for pthread_create in -lpthread
-configure:5768: gcc -o conftest -g -O2   conftest.c -lpthread   >&5
-configure:5768: $? = 0
-configure:5777: result: yes
-configure:6090: checking that generated files are newer than configure
-configure:6096: result: done
-configure:6155: creating ./config.status
+configure:5473: result: yes
+configure:5486: checking for working alloca.h
+configure:5503: gcc -o conftest -g -O2   conftest.c  >&5
+configure:5503: $? = 0
+configure:5511: result: yes
+configure:5519: checking for alloca
+configure:5556: gcc -o conftest -g -O2   conftest.c  >&5
+configure:5556: $? = 0
+configure:5564: result: yes
+configure:5672: checking for getopt_long
+configure:5672: gcc -o conftest -g -O2   conftest.c  >&5
+configure:5672: $? = 0
+configure:5672: result: yes
+configure:5804: checking for json_loads in -ljansson
+configure:5829: gcc -o conftest -g -O2   conftest.c -ljansson   >&5
+configure:5829: $? = 0
+configure:5838: result: yes
+configure:5846: checking for pthread_create in -lpthread
+configure:5871: gcc -o conftest -g -O2   conftest.c -lpthread   >&5
+configure:5871: $? = 0
+configure:5880: result: yes
+configure:6011: checking for __gmpz_init in -lgmp
+configure:6036: gcc -o conftest -g -O2   conftest.c -lgmp   >&5
+configure:6036: $? = 0
+configure:6045: result: yes
+configure:6058: checking gmp.h usability
+configure:6058: gcc -c -g -O2  conftest.c >&5
+configure:6058: $? = 0
+configure:6058: result: yes
+configure:6058: checking gmp.h presence
+configure:6058: gcc -E  conftest.c
+configure:6058: $? = 0
+configure:6058: result: yes
+configure:6058: checking for gmp.h
+configure:6058: result: yes
+configure:6164: checking for gawk
+configure:6191: result: mawk
+configure:6253: checking for curl-config
+configure:6271: found /usr/bin/curl-config
+configure:6283: result: /usr/bin/curl-config
+configure:6294: checking for the version of libcurl
+configure:6301: result: 7.47.0
+configure:6308: checking for libcurl >= version 7.15.2
+configure:6321: result: yes
+configure:6362: checking whether libcurl is usable
+configure:6396: gcc -o conftest -g -O2    conftest.c -L/usr/lib/arm-linux-gnueabihf -lcurl -lgmp  >&5
+configure:6396: $? = 0
+configure:6410: result: yes
+configure:6423: checking for curl_free
+configure:6423: gcc -o conftest -g -O2    conftest.c -lgmp  -L/usr/lib/arm-linux-gnueabihf -lcurl >&5
+configure:6423: $? = 0
+configure:6423: result: yes
+configure:6627: checking that generated files are newer than configure
+configure:6633: result: done
+configure:6692: creating ./config.status
 
 ## ---------------------- ##
 ## Running config.status. ##
@@ -852,13 +883,13 @@ generated by GNU Autoconf 2.69.  Invocation command line was
 
 on orangepizero
 
-config.status:911: creating Makefile
-config.status:911: creating compat/Makefile
-config.status:911: creating compat/jansson/Makefile
-config.status:911: creating m7/Makefile
-config.status:911: creating cpuminer-config.h
-config.status:1092: cpuminer-config.h is unchanged
-config.status:1140: executing depfiles commands
+config.status:950: creating Makefile
+config.status:950: creating compat/Makefile
+config.status:950: creating compat/jansson/Makefile
+config.status:950: creating m7/Makefile
+config.status:950: creating cpuminer-config.h
+config.status:1131: cpuminer-config.h is unchanged
+config.status:1179: executing depfiles commands
 
 ## ---------------- ##
 ## Cache variables. ##
@@ -896,11 +927,13 @@ ac_cv_env_host_alias_value=
 ac_cv_env_target_alias_set=
 ac_cv_env_target_alias_value=
 ac_cv_func_alloca_works=yes
+ac_cv_func_curl_free=yes
 ac_cv_func_getopt_long=yes
 ac_cv_have_decl_be32dec=no
 ac_cv_have_decl_be32enc=no
 ac_cv_have_decl_le32dec=no
 ac_cv_have_decl_le32enc=no
+ac_cv_header_gmp_h=yes
 ac_cv_header_inttypes_h=yes
 ac_cv_header_memory_h=yes
 ac_cv_header_stdc=yes
@@ -916,11 +949,13 @@ ac_cv_header_sys_types_h=yes
 ac_cv_header_syslog_h=yes
 ac_cv_header_unistd_h=yes
 ac_cv_host=armv7l-unknown-linux-gnueabihf
+ac_cv_lib_gmp___gmpz_init=yes
 ac_cv_lib_jansson_json_loads=yes
 ac_cv_lib_pthread_pthread_create=yes
 ac_cv_objext=o
 ac_cv_path_EGREP='/bin/grep -E'
 ac_cv_path_GREP=/bin/grep
+ac_cv_path__libcurl_config=/usr/bin/curl-config
 ac_cv_path_install='/usr/bin/install -c'
 ac_cv_path_mkdir=/bin/mkdir
 ac_cv_prog_AWK=mawk
@@ -942,12 +977,15 @@ am_cv_CC_dependencies_compiler_type=gcc3
 am_cv_CXX_dependencies_compiler_type=gcc3
 am_cv_make_support_nested_variables=yes
 am_cv_prog_cc_c_o=yes
+libcurl_cv_lib_curl_usable=yes
+libcurl_cv_lib_curl_version=7.47.0
+libcurl_cv_lib_version_ok=yes
 
 ## ----------------- ##
 ## Output variables. ##
 ## ----------------- ##
 
-ACLOCAL='${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing aclocal-1.15'
+ACLOCAL='${SHELL} /root/opi0setup/wolf-m7m-cpuminer-V2/missing aclocal-1.15'
 ALLOCA=''
 AMDEPBACKSLASH='\'
 AMDEP_FALSE='#'
@@ -963,9 +1001,9 @@ ARCH_x86_64_FALSE=''
 ARCH_x86_64_TRUE='#'
 ARCH_x86_FALSE=''
 ARCH_x86_TRUE='#'
-AUTOCONF='${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing autoconf'
-AUTOHEADER='${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing autoheader'
-AUTOMAKE='${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing automake-1.15'
+AUTOCONF='${SHELL} /root/opi0setup/wolf-m7m-cpuminer-V2/missing autoconf'
+AUTOHEADER='${SHELL} /root/opi0setup/wolf-m7m-cpuminer-V2/missing autoheader'
+AUTOMAKE='${SHELL} /root/opi0setup/wolf-m7m-cpuminer-V2/missing automake-1.15'
 AWK='mawk'
 CC='gcc'
 CCAS='gcc'
@@ -995,14 +1033,16 @@ INSTALL_SCRIPT='${INSTALL}'
 INSTALL_STRIP_PROGRAM='$(install_sh) -c -s'
 JANSSON_LIBS='-ljansson'
 LDFLAGS=''
+LIBCURL='-L/usr/lib/arm-linux-gnueabihf -lcurl'
+LIBCURL_CPPFLAGS=''
 LIBOBJS=''
-LIBS=''
+LIBS='-lgmp '
 LTLIBOBJS=''
 M7M_LIBS='m7/libm7m.a'
 MAINT='#'
 MAINTAINER_MODE_FALSE=''
 MAINTAINER_MODE_TRUE='#'
-MAKEINFO='${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing makeinfo'
+MAKEINFO='${SHELL} /root/opi0setup/wolf-m7m-cpuminer-V2/missing makeinfo'
 MKDIR_P='/bin/mkdir -p'
 OBJEXT='o'
 PACKAGE='cpuminer'
@@ -1019,12 +1059,13 @@ RANLIB='ranlib'
 SET_MAKE=''
 SHELL='/bin/bash'
 STRIP=''
-USE_ASM_FALSE=''
-USE_ASM_TRUE='#'
+USE_ASM_FALSE='#'
+USE_ASM_TRUE=''
 VERSION='2.4'
 WANT_JANSSON_FALSE=''
 WANT_JANSSON_TRUE='#'
 WS2_LIBS=''
+_libcurl_config=''
 ac_ct_CC='gcc'
 ac_ct_CXX='g++'
 am__EXEEXT_FALSE=''
@@ -1061,7 +1102,7 @@ host_vendor='unknown'
 htmldir='${docdir}'
 includedir='${prefix}/include'
 infodir='${datarootdir}/info'
-install_sh='${SHELL} /root/opi0setup/wolf-m7m-cpuminer/install-sh'
+install_sh='${SHELL} /root/opi0setup/wolf-m7m-cpuminer-V2/install-sh'
 libdir='${exec_prefix}/lib'
 libexecdir='${exec_prefix}/libexec'
 localedir='${datarootdir}/locale'
@@ -1116,5 +1157,41 @@ target_vendor='unknown'
 #define HAVE_ALLOCA_H 1
 #define HAVE_ALLOCA 1
 #define HAVE_GETOPT_LONG 1
+#define USE_ASM 1
+#define HAVE_LIBGMP 1
+#define HAVE_LIBCURL 1
+#define LIBCURL_FEATURE_SSL 1
+#define LIBCURL_FEATURE_IPV6 1
+#define LIBCURL_FEATURE_UNIXSOCKETS 1
+#define LIBCURL_FEATURE_LIBZ 1
+#define LIBCURL_FEATURE_ASYNCHDNS 1
+#define LIBCURL_FEATURE_IDN 1
+#define LIBCURL_FEATURE_GSS_API 1
+#define LIBCURL_FEATURE_SPNEGO 1
+#define LIBCURL_FEATURE_KERBEROS 1
+#define LIBCURL_FEATURE_NTLM 1
+#define LIBCURL_FEATURE_NTLM_WB 1
+#define LIBCURL_FEATURE_TLS_SRP 1
+#define LIBCURL_PROTOCOL_DICT 1
+#define LIBCURL_PROTOCOL_FILE 1
+#define LIBCURL_PROTOCOL_FTP 1
+#define LIBCURL_PROTOCOL_FTPS 1
+#define LIBCURL_PROTOCOL_GOPHER 1
+#define LIBCURL_PROTOCOL_HTTP 1
+#define LIBCURL_PROTOCOL_HTTPS 1
+#define LIBCURL_PROTOCOL_IMAP 1
+#define LIBCURL_PROTOCOL_IMAPS 1
+#define LIBCURL_PROTOCOL_LDAP 1
+#define LIBCURL_PROTOCOL_LDAPS 1
+#define LIBCURL_PROTOCOL_POP3 1
+#define LIBCURL_PROTOCOL_POP3S 1
+#define LIBCURL_PROTOCOL_RTMP 1
+#define LIBCURL_PROTOCOL_RTSP 1
+#define LIBCURL_PROTOCOL_SMB 1
+#define LIBCURL_PROTOCOL_SMBS 1
+#define LIBCURL_PROTOCOL_SMTP 1
+#define LIBCURL_PROTOCOL_SMTPS 1
+#define LIBCURL_PROTOCOL_TELNET 1
+#define LIBCURL_PROTOCOL_TFTP 1
 
 configure: exit 0
