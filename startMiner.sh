@@ -16,6 +16,7 @@ ip="$(hostname -I)"
 case $1 in
   "--workername")
   ip="$2"
+  echo "using workername $ip"
   ;;
 esac
 case $ip in
