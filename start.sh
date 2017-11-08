@@ -20,22 +20,21 @@ echo "-$a-"
 
 if [ ${#a} -eq 0 ]
 then
-echo "is already installed"
-
+  echo "rpimonitor is already installed"
 else
-echo "not yet installed - will install"
+  echo "not yet installed - will install"
 
-case "$(uname -m)" in
-"x86_64")
-wget http://goo.gl/vewCLL -O /etc/apt/sources.list.d/rpimonitor.list
-apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2C0D3C0F
-apt-get update
-apt-get install rpimonitor -y --allow-unauthenticated
-;;
-"armv7l")
-armbianmonitor -r
-;;
-esac
+  case "$(uname -m)" in
+    "x86_64")
+      wget http://goo.gl/vewCLL -O /etc/apt/sources.list.d/rpimonitor.list
+      apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2C0D3C0F
+      apt-get update
+      apt-get install rpimonitor -y --allow-unauthenticated
+      ;;
+    "armv7l")
+      armbianmonitor -r
+      ;;
+  esac
 fi
 
 startMiner $1
