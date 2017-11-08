@@ -9,7 +9,9 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 arch="$(uname -m)"
 minerDir="wolf$arch"
+echo "using full path: $DIR/$minerDir"
 cd $DIR/$minerDir
+
 ip="$(hostname -I)"
 echo "using IP $ip"
 machine="$arch$(echo $ip| cut -d'.' -f 4)"
