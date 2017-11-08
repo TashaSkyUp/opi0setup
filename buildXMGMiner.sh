@@ -29,7 +29,7 @@ function defaultConfig {
 }
 case $1 in
   "--download")
-
+    zypper install automake autoconf make gcc gmp-devel curl-devel
     apt-get install automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev make g++ git libgmp-dev -y
     git clone https://github.com/magi-project/wolf-m7m-cpuminer-V2
     ;;
