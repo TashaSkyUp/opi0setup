@@ -192,4 +192,3 @@ SPH_XCAT(SPH_XCAT(haval, PASSES), _close)(sph_haval_context *sc,
 	haval_out(sc, dst);
 	haval_init(sc, sc->olen, sc->passes);
 }
-

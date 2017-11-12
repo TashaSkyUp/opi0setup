@@ -1098,11 +1098,30 @@ static void *miner_thread(void *userdata)
 	char s[16];
 	int i;
 
+	/* Set worker threads to nice 19 and then preferentially to SCHED_IDLE
+	 * and if that fails, then SCHED_BATCH. No need for this to be an
+	 * error if it fails */
+	if (!opt_benchmark) {
+		setpriority(PRIO_PROCESS, 0, 19);
+		drop_policy();
+	}
+
+	/* Cpu affinity only makes sense if the number of threads is a multiple
+	 * of the number of CPUs */
 	if (num_processors > 1 && opt_n_threads % num_processors == 0) {
 		if (!opt_quiet)
 			applog(LOG_INFO, "Binding thread %d to cpu %d",
 			       thr_id, thr_id % num_processors);
 		affine_to_cpu(thr_id, thr_id % num_processors);
+	}
+	
+	if (opt_algo == ALGO_SCRYPT) {
+		scratchbuf = scrypt_buffer_alloc(opt_scrypt_n);
+		if (!scratchbuf) {
+			applog(LOG_ERR, "scrypt buffer allocation failed");
+			pthread_mutex_lock(&applog_lock);
+			exit(1);
+		}
 	}
 
 	while (1) {
@@ -1111,39 +1130,90 @@ static void *miner_thread(void *userdata)
 		int64_t max64;
 		int rc;
 
-		while(time(NULL) >= g_work_time + 120) sleep(1);
-		
-		pthread_mutex_lock(&g_work_lock);
-		if (work.data[19] >= end_nonce && !memcmp(work.data, g_work.data, 76))
-			stratum_gen_work(&stratum, &g_work);
-				
-		if(memcmp(work.data, g_work.data, 76))
-		{
+		if (have_stratum) {
+			while (time(NULL) >= g_work_time + 120)
+				sleep(1);
+			pthread_mutex_lock(&g_work_lock);
+			if (work.data[19] >= end_nonce && !memcmp(work.data, g_work.data, 76))
+				stratum_gen_work(&stratum, &g_work);
+		} else {
+			int min_scantime = have_longpoll ? LP_SCANTIME : opt_scantime;
+			/* obtain new work from internal workio thread */
+			pthread_mutex_lock(&g_work_lock);
+			if (!have_stratum &&
+			    (time(NULL) - g_work_time >= min_scantime ||
+			     work.data[19] >= end_nonce)) {
+				if (unlikely(!get_work(mythr, &g_work))) {
+					applog(LOG_ERR, "work retrieval failed, exiting "
+						"mining thread %d", mythr->id);
+					pthread_mutex_unlock(&g_work_lock);
+					goto out;
+				}
+				g_work_time = have_stratum ? 0 : time(NULL);
+			}
+			if (have_stratum) {
+				pthread_mutex_unlock(&g_work_lock);
+				continue;
+			}
+		}
+		if (memcmp(work.data, g_work.data, 76)) {
 			work_free(&work);
 			work_copy(&work, &g_work);
 			work.data[19] = 0xffffffffU / opt_n_threads * thr_id;
-		}
-		else
-		{
+		} else
 			work.data[19]++;
-		}
-		
 		pthread_mutex_unlock(&g_work_lock);
 		work_restart[thr_id].restart = 0;
 		
 		/* adjust max_nonce to meet target scan time */
-		max64 = LP_SCANTIME * thr_hashrates[thr_id];
-		
-		if(max64 <= 0) max64 = 0x3ffff;
-		
-		if(work.data[19] + max64 > end_nonce) max_nonce = end_nonce;
-		else max_nonce = work.data[19] + max64;
+		if (have_stratum)
+			max64 = LP_SCANTIME;
+		else
+			max64 = g_work_time + (have_longpoll ? LP_SCANTIME : opt_scantime)
+			      - time(NULL);
+		max64 *= thr_hashrates[thr_id];
+		if (max64 <= 0) {
+			switch (opt_algo) {
+			case ALGO_SCRYPT:
+				max64 = opt_scrypt_n < 16 ? 0x3ffff : 0x3fffff / opt_scrypt_n;
+				break;
+			case ALGO_SHA256D:
+				max64 = 0x1fffff;
+				break;
+			case ALGO_M7M:
+				max64 = 0x3ffff;
+				break;
+			}
+		}
+		if (work.data[19] + max64 > end_nonce)
+			max_nonce = end_nonce;
+		else
+			max_nonce = work.data[19] + max64;
 		
 		hashes_done = 0;
 		gettimeofday(&tv_start, NULL);
 
 		/* scan nonces for a proof-of-work hash */
-		rc = scanhash_m7m_hash(thr_id, work.data, work.target, max_nonce, &hashes_done);
+		switch (opt_algo) {
+		case ALGO_SCRYPT:
+			rc = scanhash_scrypt(thr_id, work.data, scratchbuf, work.target,
+			                     max_nonce, &hashes_done, opt_scrypt_n);
+			break;
+
+		case ALGO_SHA256D:
+			rc = scanhash_sha256d(thr_id, work.data, work.target,
+			                      max_nonce, &hashes_done);
+			break;
+
+		case ALGO_M7M:
+			rc = scanhash_m7m_hash(thr_id, work.data, work.target,
+			                      max_nonce, &hashes_done);
+			break;
+
+		default:
+			/* should never happen */
+			goto out;
+		}
 
 		/* record scanhash elapsed time */
 		gettimeofday(&tv_end, NULL);
@@ -1160,9 +1230,18 @@ static void *miner_thread(void *userdata)
 			applog(LOG_INFO, "thread %d: %lu hashes, %s khash/s",
 				thr_id, hashes_done, s);
 		}
+		if (opt_benchmark && thr_id == opt_n_threads - 1) {
+			double hashrate = 0.;
+			for (i = 0; i < opt_n_threads && thr_hashrates[i]; i++)
+				hashrate += thr_hashrates[i];
+			if (i == opt_n_threads) {
+				sprintf(s, hashrate >= 1e6 ? "%.0f" : "%.2f", 1e-3 * hashrate);
+				applog(LOG_INFO, "Total: %s khash/s", s);
+			}
+		}
 
 		/* if nonce found, submit work */
-		if (rc && !submit_work(mythr, &work))
+		if (rc && !opt_benchmark && !submit_work(mythr, &work))
 			break;
 	}
 

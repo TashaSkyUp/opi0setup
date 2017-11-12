@@ -368,4 +368,3 @@ void sph_sha512_comp(const sph_u64 msg[16], sph_u64 val[8]);
 #endif
 
 #endif
-

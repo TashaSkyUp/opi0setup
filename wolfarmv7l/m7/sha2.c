@@ -619,7 +619,7 @@ sph_sha224_init(void *cc)
 {
 	sph_sha224_context *sc;
 
-	sc = (sph_sha224_context*)cc;
+	sc = cc;
 	memcpy(sc->val, H224, sizeof H224);
 #if SPH_64
 	sc->count = 0;
@@ -634,7 +634,7 @@ sph_sha256_init(void *cc)
 {
 	sph_sha256_context *sc;
 
-	sc = (sph_sha224_context*)cc;
+	sc = cc;
 	memcpy(sc->val, H256, sizeof H256);
 #if SPH_64
 	sc->count = 0;
@@ -688,4 +688,3 @@ sph_sha224_comp(const sph_u32 msg[16], sph_u32 val[8])
 	SHA2_ROUND_BODY(SHA2_IN, val);
 #undef SHA2_IN
 }
-

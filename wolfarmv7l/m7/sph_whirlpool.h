@@ -207,4 +207,3 @@ void sph_whirlpool1_close(void *cc, void *dst);
 #endif
 
 #endif
-

@@ -62,13 +62,39 @@ case $target in
     ;;
 esac
 
-#AC_ARG_ENABLE([assembly],
-#  AS_HELP_STRING([--disable-assembly], [disable assembly-language routines]))
-#if test x$enable_assembly != xno; then
-#  AC_DEFINE([USE_ASM], [1], [Define to 1 if assembly routines are wanted.])
-#fi
+AC_ARG_ENABLE([assembly],
+  AS_HELP_STRING([--disable-assembly], [disable assembly-language routines]))
+if test x$enable_assembly != xno; then
+  AC_DEFINE([USE_ASM], [1], [Define to 1 if assembly routines are wanted.])
+fi
 
-enable_assembly="no"
+if test x$enable_assembly != xno -a x$have_x86_64 = xtrue
+then
+  AC_MSG_CHECKING(whether we can compile AVX code)
+  AC_COMPILE_IFELSE([AC_LANG_PROGRAM(,[asm ("vmovdqa %ymm0, %ymm1");])],
+    AC_DEFINE(USE_AVX, 1, [Define to 1 if AVX assembly is available.])
+    AC_MSG_RESULT(yes)
+    AC_MSG_CHECKING(whether we can compile XOP code)
+    AC_COMPILE_IFELSE([AC_LANG_PROGRAM(,[asm ("vprotd \$7, %xmm0, %xmm1");])],
+      AC_DEFINE(USE_XOP, 1, [Define to 1 if XOP assembly is available.])
+      AC_MSG_RESULT(yes)
+    ,
+      AC_MSG_RESULT(no)
+      AC_MSG_WARN([The assembler does not support the XOP instruction set.])
+    )
+    AC_MSG_CHECKING(whether we can compile AVX2 code)
+    AC_COMPILE_IFELSE([AC_LANG_PROGRAM(,[asm ("vpaddd %ymm0, %ymm1, %ymm2");])],
+      AC_DEFINE(USE_AVX2, 1, [Define to 1 if AVX2 assembly is available.])
+      AC_MSG_RESULT(yes)
+    ,
+      AC_MSG_RESULT(no)
+      AC_MSG_WARN([The assembler does not support the AVX2 instruction set.])
+    )
+  ,
+    AC_MSG_RESULT(no)
+    AC_MSG_WARN([The assembler does not support the AVX instruction set.])
+  )
+fi
 
 AC_CHECK_LIB(jansson, json_loads, request_jansson=false, request_jansson=true)
 AC_CHECK_LIB([pthread], [pthread_create], PTHREAD_LIBS="-lpthread",
@@ -77,9 +103,9 @@ AC_CHECK_LIB([pthread], [pthread_create], PTHREAD_LIBS="-lpthread",
       AC_CHECK_LIB([pthreadGC], [pthread_create], PTHREAD_LIBS="-lpthreadGC"
 ))))
 
-#AC_CHECK_LIB(gmp, __gmpz_init, ,
-#  [AC_MSG_ERROR([GNU MP not found, see https://gmplib.org/])])
-#AC_CHECK_HEADER([gmp.h],,AC_MSG_ERROR(gmp headers missing))
+AC_CHECK_LIB(gmp, __gmpz_init, ,
+  [AC_MSG_ERROR([GNU MP not found, see https://gmplib.org/])])
+AC_CHECK_HEADER([gmp.h],,AC_MSG_ERROR(gmp headers missing))
 
 AM_CONDITIONAL([WANT_JANSSON], [test x$request_jansson = xtrue])
 AM_CONDITIONAL([HAVE_WINDOWS], [test x$have_win32 = xtrue])
@@ -97,8 +123,8 @@ fi
 
 M7M_LIBS="m7/libm7m.a"
 
-#LIBCURL_CHECK_CONFIG(, 7.15.2, ,
-#  [AC_MSG_ERROR([Missing required libcurl >= 7.15.2])])
+LIBCURL_CHECK_CONFIG(, 7.15.2, ,
+  [AC_MSG_ERROR([Missing required libcurl >= 7.15.2])])
 
 AC_SUBST(JANSSON_LIBS)
 AC_SUBST(PTHREAD_FLAGS)

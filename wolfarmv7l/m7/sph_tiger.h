@@ -189,4 +189,3 @@ void sph_tiger2_comp(const sph_u64 msg[8], sph_u64 val[3]);
 #endif
 
 #endif
-

@@ -90,6 +90,9 @@ build_triplet = armv7l-unknown-linux-gnueabihf
 host_triplet = armv7l-unknown-linux-gnueabihf
 target_triplet = armv7l-unknown-linux-gnueabihf
 bin_PROGRAMS = minerd$(EXEEXT)
+#am__append_1 = sha2-x86.S scrypt-x86.S
+#am__append_2 = sha2-x64.S scrypt-x64.S
+am__append_3 = sha2-arm.S scrypt-arm.S
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -105,12 +108,22 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(man1dir)"
 PROGRAMS = $(bin_PROGRAMS)
+am__minerd_SOURCES_DIST = elist.h miner.h compat.h cpu-miner.c util.c \
+	sha2.c scrypt.c m7mhash.c sha2-x86.S scrypt-x86.S sha2-x64.S \
+	scrypt-x64.S sha2-arm.S scrypt-arm.S
+#am__objects_1 =  \
+#	minerd-sha2-x86.$(OBJEXT) \
+#	minerd-scrypt-x86.$(OBJEXT)
+#am__objects_2 =  \
+#	minerd-sha2-x64.$(OBJEXT) \
+#	minerd-scrypt-x64.$(OBJEXT)
+am__objects_3 =  \
+	minerd-sha2-arm.$(OBJEXT) \
+	minerd-scrypt-arm.$(OBJEXT)
 am_minerd_OBJECTS = minerd-cpu-miner.$(OBJEXT) minerd-util.$(OBJEXT) \
-	minerd-sha2-old.$(OBJEXT) minerd-scrypt.$(OBJEXT) \
-	minerd-m7mhash.$(OBJEXT) minerd-haval.$(OBJEXT) \
-	minerd-keccak.$(OBJEXT) minerd-ripemd.$(OBJEXT) \
-	minerd-sha2.$(OBJEXT) minerd-sha2big.$(OBJEXT) \
-	minerd-tiger.$(OBJEXT) minerd-whirlpool.$(OBJEXT)
+	minerd-sha2.$(OBJEXT) minerd-scrypt.$(OBJEXT) \
+	minerd-m7mhash.$(OBJEXT) $(am__objects_1) $(am__objects_2) \
+	$(am__objects_3)
 minerd_OBJECTS = $(am_minerd_OBJECTS)
 minerd_DEPENDENCIES =
 minerd_LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(minerd_LDFLAGS) \
@@ -135,6 +148,12 @@ AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+CPPASCOMPILE = $(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS)
+AM_V_CPPAS = $(am__v_CPPAS_$(V))
+am__v_CPPAS_ = $(am__v_CPPAS_$(AM_DEFAULT_VERBOSITY))
+am__v_CPPAS_0 = @echo "  CPPAS   " $@;
+am__v_CPPAS_1 = 
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 AM_V_CC = $(am__v_CC_$(V))
@@ -148,7 +167,7 @@ am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
 SOURCES = $(minerd_SOURCES)
-DIST_SOURCES = $(minerd_SOURCES)
+DIST_SOURCES = $(am__minerd_SOURCES_DIST)
 RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
 	ctags-recursive dvi-recursive html-recursive info-recursive \
 	install-data-recursive install-dvi-recursive \
@@ -268,13 +287,13 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing aclocal-1.15
+ACLOCAL = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer-V2/missing aclocal-1.15
 ALLOCA = 
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
-AUTOCONF = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing autoconf
-AUTOHEADER = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing autoheader
-AUTOMAKE = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing automake-1.15
+AUTOCONF = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer-V2/missing autoconf
+AUTOHEADER = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer-V2/missing autoheader
+AUTOMAKE = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer-V2/missing automake-1.15
 AWK = mawk
 CC = gcc
 CCAS = gcc
@@ -303,12 +322,14 @@ INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 JANSSON_LIBS = -ljansson
 LDFLAGS = 
+LIBCURL = -L/usr/lib/arm-linux-gnueabihf -lcurl
+LIBCURL_CPPFLAGS = 
 LIBOBJS = 
-LIBS = 
+LIBS = -lgmp 
 LTLIBOBJS = 
 M7M_LIBS = m7/libm7m.a
 MAINT = #
-MAKEINFO = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer/missing makeinfo
+MAKEINFO = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer-V2/missing makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
 PACKAGE = cpuminer
@@ -327,10 +348,11 @@ SHELL = /bin/bash
 STRIP = 
 VERSION = 2.4
 WS2_LIBS = 
-abs_builddir = /root/opi0setup/wolf-m7m-cpuminer
-abs_srcdir = /root/opi0setup/wolf-m7m-cpuminer
-abs_top_builddir = /root/opi0setup/wolf-m7m-cpuminer
-abs_top_srcdir = /root/opi0setup/wolf-m7m-cpuminer
+_libcurl_config = 
+abs_builddir = /root/opi0setup/wolf-m7m-cpuminer-V2
+abs_srcdir = /root/opi0setup/wolf-m7m-cpuminer-V2
+abs_top_builddir = /root/opi0setup/wolf-m7m-cpuminer-V2
+abs_top_srcdir = /root/opi0setup/wolf-m7m-cpuminer-V2
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 am__include = include
@@ -358,7 +380,7 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer/install-sh
+install_sh = ${SHELL} /root/opi0setup/wolf-m7m-cpuminer-V2/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -387,24 +409,20 @@ JANSSON_INCLUDES =
 #JANSSON_INCLUDES = -I$(top_srcdir)/compat/jansson
 EXTRA_DIST = example-cfg.json nomacro.pl
 SUBDIRS = compat m7
-INCLUDES = $(PTHREAD_FLAGS) $(JANSSON_INCLUDES) -I$(top_srcdir)/m7
+INCLUDES = $(PTHREAD_FLAGS) -fno-strict-aliasing $(JANSSON_INCLUDES) \
+	-I$(top_srcdir)/m7
 dist_man_MANS = minerd.1
-minerd_SOURCES = elist.h miner.h compat.h \
-		  cpu-miner.c util.c \
-		  sha2-old.c scrypt.c m7mhash.c \
-		  m7/haval.c m7/keccak.c m7/ripemd.c m7/sha2.c m7/sha2big.c \
-		  m7/sph_haval.h m7/sph_keccak.h m7/sph_ripemd.h \
-		  m7/sph_sha2.h m7/sph_tiger.h m7/sph_whirlpool.h \
-		  m7/tiger.c m7/whirlpool.c
-
-minerd_LDFLAGS = $(PTHREAD_FLAGS) -flto -fuse-linker-plugin -Ofast
-minerd_LDADD = -ljansson -lpthread  -lgmp -lcurl -lm
-minerd_CPPFLAGS = -Im7 -Ofast -mcpu=cortex-a7 -flto -fuse-linker-plugin
+minerd_SOURCES = elist.h miner.h compat.h cpu-miner.c util.c sha2.c \
+	scrypt.c m7mhash.c $(am__append_1) $(am__append_2) \
+	$(am__append_3)
+minerd_LDFLAGS = $(PTHREAD_FLAGS)  -fuse-linker-plugin -Ofast
+minerd_LDADD = -L/usr/lib/arm-linux-gnueabihf -lcurl -ljansson -lpthread  m7/libm7m.a -lgmp -lcurl -lm
+minerd_CPPFLAGS = -Im7 -Ofast -mcpu=cortex-a7  -fuse-linker-plugin
 all: cpuminer-config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
 .SUFFIXES:
-.SUFFIXES: .c .o .obj
+.SUFFIXES: .S .c .o .obj
 am--refresh: Makefile
 	@:
 $(srcdir)/Makefile.in: # $(srcdir)/Makefile.am  $(am__configure_deps)
@@ -507,17 +525,114 @@ distclean-compile:
 	-rm -f *.tab.c
 
 include ./$(DEPDIR)/minerd-cpu-miner.Po
-include ./$(DEPDIR)/minerd-haval.Po
-include ./$(DEPDIR)/minerd-keccak.Po
 include ./$(DEPDIR)/minerd-m7mhash.Po
-include ./$(DEPDIR)/minerd-ripemd.Po
+include ./$(DEPDIR)/minerd-scrypt-arm.Po
+include ./$(DEPDIR)/minerd-scrypt-x64.Po
+include ./$(DEPDIR)/minerd-scrypt-x86.Po
 include ./$(DEPDIR)/minerd-scrypt.Po
-include ./$(DEPDIR)/minerd-sha2-old.Po
+include ./$(DEPDIR)/minerd-sha2-arm.Po
+include ./$(DEPDIR)/minerd-sha2-x64.Po
+include ./$(DEPDIR)/minerd-sha2-x86.Po
 include ./$(DEPDIR)/minerd-sha2.Po
-include ./$(DEPDIR)/minerd-sha2big.Po
-include ./$(DEPDIR)/minerd-tiger.Po
 include ./$(DEPDIR)/minerd-util.Po
-include ./$(DEPDIR)/minerd-whirlpool.Po
+
+.S.o:
+	$(AM_V_CPPAS)$(CPPASCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
+	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+#	$(AM_V_CPPAS)source='$<' object='$@' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) \
+#	$(AM_V_CPPAS_no)$(CPPASCOMPILE) -c -o $@ $<
+
+.S.obj:
+	$(AM_V_CPPAS)$(CPPASCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `$(CYGPATH_W) '$<'`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+#	$(AM_V_CPPAS)source='$<' object='$@' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) \
+#	$(AM_V_CPPAS_no)$(CPPASCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+
+minerd-sha2-x86.o: sha2-x86.S
+	$(AM_V_CPPAS)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT minerd-sha2-x86.o -MD -MP -MF $(DEPDIR)/minerd-sha2-x86.Tpo -c -o minerd-sha2-x86.o `test -f 'sha2-x86.S' || echo '$(srcdir)/'`sha2-x86.S
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-sha2-x86.Tpo $(DEPDIR)/minerd-sha2-x86.Po
+#	$(AM_V_CPPAS)source='sha2-x86.S' object='minerd-sha2-x86.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) \
+#	$(AM_V_CPPAS_no)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o minerd-sha2-x86.o `test -f 'sha2-x86.S' || echo '$(srcdir)/'`sha2-x86.S
+
+minerd-sha2-x86.obj: sha2-x86.S
+	$(AM_V_CPPAS)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT minerd-sha2-x86.obj -MD -MP -MF $(DEPDIR)/minerd-sha2-x86.Tpo -c -o minerd-sha2-x86.obj `if test -f 'sha2-x86.S'; then $(CYGPATH_W) 'sha2-x86.S'; else $(CYGPATH_W) '$(srcdir)/sha2-x86.S'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-sha2-x86.Tpo $(DEPDIR)/minerd-sha2-x86.Po
+#	$(AM_V_CPPAS)source='sha2-x86.S' object='minerd-sha2-x86.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) \
+#	$(AM_V_CPPAS_no)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o minerd-sha2-x86.obj `if test -f 'sha2-x86.S'; then $(CYGPATH_W) 'sha2-x86.S'; else $(CYGPATH_W) '$(srcdir)/sha2-x86.S'; fi`
+
+minerd-scrypt-x86.o: scrypt-x86.S
+	$(AM_V_CPPAS)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT minerd-scrypt-x86.o -MD -MP -MF $(DEPDIR)/minerd-scrypt-x86.Tpo -c -o minerd-scrypt-x86.o `test -f 'scrypt-x86.S' || echo '$(srcdir)/'`scrypt-x86.S
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-scrypt-x86.Tpo $(DEPDIR)/minerd-scrypt-x86.Po
+#	$(AM_V_CPPAS)source='scrypt-x86.S' object='minerd-scrypt-x86.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) \
+#	$(AM_V_CPPAS_no)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o minerd-scrypt-x86.o `test -f 'scrypt-x86.S' || echo '$(srcdir)/'`scrypt-x86.S
+
+minerd-scrypt-x86.obj: scrypt-x86.S
+	$(AM_V_CPPAS)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT minerd-scrypt-x86.obj -MD -MP -MF $(DEPDIR)/minerd-scrypt-x86.Tpo -c -o minerd-scrypt-x86.obj `if test -f 'scrypt-x86.S'; then $(CYGPATH_W) 'scrypt-x86.S'; else $(CYGPATH_W) '$(srcdir)/scrypt-x86.S'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-scrypt-x86.Tpo $(DEPDIR)/minerd-scrypt-x86.Po
+#	$(AM_V_CPPAS)source='scrypt-x86.S' object='minerd-scrypt-x86.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) \
+#	$(AM_V_CPPAS_no)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o minerd-scrypt-x86.obj `if test -f 'scrypt-x86.S'; then $(CYGPATH_W) 'scrypt-x86.S'; else $(CYGPATH_W) '$(srcdir)/scrypt-x86.S'; fi`
+
+minerd-sha2-x64.o: sha2-x64.S
+	$(AM_V_CPPAS)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT minerd-sha2-x64.o -MD -MP -MF $(DEPDIR)/minerd-sha2-x64.Tpo -c -o minerd-sha2-x64.o `test -f 'sha2-x64.S' || echo '$(srcdir)/'`sha2-x64.S
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-sha2-x64.Tpo $(DEPDIR)/minerd-sha2-x64.Po
+#	$(AM_V_CPPAS)source='sha2-x64.S' object='minerd-sha2-x64.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) \
+#	$(AM_V_CPPAS_no)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o minerd-sha2-x64.o `test -f 'sha2-x64.S' || echo '$(srcdir)/'`sha2-x64.S
+
+minerd-sha2-x64.obj: sha2-x64.S
+	$(AM_V_CPPAS)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT minerd-sha2-x64.obj -MD -MP -MF $(DEPDIR)/minerd-sha2-x64.Tpo -c -o minerd-sha2-x64.obj `if test -f 'sha2-x64.S'; then $(CYGPATH_W) 'sha2-x64.S'; else $(CYGPATH_W) '$(srcdir)/sha2-x64.S'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-sha2-x64.Tpo $(DEPDIR)/minerd-sha2-x64.Po
+#	$(AM_V_CPPAS)source='sha2-x64.S' object='minerd-sha2-x64.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) \
+#	$(AM_V_CPPAS_no)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o minerd-sha2-x64.obj `if test -f 'sha2-x64.S'; then $(CYGPATH_W) 'sha2-x64.S'; else $(CYGPATH_W) '$(srcdir)/sha2-x64.S'; fi`
+
+minerd-scrypt-x64.o: scrypt-x64.S
+	$(AM_V_CPPAS)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT minerd-scrypt-x64.o -MD -MP -MF $(DEPDIR)/minerd-scrypt-x64.Tpo -c -o minerd-scrypt-x64.o `test -f 'scrypt-x64.S' || echo '$(srcdir)/'`scrypt-x64.S
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-scrypt-x64.Tpo $(DEPDIR)/minerd-scrypt-x64.Po
+#	$(AM_V_CPPAS)source='scrypt-x64.S' object='minerd-scrypt-x64.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) \
+#	$(AM_V_CPPAS_no)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o minerd-scrypt-x64.o `test -f 'scrypt-x64.S' || echo '$(srcdir)/'`scrypt-x64.S
+
+minerd-scrypt-x64.obj: scrypt-x64.S
+	$(AM_V_CPPAS)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT minerd-scrypt-x64.obj -MD -MP -MF $(DEPDIR)/minerd-scrypt-x64.Tpo -c -o minerd-scrypt-x64.obj `if test -f 'scrypt-x64.S'; then $(CYGPATH_W) 'scrypt-x64.S'; else $(CYGPATH_W) '$(srcdir)/scrypt-x64.S'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-scrypt-x64.Tpo $(DEPDIR)/minerd-scrypt-x64.Po
+#	$(AM_V_CPPAS)source='scrypt-x64.S' object='minerd-scrypt-x64.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) \
+#	$(AM_V_CPPAS_no)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o minerd-scrypt-x64.obj `if test -f 'scrypt-x64.S'; then $(CYGPATH_W) 'scrypt-x64.S'; else $(CYGPATH_W) '$(srcdir)/scrypt-x64.S'; fi`
+
+minerd-sha2-arm.o: sha2-arm.S
+	$(AM_V_CPPAS)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT minerd-sha2-arm.o -MD -MP -MF $(DEPDIR)/minerd-sha2-arm.Tpo -c -o minerd-sha2-arm.o `test -f 'sha2-arm.S' || echo '$(srcdir)/'`sha2-arm.S
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-sha2-arm.Tpo $(DEPDIR)/minerd-sha2-arm.Po
+#	$(AM_V_CPPAS)source='sha2-arm.S' object='minerd-sha2-arm.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) \
+#	$(AM_V_CPPAS_no)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o minerd-sha2-arm.o `test -f 'sha2-arm.S' || echo '$(srcdir)/'`sha2-arm.S
+
+minerd-sha2-arm.obj: sha2-arm.S
+	$(AM_V_CPPAS)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT minerd-sha2-arm.obj -MD -MP -MF $(DEPDIR)/minerd-sha2-arm.Tpo -c -o minerd-sha2-arm.obj `if test -f 'sha2-arm.S'; then $(CYGPATH_W) 'sha2-arm.S'; else $(CYGPATH_W) '$(srcdir)/sha2-arm.S'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-sha2-arm.Tpo $(DEPDIR)/minerd-sha2-arm.Po
+#	$(AM_V_CPPAS)source='sha2-arm.S' object='minerd-sha2-arm.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) \
+#	$(AM_V_CPPAS_no)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o minerd-sha2-arm.obj `if test -f 'sha2-arm.S'; then $(CYGPATH_W) 'sha2-arm.S'; else $(CYGPATH_W) '$(srcdir)/sha2-arm.S'; fi`
+
+minerd-scrypt-arm.o: scrypt-arm.S
+	$(AM_V_CPPAS)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT minerd-scrypt-arm.o -MD -MP -MF $(DEPDIR)/minerd-scrypt-arm.Tpo -c -o minerd-scrypt-arm.o `test -f 'scrypt-arm.S' || echo '$(srcdir)/'`scrypt-arm.S
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-scrypt-arm.Tpo $(DEPDIR)/minerd-scrypt-arm.Po
+#	$(AM_V_CPPAS)source='scrypt-arm.S' object='minerd-scrypt-arm.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) \
+#	$(AM_V_CPPAS_no)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o minerd-scrypt-arm.o `test -f 'scrypt-arm.S' || echo '$(srcdir)/'`scrypt-arm.S
+
+minerd-scrypt-arm.obj: scrypt-arm.S
+	$(AM_V_CPPAS)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT minerd-scrypt-arm.obj -MD -MP -MF $(DEPDIR)/minerd-scrypt-arm.Tpo -c -o minerd-scrypt-arm.obj `if test -f 'scrypt-arm.S'; then $(CYGPATH_W) 'scrypt-arm.S'; else $(CYGPATH_W) '$(srcdir)/scrypt-arm.S'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-scrypt-arm.Tpo $(DEPDIR)/minerd-scrypt-arm.Po
+#	$(AM_V_CPPAS)source='scrypt-arm.S' object='minerd-scrypt-arm.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) \
+#	$(AM_V_CPPAS_no)$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o minerd-scrypt-arm.obj `if test -f 'scrypt-arm.S'; then $(CYGPATH_W) 'scrypt-arm.S'; else $(CYGPATH_W) '$(srcdir)/scrypt-arm.S'; fi`
 
 .c.o:
 	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -561,19 +676,19 @@ minerd-util.obj: util.c
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
 #	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-util.obj `if test -f 'util.c'; then $(CYGPATH_W) 'util.c'; else $(CYGPATH_W) '$(srcdir)/util.c'; fi`
 
-minerd-sha2-old.o: sha2-old.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-sha2-old.o -MD -MP -MF $(DEPDIR)/minerd-sha2-old.Tpo -c -o minerd-sha2-old.o `test -f 'sha2-old.c' || echo '$(srcdir)/'`sha2-old.c
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-sha2-old.Tpo $(DEPDIR)/minerd-sha2-old.Po
-#	$(AM_V_CC)source='sha2-old.c' object='minerd-sha2-old.o' libtool=no \
+minerd-sha2.o: sha2.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-sha2.o -MD -MP -MF $(DEPDIR)/minerd-sha2.Tpo -c -o minerd-sha2.o `test -f 'sha2.c' || echo '$(srcdir)/'`sha2.c
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-sha2.Tpo $(DEPDIR)/minerd-sha2.Po
+#	$(AM_V_CC)source='sha2.c' object='minerd-sha2.o' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-sha2-old.o `test -f 'sha2-old.c' || echo '$(srcdir)/'`sha2-old.c
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-sha2.o `test -f 'sha2.c' || echo '$(srcdir)/'`sha2.c
 
-minerd-sha2-old.obj: sha2-old.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-sha2-old.obj -MD -MP -MF $(DEPDIR)/minerd-sha2-old.Tpo -c -o minerd-sha2-old.obj `if test -f 'sha2-old.c'; then $(CYGPATH_W) 'sha2-old.c'; else $(CYGPATH_W) '$(srcdir)/sha2-old.c'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-sha2-old.Tpo $(DEPDIR)/minerd-sha2-old.Po
-#	$(AM_V_CC)source='sha2-old.c' object='minerd-sha2-old.obj' libtool=no \
+minerd-sha2.obj: sha2.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-sha2.obj -MD -MP -MF $(DEPDIR)/minerd-sha2.Tpo -c -o minerd-sha2.obj `if test -f 'sha2.c'; then $(CYGPATH_W) 'sha2.c'; else $(CYGPATH_W) '$(srcdir)/sha2.c'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-sha2.Tpo $(DEPDIR)/minerd-sha2.Po
+#	$(AM_V_CC)source='sha2.c' object='minerd-sha2.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-sha2-old.obj `if test -f 'sha2-old.c'; then $(CYGPATH_W) 'sha2-old.c'; else $(CYGPATH_W) '$(srcdir)/sha2-old.c'; fi`
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-sha2.obj `if test -f 'sha2.c'; then $(CYGPATH_W) 'sha2.c'; else $(CYGPATH_W) '$(srcdir)/sha2.c'; fi`
 
 minerd-scrypt.o: scrypt.c
 	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-scrypt.o -MD -MP -MF $(DEPDIR)/minerd-scrypt.Tpo -c -o minerd-scrypt.o `test -f 'scrypt.c' || echo '$(srcdir)/'`scrypt.c
@@ -602,104 +717,6 @@ minerd-m7mhash.obj: m7mhash.c
 #	$(AM_V_CC)source='m7mhash.c' object='minerd-m7mhash.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
 #	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-m7mhash.obj `if test -f 'm7mhash.c'; then $(CYGPATH_W) 'm7mhash.c'; else $(CYGPATH_W) '$(srcdir)/m7mhash.c'; fi`
-
-minerd-haval.o: m7/haval.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-haval.o -MD -MP -MF $(DEPDIR)/minerd-haval.Tpo -c -o minerd-haval.o `test -f 'm7/haval.c' || echo '$(srcdir)/'`m7/haval.c
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-haval.Tpo $(DEPDIR)/minerd-haval.Po
-#	$(AM_V_CC)source='m7/haval.c' object='minerd-haval.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-haval.o `test -f 'm7/haval.c' || echo '$(srcdir)/'`m7/haval.c
-
-minerd-haval.obj: m7/haval.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-haval.obj -MD -MP -MF $(DEPDIR)/minerd-haval.Tpo -c -o minerd-haval.obj `if test -f 'm7/haval.c'; then $(CYGPATH_W) 'm7/haval.c'; else $(CYGPATH_W) '$(srcdir)/m7/haval.c'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-haval.Tpo $(DEPDIR)/minerd-haval.Po
-#	$(AM_V_CC)source='m7/haval.c' object='minerd-haval.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-haval.obj `if test -f 'm7/haval.c'; then $(CYGPATH_W) 'm7/haval.c'; else $(CYGPATH_W) '$(srcdir)/m7/haval.c'; fi`
-
-minerd-keccak.o: m7/keccak.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-keccak.o -MD -MP -MF $(DEPDIR)/minerd-keccak.Tpo -c -o minerd-keccak.o `test -f 'm7/keccak.c' || echo '$(srcdir)/'`m7/keccak.c
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-keccak.Tpo $(DEPDIR)/minerd-keccak.Po
-#	$(AM_V_CC)source='m7/keccak.c' object='minerd-keccak.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-keccak.o `test -f 'm7/keccak.c' || echo '$(srcdir)/'`m7/keccak.c
-
-minerd-keccak.obj: m7/keccak.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-keccak.obj -MD -MP -MF $(DEPDIR)/minerd-keccak.Tpo -c -o minerd-keccak.obj `if test -f 'm7/keccak.c'; then $(CYGPATH_W) 'm7/keccak.c'; else $(CYGPATH_W) '$(srcdir)/m7/keccak.c'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-keccak.Tpo $(DEPDIR)/minerd-keccak.Po
-#	$(AM_V_CC)source='m7/keccak.c' object='minerd-keccak.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-keccak.obj `if test -f 'm7/keccak.c'; then $(CYGPATH_W) 'm7/keccak.c'; else $(CYGPATH_W) '$(srcdir)/m7/keccak.c'; fi`
-
-minerd-ripemd.o: m7/ripemd.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-ripemd.o -MD -MP -MF $(DEPDIR)/minerd-ripemd.Tpo -c -o minerd-ripemd.o `test -f 'm7/ripemd.c' || echo '$(srcdir)/'`m7/ripemd.c
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-ripemd.Tpo $(DEPDIR)/minerd-ripemd.Po
-#	$(AM_V_CC)source='m7/ripemd.c' object='minerd-ripemd.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-ripemd.o `test -f 'm7/ripemd.c' || echo '$(srcdir)/'`m7/ripemd.c
-
-minerd-ripemd.obj: m7/ripemd.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-ripemd.obj -MD -MP -MF $(DEPDIR)/minerd-ripemd.Tpo -c -o minerd-ripemd.obj `if test -f 'm7/ripemd.c'; then $(CYGPATH_W) 'm7/ripemd.c'; else $(CYGPATH_W) '$(srcdir)/m7/ripemd.c'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-ripemd.Tpo $(DEPDIR)/minerd-ripemd.Po
-#	$(AM_V_CC)source='m7/ripemd.c' object='minerd-ripemd.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-ripemd.obj `if test -f 'm7/ripemd.c'; then $(CYGPATH_W) 'm7/ripemd.c'; else $(CYGPATH_W) '$(srcdir)/m7/ripemd.c'; fi`
-
-minerd-sha2.o: m7/sha2.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-sha2.o -MD -MP -MF $(DEPDIR)/minerd-sha2.Tpo -c -o minerd-sha2.o `test -f 'm7/sha2.c' || echo '$(srcdir)/'`m7/sha2.c
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-sha2.Tpo $(DEPDIR)/minerd-sha2.Po
-#	$(AM_V_CC)source='m7/sha2.c' object='minerd-sha2.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-sha2.o `test -f 'm7/sha2.c' || echo '$(srcdir)/'`m7/sha2.c
-
-minerd-sha2.obj: m7/sha2.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-sha2.obj -MD -MP -MF $(DEPDIR)/minerd-sha2.Tpo -c -o minerd-sha2.obj `if test -f 'm7/sha2.c'; then $(CYGPATH_W) 'm7/sha2.c'; else $(CYGPATH_W) '$(srcdir)/m7/sha2.c'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-sha2.Tpo $(DEPDIR)/minerd-sha2.Po
-#	$(AM_V_CC)source='m7/sha2.c' object='minerd-sha2.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-sha2.obj `if test -f 'm7/sha2.c'; then $(CYGPATH_W) 'm7/sha2.c'; else $(CYGPATH_W) '$(srcdir)/m7/sha2.c'; fi`
-
-minerd-sha2big.o: m7/sha2big.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-sha2big.o -MD -MP -MF $(DEPDIR)/minerd-sha2big.Tpo -c -o minerd-sha2big.o `test -f 'm7/sha2big.c' || echo '$(srcdir)/'`m7/sha2big.c
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-sha2big.Tpo $(DEPDIR)/minerd-sha2big.Po
-#	$(AM_V_CC)source='m7/sha2big.c' object='minerd-sha2big.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-sha2big.o `test -f 'm7/sha2big.c' || echo '$(srcdir)/'`m7/sha2big.c
-
-minerd-sha2big.obj: m7/sha2big.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-sha2big.obj -MD -MP -MF $(DEPDIR)/minerd-sha2big.Tpo -c -o minerd-sha2big.obj `if test -f 'm7/sha2big.c'; then $(CYGPATH_W) 'm7/sha2big.c'; else $(CYGPATH_W) '$(srcdir)/m7/sha2big.c'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-sha2big.Tpo $(DEPDIR)/minerd-sha2big.Po
-#	$(AM_V_CC)source='m7/sha2big.c' object='minerd-sha2big.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-sha2big.obj `if test -f 'm7/sha2big.c'; then $(CYGPATH_W) 'm7/sha2big.c'; else $(CYGPATH_W) '$(srcdir)/m7/sha2big.c'; fi`
-
-minerd-tiger.o: m7/tiger.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-tiger.o -MD -MP -MF $(DEPDIR)/minerd-tiger.Tpo -c -o minerd-tiger.o `test -f 'm7/tiger.c' || echo '$(srcdir)/'`m7/tiger.c
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-tiger.Tpo $(DEPDIR)/minerd-tiger.Po
-#	$(AM_V_CC)source='m7/tiger.c' object='minerd-tiger.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-tiger.o `test -f 'm7/tiger.c' || echo '$(srcdir)/'`m7/tiger.c
-
-minerd-tiger.obj: m7/tiger.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-tiger.obj -MD -MP -MF $(DEPDIR)/minerd-tiger.Tpo -c -o minerd-tiger.obj `if test -f 'm7/tiger.c'; then $(CYGPATH_W) 'm7/tiger.c'; else $(CYGPATH_W) '$(srcdir)/m7/tiger.c'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-tiger.Tpo $(DEPDIR)/minerd-tiger.Po
-#	$(AM_V_CC)source='m7/tiger.c' object='minerd-tiger.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-tiger.obj `if test -f 'm7/tiger.c'; then $(CYGPATH_W) 'm7/tiger.c'; else $(CYGPATH_W) '$(srcdir)/m7/tiger.c'; fi`
-
-minerd-whirlpool.o: m7/whirlpool.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-whirlpool.o -MD -MP -MF $(DEPDIR)/minerd-whirlpool.Tpo -c -o minerd-whirlpool.o `test -f 'm7/whirlpool.c' || echo '$(srcdir)/'`m7/whirlpool.c
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-whirlpool.Tpo $(DEPDIR)/minerd-whirlpool.Po
-#	$(AM_V_CC)source='m7/whirlpool.c' object='minerd-whirlpool.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-whirlpool.o `test -f 'm7/whirlpool.c' || echo '$(srcdir)/'`m7/whirlpool.c
-
-minerd-whirlpool.obj: m7/whirlpool.c
-	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT minerd-whirlpool.obj -MD -MP -MF $(DEPDIR)/minerd-whirlpool.Tpo -c -o minerd-whirlpool.obj `if test -f 'm7/whirlpool.c'; then $(CYGPATH_W) 'm7/whirlpool.c'; else $(CYGPATH_W) '$(srcdir)/m7/whirlpool.c'; fi`
-	$(AM_V_at)$(am__mv) $(DEPDIR)/minerd-whirlpool.Tpo $(DEPDIR)/minerd-whirlpool.Po
-#	$(AM_V_CC)source='m7/whirlpool.c' object='minerd-whirlpool.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(minerd_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o minerd-whirlpool.obj `if test -f 'm7/whirlpool.c'; then $(CYGPATH_W) 'm7/whirlpool.c'; else $(CYGPATH_W) '$(srcdir)/m7/whirlpool.c'; fi`
 install-man1: $(dist_man_MANS)
 	@$(NORMAL_INSTALL)
 	@list1=''; \
