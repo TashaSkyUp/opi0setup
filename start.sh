@@ -19,7 +19,6 @@ fi
 
 function startMiner {
 $DIR/startMiner.sh $1 $2
-armbianmonitor -m
 }
 
 a="$(echo "$a" | grep "not-found" -o)"
@@ -44,4 +43,13 @@ else
   esac
 fi
 
-startMiner $1 $2
+case $1 in
+"--service")
+	echo "trying to run quitly in background"
+	startMiner $1 $2
+	;;
+*)
+	startMiner $1 $2
+	armbianmonitor -m
+	;;
+esac

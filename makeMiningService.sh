@@ -1,11 +1,12 @@
 execFile="/root/opi0setup/start.sh"
+execOpts=" --service > /mining.log"
 serviceName="mining.service"
 
 serviceFile="[Unit]
 Description=Default
 
 [Service]
-ExecStart=$execFile
+ExecStart=$execFile$execOpts
 
 [Install]
 WantedBy=multi-user.target"
