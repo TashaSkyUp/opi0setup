@@ -49,6 +49,7 @@ echo "Mount Kernel Virtual File Systems"
   copyLinksForCommand /bin/grep $TARGETDIR/lib/
   copyLinksForCommand /bin/cut $TARGETDIR/lib/
   copyLinksForCommand /bin/hostname $TARGETDIR/lib/
+  copyLinksForCommand /bin/reboot $TARGETDIR/lib/
   
   
 
