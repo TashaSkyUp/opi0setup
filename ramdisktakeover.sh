@@ -12,7 +12,7 @@ TOLINK=(
 #info about what needs what to run
 
 function copyLinksForCommand {
-  lnlinks="$(ldd $(command -v $1) |grep "/.*so.." -o)"
+  lnlinks="$(ldd $(command -v $1) |grep "/.*so..." -o)"
   echo "$lnlinks" > tmp && readarray test < tmp 
    for f in "${test[@]}";do
     echo "link: $f"
@@ -40,6 +40,8 @@ echo "Mount Kernel Virtual File Systems"
   	echo $TARGETDIR$i
   done
   copyLinksForCommand /bin/ln $TARGETDIR/lib/
+  copyLinksForCommand /root/opi0setup/wolfarmv7l/minerd $TARGETDIR/lib/
+  
   exit 0
   
   mount -t proc proc $TARGETDIR/proc
