@@ -6,7 +6,7 @@ TOLINK=(
 /dev/pts
 )
 
-TARGETDIR="../takeover"
+TARGETDIR="/takeover"
 umount -f -v ./$TARGETDIR/ramdisk
 sudo rm $TARGETDIR -r -f
 mkdir $TARGETDIR
