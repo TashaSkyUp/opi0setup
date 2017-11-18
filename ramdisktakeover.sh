@@ -45,7 +45,7 @@ echo "Mount Kernel Virtual File Systems"
   copyLinksForCommand /root/opi0setup/wolfarmv7l/minerd $TARGETDIR/lib/
   copyLinksForCommand /bin/bash $TARGETDIR/lib/
   
-  exit 0
+
   
   mount -t proc proc $TARGETDIR/proc
   mount -t sysfs sysfs $TARGETDIR/sys
@@ -70,6 +70,6 @@ echo "Mount Kernel Virtual File Systems"
   chroot $TARGETDIR ln -s /proc/mounts /etc/mtab
   
   
-  exit 0
+  #exit 0
   chroot $TARGETDIR
 
