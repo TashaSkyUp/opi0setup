@@ -22,7 +22,7 @@ function copyLinksForCommand {
 
 TARGETDIR="/takeover"
 umount -f -v ./$TARGETDIR/ramdisk
-sudo rm $TARGETDIR -r -f
+#sudo rm $TARGETDIR -r -f
 mkdir $TARGETDIR
 mkdir $TARGETDIR/ramdisk
 mount -t ramfs -o size=256m ext4 $TARGETDIR/ramdisk
