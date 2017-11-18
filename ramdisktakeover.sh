@@ -10,14 +10,15 @@ TOLINK=(
 )
 
 #info about what needs what to run
-OLD_IFS="$IFS"
-IFS=".so" 
+
 lnlinks="$(ldd $(command -v /bin/ln) |grep "/.*so" -o)"
-echo "lnlinks $lnlinks"
+echo "$lnlinks" > tmp && readarray test < tmp 
+
+echo "lnlinks $test"
  for f in "${lnlinks[@]}";do
   echo "link: $f"
  done
-IFS="$OLD_IFS"
+
 exit 0
 
 TARGETDIR="/takeover"
