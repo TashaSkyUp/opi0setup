@@ -37,4 +37,7 @@ echo "Mount Kernel Virtual File Systems"
   # Link /etc/mtab
   chroot $TARGETDIR rm /etc/mtab 2> /dev/null 
   chroot $TARGETDIR ln -s /proc/mounts /etc/mtab
-    exit 0
+  
+  cp /root $TARGETDIR/root -r
+  chroot $TARGETDIT
+   exit 0
