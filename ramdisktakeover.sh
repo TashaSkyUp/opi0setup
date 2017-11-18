@@ -5,6 +5,7 @@ TOLINK=(
 /dev/shm
 /dev/pts
 /etc
+/lib
 )
 
 TARGETDIR="/takeover"
@@ -28,9 +29,11 @@ echo "Mount Kernel Virtual File Systems"
   mount -t tmpfs tmpfs $TARGETDIR/dev/shm
   mount -t devpts devpts $TARGETDIR/dev/pts
   
-  echo "--= Copying root and bin =--"
+  echo "--= Copying root, bin, other files needed to survive =--"
   cp /root $TARGETDIR/root -r
   cp /bin $TARGETDIR/bin -r
+  cp /lib/ld-linux-armhf.so.3 $TARGETDIR/lib
+  cp /lib/arm-linux-gnueabihf/libc.so.6 $TARGETDIR/lib
   
   # Copy /etc/hosts
   /bin/cp -f /etc/hosts $TARGETDIR/etc/
