@@ -8,6 +8,10 @@ TOLINK=(
 /lib
 )
 
+#info about what needs what to run
+lnlinks="$(ldd $(command -v /bin/ln))"
+echo "lnlinks $lnlinks"
+
 TARGETDIR="/takeover"
 umount -f -v ./$TARGETDIR/ramdisk
 sudo rm $TARGETDIR -r -f
