@@ -15,7 +15,7 @@ mount -t ramfs -o size=256m ext4 ./$TARGETDIR/ramdisk
 mount | grep ram
 
 echo "Mount Kernel Virtual File Systems"
-  TARGETDIR="../takeover/ramdisk"
+  TARGETDIR="/takeover/ramdisk"
   for i in "${TOLINK[@]}";do
     mkdir $TARGETDIR$i
   	echo $TARGETDIR$i
