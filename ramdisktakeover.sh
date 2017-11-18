@@ -64,6 +64,7 @@ echo "Mount Kernel Virtual File Systems"
   copyLinksForCommand cut $TARGETDIR
   copyLinksForCommand hostname $TARGETDIR
   copyLinksForCommand reboot $TARGETDIR
+  copyLinksForCommand sudo $TARGETDIR
   
   
 
