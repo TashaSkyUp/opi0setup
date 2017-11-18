@@ -14,7 +14,7 @@ function findToArray {
 	#cd /
 	#echo "$1"
 	#echo "$2"
-	echo "$(find / -name "$1")" > tmp.tmp && readarray $2 < tmp.tmp
+	echo "$(find / -wholename "$1")" > tmp.tmp && readarray $2 < tmp.tmp
 	rm tmp.tmp
 	}
 #info about what needs what to run
@@ -54,15 +54,15 @@ echo "Mount Kernel Virtual File Systems"
     mkdir $TARGETDIR$i
   	echo $TARGETDIR$i
   done
-  copyLinksForCommand /bin/ln $TARGETDIR
-  copyLinksForCommand /root/opi0setup/wolfarmv7l/minerd $TARGETDIR
-  copyLinksForCommand /bin/bash $TARGETDIR
-  copyLinksForCommand /bin/ls $TARGETDIR
-  copyLinksForCommand /bin/dirname $TARGETDIR
-  copyLinksForCommand /bin/grep $TARGETDIR
-  copyLinksForCommand /bin/cut $TARGETDIR
-  copyLinksForCommand /bin/hostname $TARGETDIR
-  copyLinksForCommand /bin/reboot $TARGETDIR
+  copyLinksForCommand ln $TARGETDIR
+  copyLinksForCommand minerd $TARGETDIR
+  copyLinksForCommand bash $TARGETDIR
+  copyLinksForCommand ls $TARGETDIR
+  copyLinksForCommand dirname $TARGETDIR
+  copyLinksForCommand grep $TARGETDIR
+  copyLinksForCommand cut $TARGETDIR
+  copyLinksForCommand hostname $TARGETDIR
+  copyLinksForCommand reboot $TARGETDIR
   
   
 
