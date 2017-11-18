@@ -22,7 +22,7 @@ function copyLinksForCommand {
 
 TARGETDIR="/takeover"
 umount -f -v ./$TARGETDIR/ramdisk
-#sudo rm $TARGETDIR -r -f
+sudo rm $TARGETDIR -r -f > null
 mkdir $TARGETDIR
 mkdir $TARGETDIR/ramdisk
 mount -t ramfs -o size=256m ext4 $TARGETDIR/ramdisk
@@ -33,13 +33,14 @@ mount | grep ram
 echo "Mount Kernel Virtual File Systems"
   TARGETDIR="/takeover/ramdisk"
   
-  copyLinksForCommand /bin/ln $TARGETDIR/lib/
-  exit 0
+  
 
   for i in "${TOLINK[@]}";do
     mkdir $TARGETDIR$i
   	echo $TARGETDIR$i
   done
+  copyLinksForCommand /bin/ln $TARGETDIR/lib/
+  exit 0
   
   mount -t proc proc $TARGETDIR/proc
   mount -t sysfs sysfs $TARGETDIR/sys
