@@ -7,7 +7,7 @@ TOLINK=(
 )
 
 TARGETDIR="takeover"
-rm $TARGETDIR -r
+rm $TARGETDIR -r -f
 mkdir $TARGETDIR
 mkdir $TARGETDIR/ramdisk
 mount -t ramfs -o size=256m ext4 ./$TARGETDIR/ramdisk
