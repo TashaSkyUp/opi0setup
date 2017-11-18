@@ -15,7 +15,7 @@ lnlinks="$(ldd $(command -v /bin/ln) |grep "/.*so" -o)"
 echo "$lnlinks" > tmp && readarray test < tmp 
 
 echo "lnlinks $test"
- for f in "${lnlinks[@]}";do
+ for f in "${test[@]}";do
   echo "link: $f"
  done
 
