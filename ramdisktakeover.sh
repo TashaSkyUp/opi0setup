@@ -13,12 +13,13 @@ TOLINK=(
 #info about what needs what to run
 
 function copyLinksForCommand {
+  echo "copying linked files for $1"
   lnlinks="$(ldd $(command -v $1) |grep "/.*so.* " -o)"
   
   echo "$lnlinks" > tmp && readarray test < tmp 
    for f in "${test[@]}";do
     echo "link: $f"
-    cp $f $2
+    cp $f $2 > null
    done
 }
 
@@ -62,7 +63,7 @@ echo "Mount Kernel Virtual File Systems"
   
   echo "--= Copying root, bin, other files needed to survive =--"
   cp /root $TARGETDIR/root -r
-  cp /bin $TARGETDIR/bin -r
+  cp /bin $TARGETDIR/ -r
   cp /lib/ld-linux-armhf.so.3 $TARGETDIR/lib
   cp /lib/arm-linux-gnueabihf/libc.so.6 $TARGETDIR/lib
   
