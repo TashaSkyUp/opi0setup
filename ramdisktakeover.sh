@@ -1,3 +1,16 @@
+TOLINK=(
+/proc
+/sys
+/dev
+/dev/shm
+/dev/pts
+)
+
+for i in "${TOLINK[@]}"
+do
+	echo $i
+done
+
 TARGETDIR="takeover"
 rm $TARGETDIR -r
 mkdir $TARGETDIR
@@ -5,7 +18,7 @@ mkdir $TARGETDIR/ramdisk
 mount -t ramfs -o size=256m ext4 ./$TARGETDIR/ramdisk
 mount | grep ram
 
-Echo "Mount Kernel Virtual File Systems"
+echo "Mount Kernel Virtual File Systems"
   TARGETDIR="takeover/ramdisk"
 
   mount -t proc proc $TARGETDIR/proc
