@@ -7,6 +7,7 @@ TOLINK=(
 /dev/pts
 /etc
 /lib
+/bin
 )
 
 #info about what needs what to run
