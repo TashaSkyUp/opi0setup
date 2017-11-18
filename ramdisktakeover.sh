@@ -12,7 +12,7 @@ TOLINK=(
 #info about what needs what to run
 
 function copyLinksForCommand {
-  lnlinks="$(ldd $(command -v $1) |grep "/.*so" -o)"
+  lnlinks="$(ldd $(command -v $1) |grep "/.*so.." -o)"
   echo "$lnlinks" > tmp && readarray test < tmp 
    for f in "${test[@]}";do
     echo "link: $f"
