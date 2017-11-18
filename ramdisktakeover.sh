@@ -11,13 +11,15 @@ TOLINK=(
 
 #info about what needs what to run
 
-lnlinks="$(ldd $(command -v /bin/ln) |grep "/.*so" -o)"
-echo "$lnlinks" > tmp && readarray test < tmp 
-
-echo "lnlinks $test"
- for f in "${test[@]}";do
-  echo "link: $f"
- done
+function copyLinksForCommand {
+  lnlinks="$(ldd $(command -v $1) |grep "/.*so" -o)"
+  echo "$lnlinks" > tmp && readarray test < tmp 
+  echo "lnlinks $test"
+   for f in "${test[@]}";do
+    echo "link: $f"
+   done
+}
+copyLinksForCommand /bin/ln
 
 exit 0
 
