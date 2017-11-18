@@ -14,14 +14,11 @@ TOLINK=(
 function copyLinksForCommand {
   lnlinks="$(ldd $(command -v $1) |grep "/.*so" -o)"
   echo "$lnlinks" > tmp && readarray test < tmp 
-  echo "lnlinks $test"
    for f in "${test[@]}";do
     echo "link: $f"
+    cp $f $2\
    done
 }
-copyLinksForCommand /bin/ln
-
-exit 0
 
 TARGETDIR="/takeover"
 umount -f -v ./$TARGETDIR/ramdisk
@@ -31,8 +28,14 @@ mkdir $TARGETDIR/ramdisk
 mount -t ramfs -o size=256m ext4 $TARGETDIR/ramdisk
 mount | grep ram
 
+
+
 echo "Mount Kernel Virtual File Systems"
   TARGETDIR="/takeover/ramdisk"
+  
+  copyLinksForCommand /bin/ln $TARGETDIR/lib/
+  exit 0
+
   for i in "${TOLINK[@]}";do
     mkdir $TARGETDIR$i
   	echo $TARGETDIR$i
