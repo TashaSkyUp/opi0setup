@@ -1,4 +1,5 @@
 #!/bin/bash
+maddr="104.131.5.234"
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
   DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
@@ -33,21 +34,21 @@ esac
 
 case $1 in
 "--benchmark")
-./minerd -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123 --benchmark
+./minerd -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p !Biago123 --benchmark
 ;;
 
 "--log")
 rm -f log
-script -c "./minerd -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123" ../log
+script -c "./minerd -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p !Biago123" ../log
 ;;
 "-v")
-	./minerd -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123 
+	./minerd -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p !Biago123 
 	;;
 "--service")
-	./minerd -q --syslog --background -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123
+	./minerd -q --syslog --background -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p !Biago123
 	;;
 
 *)
-./minerd $1 -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123
+./minerd $1 -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p !Biago123
 ;;
 esac
