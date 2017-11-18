@@ -11,7 +11,7 @@ TOLINK=(
 
 #info about what needs what to run
 OLD_IFS="$IFS"
-IFS=$'\n' 
+IFS=$' ' 
 lnlinks="$(ldd $(command -v /bin/ln) |grep "/.*so" -o)"
 echo "lnlinks $lnlinks"
  for f in "${lnlinks[@]}";do
