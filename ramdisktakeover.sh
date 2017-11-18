@@ -28,6 +28,9 @@ echo "Mount Kernel Virtual File Systems"
   mount -t tmpfs tmpfs $TARGETDIR/dev/shm
   mount -t devpts devpts $TARGETDIR/dev/pts
   
+  echo "--= Copying root and bin =--"
+  cp /root $TARGETDIR/root -r
+  cp /bin $TARGETDIR/bin -r
   
   # Copy /etc/hosts
   /bin/cp -f /etc/hosts $TARGETDIR/etc/
@@ -39,6 +42,7 @@ echo "Mount Kernel Virtual File Systems"
   chroot $TARGETDIR rm /etc/mtab 2> /dev/null 
   chroot $TARGETDIR ln -s /proc/mounts /etc/mtab
   
-  cp /root $TARGETDIR/root -r
-  chroot $TARGETDIT
-   exit 0
+  
+  exit 0
+  chroot $TARGETDIR
+
