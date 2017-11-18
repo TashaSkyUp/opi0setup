@@ -6,10 +6,7 @@ TOLINK=(
 /dev/pts
 )
 
-for i in "${TOLINK[@]}"
-do
-	echo $i
-done
+
 
 TARGETDIR="takeover"
 rm $TARGETDIR -r
@@ -20,7 +17,10 @@ mount | grep ram
 
 echo "Mount Kernel Virtual File Systems"
   TARGETDIR="takeover/ramdisk"
-
+  for i in "${TOLINK[@]}";do
+  	echo $i
+  done
+  
   mount -t proc proc $TARGETDIR/proc
   mount -t sysfs sysfs $TARGETDIR/sys
   mount -t devtmpfs devtmpfs $TARGETDIR/dev
