@@ -14,7 +14,7 @@ function findToArray {
 	#cd /
 	#echo "$1"
 	#echo "$2"
-	echo "$(find / -wholename "$1")" > tmp.tmp && readarray $2 < tmp.tmp
+	echo "$(find / -name "$1")" > tmp.tmp && readarray $2 < tmp.tmp
 	rm tmp.tmp
 	}
 #info about what needs what to run
@@ -22,8 +22,8 @@ function findToArray {
 function copyLinksForCommand {
   echo "finding $1"
   findToArray $1 found
-  echo "found $1 at $found. Copying to $2"
-  cp found $2/bin
+  echo "found $1 at $({found[0]}). Copying to $2"
+  cp $({found[0]}) $2/bin
   
   echo "copying linked files for $1"
   lnlinks="$(ldd $(command -v $found) |grep "/.*so.* " -o)"
