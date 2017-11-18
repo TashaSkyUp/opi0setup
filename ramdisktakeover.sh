@@ -11,7 +11,7 @@ umount -f -v ./$TARGETDIR/ramdisk
 sudo rm $TARGETDIR -r -f
 mkdir $TARGETDIR
 mkdir $TARGETDIR/ramdisk
-mount -t ramfs -o size=256m ext4 ./$TARGETDIR/ramdisk
+mount -t ramfs -o size=256m ext4 $TARGETDIR/ramdisk
 mount | grep ram
 
 echo "Mount Kernel Virtual File Systems"
