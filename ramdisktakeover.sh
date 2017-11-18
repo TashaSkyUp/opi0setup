@@ -11,8 +11,8 @@ TOLINK=(
 #info about what needs what to run
 lnlinks="$(ldd $(command -v /bin/ln))"
 echo "lnlinks $lnlinks"
- for i in "${lnlinks[@]}";do
-  echo "link: $i"
+ for f in "${lnlinks[@]}";do
+  echo "link: $f"
  done
  exit 0
 TARGETDIR="/takeover"
