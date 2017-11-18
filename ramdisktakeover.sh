@@ -1,10 +1,10 @@
-$TARGETDIR="takeover"
+TARGETDIR="takeover"
 rm $TARGETDIR -r
 mkdir $TARGETDIR
 mkdir $TARGETDIR/ramdisk
 mount -t ramfs -o size=256m ext4 ./$TARGETDIR/ramdisk
 mount | grep ram
-$TARGETDIR="takeover/ramdisk"
+TARGETDIR="takeover/ramdisk"
 exit 0
 # Mount Kernel Virtual File Systems
 
