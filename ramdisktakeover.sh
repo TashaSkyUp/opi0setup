@@ -33,7 +33,8 @@ echo "Mount Kernel Virtual File Systems"
 
   # Copy /etc/resolv.conf 
   /bin/cp -f /etc/resolv.conf $TARGETDIR/etc/resolv.conf
-  exit 0
+
   # Link /etc/mtab
   chroot $TARGETDIR rm /etc/mtab 2> /dev/null 
   chroot $TARGETDIR ln -s /proc/mounts /etc/mtab
+    exit 0
