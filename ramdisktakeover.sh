@@ -4,6 +4,7 @@ TOLINK=(
 /dev
 /dev/shm
 /dev/pts
+/etc
 )
 
 TARGETDIR="/takeover"
