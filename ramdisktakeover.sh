@@ -16,7 +16,7 @@ function copyLinksForCommand {
   echo "$lnlinks" > tmp && readarray test < tmp 
    for f in "${test[@]}";do
     echo "link: $f"
-    cp $f $2\
+    cp $f $2
    done
 }
 
