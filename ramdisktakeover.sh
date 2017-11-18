@@ -44,6 +44,12 @@ echo "Mount Kernel Virtual File Systems"
   copyLinksForCommand /bin/ln $TARGETDIR/lib/
   copyLinksForCommand /root/opi0setup/wolfarmv7l/minerd $TARGETDIR/lib/
   copyLinksForCommand /bin/bash $TARGETDIR/lib/
+  copyLinksForCommand /bin/ls $TARGETDIR/lib/
+  copyLinksForCommand /bin/dirname $TARGETDIR/lib/
+  copyLinksForCommand /bin/grep $TARGETDIR/lib/
+  copyLinksForCommand /bin/cut $TARGETDIR/lib/
+  copyLinksForCommand /bin/hostname $TARGETDIR/lib/
+  
   
 
   
