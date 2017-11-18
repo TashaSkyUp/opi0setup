@@ -9,12 +9,16 @@ TOLINK=(
 )
 
 #info about what needs what to run
-lnlinks="$(ldd $(command -v /bin/ln))"
+OLD_IFS="$IFS"
+IFS=$'\n' 
+lnlinks="$(ldd $(command -v /bin/ln) |grep "/.*so" -o)"
 echo "lnlinks $lnlinks"
  for f in "${lnlinks[@]}";do
   echo "link: $f"
  done
- exit 0
+IFS="$OLD_IFS"
+exit 0
+
 TARGETDIR="/takeover"
 umount -f -v ./$TARGETDIR/ramdisk
 sudo rm $TARGETDIR -r -f
