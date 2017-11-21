@@ -19,6 +19,7 @@ case $1 in
   echo "using workername $ip"
   ;;
 esac
+
 case $ip in
   "")
     echo "no ip detected use --workername"
@@ -46,8 +47,10 @@ script -c "./minerd -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaS
 "--service")
 	./minerd -q --syslog --background -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123
 	;;
-
+"--workername")
+	./minerd -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123
+	;;
 *)
-./minerd $1 -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123
-;;
+	./minerd $1 -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123
+	;;
 esac
