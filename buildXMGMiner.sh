@@ -49,12 +49,17 @@ case $1 in
     #needs work see readme in  wolf v2 repo
     cd $md
     ./autogen.sh
-    CFLAG="-O2 mfpu=neon-vfpv4" ./configure
+    CFLAG="-O2 -mcpu=cortex-a53+crypto -mfloat-abi=hard -mfpu=neon" ./configure
     for f in $mfiles; do
+      echo "$f"
       cp  $f $f.old
-      sed -i 's/-march=native/-mcpu=cortex-a53/g' $f > $f.old   
+      sed -i 's/-march=native/-mcpu=cortex-a53+crypto -mfloat-abi=hard -mfpu=neon/g' $f > $f.old   
       #sed -i 's/-flto//g' $f > $f.old 
     done    
+    make -j4
+cd ..
+rm wolfaarch64 -r
+mv $md wolfaarch64
     ;;
   "--build")
     case $arch in
