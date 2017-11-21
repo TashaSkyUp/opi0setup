@@ -3,6 +3,7 @@ arch="$(uname -m)"
 echo "-=Arch=($arch)=-"
 md="wolf-m7m-cpuminer-V2"
 
+if [ -d $md ];then
 #clean make
   cd $md
   make clean
@@ -15,7 +16,7 @@ md="wolf-m7m-cpuminer-V2"
       do echo "Makefile $f";
   done
   cd ..
-
+fi
 function defaultConfig {
   if [ -e ./$md/Makefile ]
   then
