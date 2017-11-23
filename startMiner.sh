@@ -1,7 +1,7 @@
 #purpose; to start the minerd script with the correct workername and using the correct arch
 
 #!/bin/bash
-
+pswd="vissago"
 #address to mining pool
 	maddr="104.131.5.234"
 
@@ -50,18 +50,18 @@ case $1 in
 
 "--log")
 rm -f log
-script -c "./minerd -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p !Biago123" ../log
+script -c "./minerd -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p $pswd" ../log
 ;;
 "-v")
-	./minerd -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p !Biago123 
+	./minerd -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p $pswd
 	;;
 "--service")
-	./minerd -q --syslog --background -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p !Biago123
+	./minerd -q --syslog --background -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p $pswd
 	;;
 "--workername")
-	./minerd -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p !Biago123
+	./minerd -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p $pswd
 	;;
 *)
-	./minerd $1 -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p !Biago123
+	./minerd $1 -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p $pswd
 ;;
 esac
