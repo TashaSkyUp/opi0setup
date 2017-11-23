@@ -36,8 +36,8 @@
 	    ;;
 	  *)
 	    echo "using IP $ip"
-	    machine="(echo $ip| cut -d' ' -f 2)"
-	    machine="(echo $machine| cut -d'.' -f 4)"
+	    machine="$(echo $ip| cut -d' ' -f 2)"
+	    machine="$(echo $machine| cut -d'.' -f 4)"
 	    machine="$arch$machine"
 	    echo "test $machine $1"
 	    ;;
