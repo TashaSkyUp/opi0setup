@@ -54,6 +54,6 @@
 		;;
 	*)
 		startMiner $1 $2
-		armbianmonitor -m
+		#armbianmonitor -m
 		;;
 	esac
