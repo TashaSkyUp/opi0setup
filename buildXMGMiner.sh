@@ -49,11 +49,11 @@ case $1 in
     #needs work see readme in  wolf v2 repo
     cd $md
     ./autogen.sh
-    CFLAG="-O2 -mcpu=cortex-a53+crypto -mfloat-abi=hard -mfpu=neon" ./configure
+    CFLAG="-O2 -mcpu=cortex-a53+crypto" ./configure
     for f in $mfiles; do
       echo "$f"
       cp  $f $f.old
-      sed -i 's/-march=native/-mcpu=cortex-a53+crypto -mfloat-abi=hard -mfpu=neon/g' $f > $f.old   
+      sed -i 's/-march=native/-mcpu=cortex-a53+crypto/g' $f > $f.old   
       #sed -i 's/-flto//g' $f > $f.old 
     done    
     make -j4
