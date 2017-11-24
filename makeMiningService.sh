@@ -1,6 +1,6 @@
-execFile="/root/opi0setup/start.sh"
-execOpts=" --service > /mining.log"
-serviceName="mining.service"
+execFile="/root/opi0setup/clusterMonitor.sh"
+execOpts=" --service > /clusterMonitor.log"
+serviceName="clusterMonitor.service"
 
 serviceFile="[Unit]
 Description=Default
