@@ -20,7 +20,7 @@ while [ . ]; do
     "")
       echo 0 >/sys/class/leds/red_led/brightness
       #echo "zero length"
-      #./start.sh --workername $clusterNumber > /mining.log &
+      ./start.sh --workername $clusterNumber > /mining.log &
       ;;
     
     #is running
