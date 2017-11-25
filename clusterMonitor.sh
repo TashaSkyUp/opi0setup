@@ -7,7 +7,7 @@
   echo "$clusterNumber" > /clusterNumber
   sleep 10
   cd /root/opi0setup/
-  git pull
+# would be nice to have auto service updating here
   ./start.sh --workername $clusterNumber > /mining.log &
 
 while [ . ]; do
