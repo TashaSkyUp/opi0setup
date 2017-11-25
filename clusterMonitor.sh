@@ -14,7 +14,8 @@
 
 case $mac in
   "dc:44:6d:69:23:58")
-    echo "cluster controller" 
+    echo "-= Cluster Controller =-" 
+    ./node-red.sh
   ;;
   *)
     echo "cluster node"
