@@ -32,7 +32,7 @@ function updateTmpFile {
 	sed -i "s/$last/$1/g" $opiTmpFile
 }
 function fexToBin {
-	echo "$globalfex->bin"
+	echo "$(global)fex->bin"
 	exit 0
 	fex2bin $opiTmpFile $opiTestFile 
 	rm $opiTmpFile
