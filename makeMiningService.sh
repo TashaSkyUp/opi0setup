@@ -6,7 +6,7 @@ serviceFile="[Unit]
 Description=Default
 
 [Service]
-ExecStart=$execFile$execOpts
+ExecStart=$execFile$execOpts &
 
 [Install]
 WantedBy=multi-user.target"
