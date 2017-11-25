@@ -23,6 +23,9 @@ opiUseFile=$opiTestFile
 	else 
 		echo "bin2fex installed"
 	fi
+function setH3Consumption  {
+	h3consumption $1 $2 
+}
 
 function updateTmpFile {
 	line=$(cat $opiTmpFile | grep "cooler0 = ........" -o)
@@ -33,7 +36,7 @@ function updateTmpFile {
 }
 function fexToBin {
 	echo "$global fex->bin"
-	exit 0
+	//exit 0
 	fex2bin $opiTmpFile $opiTestFile 
 	rm $opiTmpFile
 	ln -sf $opiTestFile $opiScriptBinFile
@@ -76,6 +79,8 @@ case $1 in
 		fexToBin $global
 		updateMinMaxFile $1 $2
 		updateTmpFile $2
+		setH3Consumption -m $2
+
 
 	;;
 esac
