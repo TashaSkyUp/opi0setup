@@ -14,7 +14,7 @@
 
 
 case $mac in
-  "dc:44:6d:69:23:58")
+  'dc:44:6d:69:23:58')
     echo "cluster controller" 
   ;;
     echo "cluster node"
