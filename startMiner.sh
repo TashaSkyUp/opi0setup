@@ -49,9 +49,9 @@ case $1 in
 ;;
 
 "--log")
-rm -f log
-script -c "./minerd -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p $pswd" ../log
-;;
+	rm -f log
+	script -c "./minerd -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p $pswd" ../log
+	;;
 "-v")
 	./minerd -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p $pswd
 	;;
@@ -59,7 +59,7 @@ script -c "./minerd -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machi
 	./minerd -q --syslog --background -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p $pswd
 	;;
 "--workername")
-	./minerd -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p $pswd
+	script -c "./minerd -a m7mhash -o stratum+tcp://mining.m-hash.com:3334 -u TashaSkyUp.$machine -p $pswd" /mining.log
 	;;
 *)
 	./minerd $1 -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p $pswd
