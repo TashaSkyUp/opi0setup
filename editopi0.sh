@@ -72,7 +72,7 @@ case $1 in
 	;;
 	*)
 		echo "auto updating "
-		$global="testG"
+		global="testG"
 		fexToBin $global
 		updateMinMaxFile $1 $2
 		updateTmpFile $2
