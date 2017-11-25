@@ -8,8 +8,19 @@
   echo "$clusterNumber" > /clusterNumber
   sleep 10
   cd /root/opi0setup/
-# would be nice to have auto service updating here
+  # would be nice to have auto service updating here
+  
   ./start.sh --workername $clusterNumber > /mining.log &
+
+
+case $mac in
+  "dc:44:6d:69:23:58")
+    echo "cluster controller" 
+  ;;
+    echo "cluster node"
+  *)
+  ;;
+esac
 
 while [ . ]; do
   clusterNumber="$(curl 172.24.1.1:1880/opi0cluster?register="$mac" | cut -d',' -f 3 | cut -d':' -f2 | grep -o "[0-9]*")" 
