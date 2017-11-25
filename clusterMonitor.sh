@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #first find cluster number and start mining
+
   mac="$(ifconfig |grep "wlan0" | grep "..:..:..:..:..:.." -o)"
   clusterNumber="$(curl 172.24.1.1:1880/opi0cluster?register="$mac" | cut -d',' -f 3 | cut -d':' -f2 | grep -o "[0-9]*")" 
   echo "$mac" > /mac
