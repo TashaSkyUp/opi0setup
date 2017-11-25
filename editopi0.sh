@@ -36,7 +36,7 @@ function updateTmpFile {
 }
 function fexToBin {
 	echo "$global fex->bin"
-	//exit 0
+	#exit 0
 	fex2bin $opiTmpFile $opiTestFile 
 	rm $opiTmpFile
 	ln -sf $opiTestFile $opiScriptBinFile
