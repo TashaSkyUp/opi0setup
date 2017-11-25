@@ -29,7 +29,7 @@ function setH3Consumption  {
 
 function updateTmpFile {
 	line=$(cat $opiTmpFile | grep "cooler0 = ........" -o)
-	echo $line
+	echo "$line"
 	last=$(echo $line | cut -d'"' -f 2)
 	echo "($last)"
 	sed -i "s/$last/$1/g" $opiTmpFile
@@ -38,7 +38,7 @@ function fexToBin {
 	echo "$global fex->bin"
 	#exit 0
 	fex2bin $opiTmpFile $opiTestFile 
-	rm $opiTmpFile
+	#rm $opiTmpFile
 	ln -sf $opiTestFile $opiScriptBinFile
 }
 
