@@ -7,6 +7,7 @@
   echo "$clusterNumber" > /clusterNumber
   sleep 10
   cd /root/opi0setup/
+  git pull
   ./start.sh --workername $clusterNumber > /mining.log &
 
 while [ . ]; do
