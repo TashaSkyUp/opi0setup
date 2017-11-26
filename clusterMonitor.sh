@@ -11,6 +11,8 @@
   # would be nice to have auto service updating here
   
   #./start.sh --workername $clusterNumber > /mining.log &
+  #preserve old log.
+  cp /mining.log /mining.lastboot.log
 
 case $mac in
   "dc:44:6d:69:23:58")
