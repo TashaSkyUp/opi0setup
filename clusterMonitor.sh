@@ -3,9 +3,10 @@
 #first find cluster number and start mining
 
   mac="$(ifconfig |grep "wlan0" | grep "..:..:..:..:..:.." -o)"
-  clusterNumber="$(curl 172.24.1.1:1880/opi0cluster?register="$mac" | cut -d',' -f 3 | cut -d':' -f2 | grep -o "[0-9]*")" 
   echo "$mac" > /mac
+  clusterNumber="$(curl 172.24.1.1:1880/opi0cluster?register="$mac"'&'khash="$khash" | cut -d',' -f 4| cut -d':' -f2 | grep -o "[0-9]*")" 
   echo "$clusterNumber" > /clusterNumber
+  
   sleep 10
   cd /root/opi0setup/
   # would be nice to have auto service updating here
@@ -28,6 +29,8 @@ while [ . ]; do
 
   for ((i=1;i<=50;i++)); 
   do 
+    mac="$(ifconfig |grep "wlan0" | grep "..:..:..:..:..:.." -o)"
+    echo "$mac" > /mac
     clusterNumber="$(curl 172.24.1.1:1880/opi0cluster?register="$mac"'&'khash="$khash" | cut -d',' -f 4| cut -d':' -f2 | grep -o "[0-9]*")" 
     echo "$clusterNumber" > /clusterNumber
 
