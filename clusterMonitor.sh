@@ -55,6 +55,12 @@ while [ . ]; do
 
     sleep 12
   done
-  echo 0 >/sys/class/leds/red_led/brightness
-  reboot
+  
+  case $mac in
+  "dc:44:6d:69:23:58")
+    echo 0 >/sys/class/leds/red_led/brightness
+    reboot
+  ;;
+  esac
+  
 done
