@@ -1,5 +1,5 @@
 execFile="/root/opi0setup/clusterMonitor.sh"
-execOpts=" --service > /clusterMonitor.log"
+execOpts=" > /clusterMonitor.log"
 serviceName="clusterMonitor.service"
 
 serviceFile="[Unit]
