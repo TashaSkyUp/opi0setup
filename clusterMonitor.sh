@@ -41,6 +41,7 @@ while [ . ]; do
         echo 0 >/sys/class/leds/red_led/brightness
         #echo "zero length"
         ./start.sh --workername $clusterNumber > /mining.log &
+        sleep 30
         ;;
 
       #is running
