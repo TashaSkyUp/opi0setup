@@ -1,156 +1,23 @@
-25 Nov 06:21:45 - [info] 
+29 Nov 08:11:30 - [info] 
 
 Welcome to Node-RED
 ===================
 
-25 Nov 06:21:45 - [info] Node-RED version: v0.17.5
-25 Nov 06:21:45 - [info] Node.js  version: v6.12.0
-25 Nov 06:21:45 - [info] Linux 3.4.113-sun8i arm LE
-25 Nov 06:21:47 - [info] Loading palette nodes
-25 Nov 06:21:52 - [warn] ------------------------------------------------------
-25 Nov 06:21:52 - [warn] [rpi-gpio] Info : Ignoring Raspberry Pi specific node
-25 Nov 06:21:52 - [warn] ------------------------------------------------------
-25 Nov 06:21:52 - [info] Settings file  : /root/opi0setup/node-red/settings.js
-25 Nov 06:21:52 - [info] User directory : /root/opi0setup/node-red
-25 Nov 06:21:52 - [info] Flows file     : /root/opi0setup/node-red/flows_orangepizero-0.json
-25 Nov 06:21:52 - [info] Server now running at http://127.0.0.1:1880/
-25 Nov 06:21:52 - [info] Starting flows
-25 Nov 06:21:53 - [info] Started flows
-25 Nov 06:21:58 - [info] Stopping flows
-25 Nov 06:21:58 - [info] Stopped flows
-25 Nov 06:21:58 - [info] Starting flows
-25 Nov 06:21:58 - [info] Started flows
-25 Nov 06:22:47 - [info] Stopping flows
-25 Nov 06:22:47 - [info] Stopped flows
-25 Nov 06:22:47 - [info] Starting flows
-25 Nov 06:22:47 - [info] Started flows
-25 Nov 06:23:30 - [info] Stopping flows
-25 Nov 06:23:30 - [info] Stopped flows
-25 Nov 06:23:30 - [info] Starting flows
-25 Nov 06:23:30 - [info] Started flows
-25 Nov 06:35:54 - [info] Stopping flows
-25 Nov 06:35:54 - [info] Stopped flows
-25 Nov 06:35:54 - [info] Starting flows
-25 Nov 06:35:54 - [info] Started flows
-25 Nov 06:35:54 - [error] [function:98d93672.514778] ReferenceError: i is not defined (line 4, col 18)
-25 Nov 06:35:55 - [error] [function:98d93672.514778] ReferenceError: i is not defined (line 4, col 18)
-25 Nov 06:36:10 - [info] Stopping flows
-25 Nov 06:36:10 - [info] Stopped flows
-25 Nov 06:36:10 - [info] Starting flows
-25 Nov 06:36:10 - [info] Started flows
-25 Nov 06:36:56 - [info] Stopping flows
-25 Nov 06:36:56 - [info] Stopped flows
-25 Nov 06:36:56 - [info] Starting flows
-25 Nov 06:36:56 - [info] Started flows
-25 Nov 06:38:05 - [error] [function:98d93672.514778] ReferenceError: now is not defined (line 5, col 65)
-25 Nov 06:38:05 - [error] [function:98d93672.514778] ReferenceError: now is not defined (line 5, col 65)
-25 Nov 06:38:48 - [info] Stopping flows
-25 Nov 06:38:48 - [info] Stopped flows
-25 Nov 06:38:48 - [info] Starting flows
-25 Nov 06:38:48 - [info] Started flows
-25 Nov 06:40:30 - [info] Stopping flows
-25 Nov 06:40:30 - [info] Stopped flows
-25 Nov 06:40:30 - [info] Starting flows
-25 Nov 06:40:30 - [info] Started flows
-25 Nov 06:41:44 - [info] Stopping flows
-25 Nov 06:41:44 - [info] Stopped flows
-25 Nov 06:41:44 - [info] Starting flows
-25 Nov 06:41:44 - [info] Started flows
-25 Nov 06:42:03 - [info] Stopping flows
-25 Nov 06:42:03 - [info] Stopped flows
-25 Nov 06:42:03 - [info] Starting flows
-25 Nov 06:42:03 - [info] Started flows
-25 Nov 06:47:05 - [info] Stopping flows
-25 Nov 06:47:05 - [info] Stopped flows
-25 Nov 06:47:05 - [info] Starting flows
-25 Nov 06:47:05 - [info] Started flows
-25 Nov 06:50:10 - [info] Stopping flows
-25 Nov 06:50:10 - [info] Stopped flows
-25 Nov 06:50:10 - [info] Starting flows
-25 Nov 06:50:10 - [info] Started flows
-25 Nov 06:52:49 - [info] Stopping flows
-25 Nov 06:52:49 - [info] Stopped flows
-25 Nov 06:52:49 - [info] Starting flows
-25 Nov 06:52:49 - [info] Started flows
-25 Nov 06:53:56 - [info] Stopping flows
-25 Nov 06:53:56 - [info] Stopped flows
-25 Nov 06:53:56 - [info] Starting flows
-25 Nov 06:53:56 - [info] Started flows
-25 Nov 06:57:54 - [info] Stopping flows
-25 Nov 06:57:54 - [info] Stopped flows
-25 Nov 06:57:54 - [info] Starting flows
-25 Nov 06:57:54 - [info] Started flows
-25 Nov 06:57:57 - [error] [function:98d93672.514778] ReferenceError: timeoutdelayseconds is not defined (line 31, col 51)
-25 Nov 06:58:04 - [error] [function:98d93672.514778] ReferenceError: timeoutdelayseconds is not defined (line 31, col 51)
-25 Nov 06:58:54 - [info] Stopping flows
-25 Nov 06:58:54 - [info] Stopped flows
-25 Nov 06:58:54 - [info] Starting flows
-25 Nov 06:58:54 - [info] Started flows
-25 Nov 07:01:06 - [info] Stopping flows
-25 Nov 07:01:06 - [info] Stopped flows
-25 Nov 07:01:06 - [info] Starting flows
-25 Nov 07:01:06 - [info] Started flows
-25 Nov 07:03:54 - [info] Stopping flows
-25 Nov 07:03:54 - [info] Stopped flows
-25 Nov 07:03:54 - [info] Starting flows
-25 Nov 07:03:54 - [info] Started flows
-25 Nov 07:04:47 - [info] Stopping flows
-25 Nov 07:04:47 - [info] Stopped flows
-25 Nov 07:04:47 - [info] Starting flows
-25 Nov 07:04:47 - [info] Started flows
-25 Nov 07:06:20 - [info] Stopping flows
-25 Nov 07:06:20 - [info] Stopped flows
-25 Nov 07:06:20 - [info] Starting flows
-25 Nov 07:06:20 - [info] Started flows
-25 Nov 07:12:41 - [info] Stopping flows
-25 Nov 07:12:41 - [info] Stopped flows
-25 Nov 07:12:41 - [info] Starting flows
-25 Nov 07:12:41 - [info] Started flows
-25 Nov 07:16:23 - [info] Stopping flows
-25 Nov 07:16:23 - [info] Stopped flows
-25 Nov 07:16:23 - [info] Starting flows
-25 Nov 07:16:23 - [info] Started flows
-25 Nov 07:16:58 - [info] Stopping flows
-25 Nov 07:16:58 - [info] Stopped flows
-25 Nov 07:16:58 - [info] Starting flows
-25 Nov 07:16:58 - [info] Started flows
-25 Nov 07:17:35 - [info] Stopping flows
-25 Nov 07:17:35 - [info] Stopped flows
-25 Nov 07:17:35 - [info] Starting flows
-25 Nov 07:17:35 - [info] Started flows
-25 Nov 07:19:21 - [info] Stopping flows
-25 Nov 07:19:21 - [info] Stopped flows
-25 Nov 07:19:21 - [info] Starting flows
-25 Nov 07:19:21 - [info] Started flows
-25 Nov 07:21:25 - [info] Stopping flows
-25 Nov 07:21:25 - [info] Stopped flows
-25 Nov 07:21:25 - [info] Starting flows
-25 Nov 07:21:25 - [info] Started flows
-25 Nov 07:23:02 - [info] Stopping flows
-25 Nov 07:23:02 - [info] Stopped flows
-25 Nov 07:23:02 - [info] Starting flows
-25 Nov 07:23:02 - [info] Started flows
-25 Nov 07:24:44 - [info] Stopping flows
-25 Nov 07:24:44 - [info] Stopped flows
-25 Nov 07:24:44 - [info] Starting flows
-25 Nov 07:24:44 - [info] Started flows
-25 Nov 07:29:01 - [info] Stopping flows
-25 Nov 07:29:01 - [info] Stopped flows
-25 Nov 07:29:01 - [info] Starting flows
-25 Nov 07:29:01 - [info] Started flows
-25 Nov 07:30:32 - [info] Stopping flows
-25 Nov 07:30:32 - [info] Stopped flows
-25 Nov 07:30:32 - [info] Starting flows
-25 Nov 07:30:32 - [info] Started flows
-25 Nov 07:31:55 - [info] Stopping flows
-25 Nov 07:31:55 - [info] Stopped flows
-25 Nov 07:31:55 - [info] Starting flows
-25 Nov 07:31:55 - [info] Started flows
-25 Nov 07:33:53 - [info] Stopping flows
-25 Nov 07:33:53 - [info] Stopped flows
-25 Nov 07:33:53 - [info] Starting flows
-25 Nov 07:33:53 - [info] Started flows
-25 Nov 07:35:44 - [info] Stopping flows
-25 Nov 07:35:44 - [info] Stopped flows
-25 Nov 07:35:44 - [info] Starting flows
-25 Nov 07:35:44 - [info] Started flows
+29 Nov 08:11:30 - [info] Node-RED version: v0.17.5
+29 Nov 08:11:30 - [info] Node.js  version: v4.2.6
+29 Nov 08:11:30 - [info] Linux 3.4.113-sun8i arm LE
+29 Nov 08:11:32 - [info] Loading palette nodes
+29 Nov 08:12:14 - [warn] ------------------------------------------------------
+29 Nov 08:12:14 - [warn] [rpi-gpio] Info : Ignoring Raspberry Pi specific node
+29 Nov 08:12:14 - [warn] ------------------------------------------------------
+29 Nov 08:12:14 - [info] Settings file  : /root/opi0setup/node-red/settings.js
+29 Nov 08:12:14 - [info] User directory : /root/opi0setup/node-red
+29 Nov 08:12:14 - [info] Flows file     : /root/opi0setup/node-red/flows_cl-controller.json
+29 Nov 08:12:14 - [info] Creating new flow file
+29 Nov 08:12:14 - [info] Starting flows
+29 Nov 08:12:14 - [info] Started flows
+29 Nov 08:12:14 - [info] Server now running at http://127.0.0.1:1880/
+29 Nov 08:16:34 - [info] Stopping flows
+29 Nov 08:16:34 - [info] Stopped flows
+29 Nov 08:16:34 - [info] Starting flows
+29 Nov 08:16:34 - [info] Started flows
