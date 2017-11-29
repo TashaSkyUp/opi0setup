@@ -1,12 +1,14 @@
 #!/bin/bash
-
-#first find cluster number and start mining
-
+function getinfo () {
+  hostname="$(hostname)"
   mac="$(ifconfig |grep "wlan0" | grep "..:..:..:..:..:.." -o)"
   echo "$mac" > /mac
   clusterNumber="$(curl 172.24.1.1:1880/opi0cluster?register="$mac"'&'khash="$khash" | cut -d',' -f 4| cut -d':' -f2 | grep -o "[0-9]*")" 
   echo "$clusterNumber" > /clusterNumber
   
+}
+
+  getinfo  
   sleep 10
   cd /root/opi0setup/
   # would be nice to have auto service updating here
@@ -15,8 +17,8 @@
   #preserve old log.
   cp /mining.log /mining.lastboot.log
 
-case $mac in
-  "dc:44:6d:69:23:58")
+case $hostname in
+  "cl-controller")
     echo "-= Cluster Controller =-" 
     ./node-red.sh
   ;;
@@ -28,11 +30,8 @@ esac
 while [ . ]; do
 
   for ((i=1;i<=50;i++)); 
-  do 
-    mac="$(ifconfig |grep "wlan0" | grep "..:..:..:..:..:.." -o)"
-    echo "$mac" > /mac
-    clusterNumber="$(curl 172.24.1.1:1880/opi0cluster?register="$mac"'&'khash="$khash" | cut -d',' -f 4| cut -d':' -f2 | grep -o "[0-9]*")" 
-    echo "$clusterNumber" > /clusterNumber
+  do
+    getinfo 
 
     result="$(ps all | grep "..:[0-9][0-9] ./minerd" -o)"
     case "$result" in
@@ -56,10 +55,10 @@ while [ . ]; do
     sleep 12
   done
   
-  case $mac in
-  "dc:44:6d:69:23:58")
+  case $hostname in
+  "cl-controller")
     echo 0 >/sys/class/leds/red_led/brightness
-    reboot
+    #reboot
   ;;
   esac
   
