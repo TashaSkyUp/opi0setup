@@ -1,2 +1,2 @@
 #!/bin/bash
-arp -i wlan0 | grep "172.24.1.[1-9]\+" -o
+arp -n -i wlan0 | grep "172\.24\.1\.[0-9]\+ " -o
