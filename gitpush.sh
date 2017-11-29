@@ -4,4 +4,4 @@ git config --global user.name "Tasha Upchurch"
 #!/bin/bash
 git stage --all
 git commit -m "$*"
-git push https://TashaSkyUp:Biago123@github.com/TashaSkyUp/opi0setup.git --all -f
+git push https://TashaSkyUp:Biago123@github.com/TashaSkyUp/opi0setup.git --all
