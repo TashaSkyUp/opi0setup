@@ -7,9 +7,9 @@
         myFile = fopen ("/khash","r");
   	if (myFile != NULL){
 	printf("%i",argc);
-        while (!feof (test_file)){
+        while (!feof (myFile)){
 		for(int i=1;i<argc;i++){ 
-	  fgets (buf, sizeof (buf), test_file); 
+	  fgets (buf, sizeof (buf), myFile); 
           printf("%s",argv[i]);
 	  puts (buf); 
 		}
