@@ -21,8 +21,8 @@
     
   else
     {
-      #printf ("Error opening file: %s\n", strerror (errno));
-      exit ();
+      //printf ("Error opening file: %s\n", strerror (errno));
+      exit (0);
     }
-  return 0;
+  return 1;
 }
