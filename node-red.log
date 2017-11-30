@@ -1,34 +1,26 @@
-29 Nov 09:23:07 - [info] 
+29 Nov 13:57:23 - [info] 
 
 Welcome to Node-RED
 ===================
 
-29 Nov 09:23:07 - [info] Node-RED version: v0.17.5
-29 Nov 09:23:07 - [info] Node.js  version: v4.2.6
-29 Nov 09:23:07 - [info] Linux 3.4.113-sun8i arm LE
-29 Nov 09:23:32 - [info] Loading palette nodes
-29 Nov 09:23:41 - [warn] ------------------------------------------------------
-29 Nov 09:23:41 - [warn] [rpi-gpio] Info : Ignoring Raspberry Pi specific node
-29 Nov 09:23:41 - [warn] ------------------------------------------------------
-29 Nov 09:23:41 - [info] Settings file  : /root/opi0setup/node-red/settings.js
-29 Nov 09:23:41 - [info] User directory : /root/opi0setup/node-red
-29 Nov 09:23:41 - [info] Flows file     : /root/opi0setup/node-red/flows_cl-controller.json
-29 Nov 09:23:41 - [info] Starting flows
-29 Nov 09:23:41 - [info] Started flows
-29 Nov 09:23:41 - [info] Server now running at http://127.0.0.1:1880/
-29 Nov 09:25:56 - [info] Stopping flows
-29 Nov 09:25:56 - [info] Stopped flows
-29 Nov 09:25:56 - [info] Starting flows
-29 Nov 09:25:56 - [info] Started flows
-29 Nov 09:28:48 - [info] Stopping flows
-29 Nov 09:28:48 - [info] Stopped flows
-29 Nov 09:28:48 - [info] Starting flows
-29 Nov 09:28:48 - [info] Started flows
-29 Nov 09:33:38 - [info] Stopping flows
-29 Nov 09:33:38 - [info] Stopped flows
-29 Nov 09:33:38 - [info] Starting flows
-29 Nov 09:33:38 - [info] Started flows
-29 Nov 09:34:51 - [info] Stopping flows
-29 Nov 09:34:51 - [info] Stopped flows
-29 Nov 09:34:51 - [info] Starting flows
-29 Nov 09:34:52 - [info] Started flows
+29 Nov 13:57:23 - [info] Node-RED version: v0.17.5
+29 Nov 13:57:23 - [info] Node.js  version: v4.2.6
+29 Nov 13:57:23 - [info] Linux 3.4.113-sun8i arm LE
+29 Nov 13:57:50 - [info] Loading palette nodes
+29 Nov 13:57:58 - [warn] ------------------------------------------------------
+29 Nov 13:57:58 - [warn] [rpi-gpio] Info : Ignoring Raspberry Pi specific node
+29 Nov 13:57:58 - [warn] ------------------------------------------------------
+29 Nov 13:57:58 - [info] Settings file  : /root/opi0setup/node-red/settings.js
+29 Nov 13:57:58 - [info] User directory : /root/opi0setup/node-red
+29 Nov 13:57:58 - [info] Flows file     : /root/opi0setup/node-red/flows_cl-controller.json
+29 Nov 13:57:58 - [info] Starting flows
+29 Nov 13:57:58 - [info] Started flows
+29 Nov 13:57:58 - [info] Server now running at http://127.0.0.1:1880/
+29 Nov 14:58:02 - [info] Stopping flows
+29 Nov 14:58:03 - [info] Stopped flows
+29 Nov 14:58:03 - [info] Starting flows
+29 Nov 14:58:03 - [info] Started flows
+29 Nov 15:10:43 - [info] Stopping flows
+29 Nov 15:10:43 - [info] Stopped flows
+29 Nov 15:10:43 - [info] Starting flows
+29 Nov 15:10:43 - [info] Started flows
