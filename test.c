@@ -13,8 +13,9 @@
 	  
 	}      
 		fgets (buf, sizeof (buf), myFile); 
-    //printf("%s",argv[i]);
-	  puts (buf); 
+          printf("%s",buf);
+	  //puts (buf);
+		
 	}
 	}
     
