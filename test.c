@@ -14,7 +14,7 @@
 	}      
 		fgets (buf, sizeof (buf), myFile); 
           printf("%.*s",buf);
-	  stdout(buf);
+	  //stdout(buf);
 		
 	}
 	}
