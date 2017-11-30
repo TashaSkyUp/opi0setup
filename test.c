@@ -12,7 +12,7 @@
 	
 	for(int i=1;i<argc;i++){ 
 	  fgets (buf, sizeof (buf), myFile); 
-          printf("%s",argv[i]);
+          //printf("%s",argv[i]);
 	  puts (buf); 
 	}
 		
