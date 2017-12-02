@@ -2,12 +2,11 @@
 function getinfo () {
   hostname="$(hostname)"
   mac="$(ifconfig |grep "wlan0" | grep "..:..:..:..:..:.." -o)"
-  echo "$mac" > /mac
+  echo "$mac" > /ramdrv/mac
   clusterNumber="$(curl 172.24.1.1:1880/opi0cluster?register="$mac"'&'khash="$khash" | cut -d',' -f 4| cut -d':' -f2 | grep -o "[0-9]*")" 
-  echo "$clusterNumber" > /clusterNumber
-  
+  echo "$clusterNumber" > /ramdrv/clusterNumber 
 }
-
+  mount -t ramfs -o size=256m ext4 $TARGETDIR/ramdisk
   getinfo  
   sleep 10
   cd /root/opi0setup/
@@ -19,7 +18,8 @@ function getinfo () {
 
 case $hostname in
   "cl-controller")
-    echo "-= Cluster Controller =-" 
+    echo "-= Cluster Controller =-"
+    clusterNumber="0"
     ./node-red.sh
   ;;
   *)
@@ -52,13 +52,13 @@ while [ . ]; do
         ;;
 
     esac
-
     sleep 12
   done
   
   case $hostname in
   "cl-controller")
     echo 0 >/sys/class/leds/red_led/brightness
+    clusterNumber="0"
     #reboot
   ;;
   esac
