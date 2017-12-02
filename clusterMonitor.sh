@@ -52,9 +52,14 @@ while [ . ]; do
         ;;
 
     esac
+    
     sleep 12
   done
   
+  defunct="$(ps -aux | grep "defunct" -o)"
+  if [ -n "$defunct" ]; then
+  reboot
+  fi
   case $hostname in
   "cl-controller")
     echo 0 >/sys/class/leds/red_led/brightness
