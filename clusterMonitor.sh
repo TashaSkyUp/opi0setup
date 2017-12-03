@@ -69,6 +69,8 @@ while [ . ]; do
   
   defunct="$(ps -aux | grep "defunct" -o)"
   if [ -n "$defunct" ]; then
+    curl 172.24.1.1:1880/opi0cluster?register="$mac"'&'state="defunct"
+    echo 0 >/sys/class/leds/red_led/brightness
     reboot
   fi
   
