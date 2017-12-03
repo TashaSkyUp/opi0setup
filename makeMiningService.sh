@@ -23,3 +23,5 @@ sudo systemctl start $serviceName
 sudo systemctl enable $serviceName
 #Stop it:
 sudo systemctl stop $serviceName
+
+systemctl restart $servicename
