@@ -56,10 +56,22 @@ while [ . ]; do
     sleep 12
   done
   
+  oldClusterNumber="$clusterNumber"
+  getinfo
+  
+  case "$oldClusterNumber" in
+  "$clusterNumber")
+    Systemctl restart clusterMonitor
+  ;;
+  *)
+  ;;
+  esac
+  
   defunct="$(ps -aux | grep "defunct" -o)"
   if [ -n "$defunct" ]; then
-  reboot
+    reboot
   fi
+  
   case $hostname in
   "cl-controller")
     echo 0 >/sys/class/leds/red_led/brightness
