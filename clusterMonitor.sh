@@ -38,7 +38,7 @@ case $hostname in
     echo "-= Cluster Controller =-"
     clusterNumber="0"
     ./node-red.sh
-
+  echo "test -=$(loggit state service_restart)=-"
     while [ -z "$(loggit state service_restart)" ] ; do
       sleep 10
       loggit state service_restart
