@@ -38,8 +38,8 @@ case $hostname in
     echo "-= Cluster Controller =-"
     clusterNumber="0"
     ./node-red.sh
-    echo "test -=$(loggit state service_restart)=-"
-    while [ -z $(loggit state service_restart) ] ; do
+    echo "test -=$(loggit state node-red_restart)=-"
+    while [ -z $(loggit state node-red_restart) ] ; do
       
       #loggit state service_restart
       echo "waiting for node red to start"
