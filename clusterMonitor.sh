@@ -19,8 +19,8 @@ function loggit () {
   echo "$result" 
 }
 
+ 
   loggit state service_restart
-
   mount -t ramfs -o size=256m ext4 $TARGETDIR/ramdisk
   getinfo  
   sleep 10
@@ -36,6 +36,8 @@ case $hostname in
     echo "-= Cluster Controller =-"
     clusterNumber="0"
     ./node-red.sh
+    sleep 10
+    loggit state service_restart
   ;;
   *)
     echo "cluster node"
