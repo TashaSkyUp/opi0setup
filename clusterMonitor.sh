@@ -8,8 +8,10 @@ function getinfo () {
 }
 
 function getjsonresult () {
- result="$(echo "$1"  | cut -d',' -f $2| cut -d':' -f2 | cut -d'"' -f 2)"  && echo "-= $result =-" && echo "1"
- echo "$result" 
+ #result="$(echo "$1"  | cut -d',' -f $2| cut -d':' -f2 | cut -d'"' -f 2)"  && echo "-= $result =-" && echo "1"
+result="$(echo "$1"  | cut -d',' -f $2| cut -d':' -f2 | cut -d'"' -f 2)"  && echo "-= $result =-" && echo "1"
+
+echo "$result" 
 }
 
 function loggit () {
@@ -37,7 +39,7 @@ case $hostname in
     clusterNumber="0"
     ./node-red.sh
 
-    while [ -z "$1" ] ; do
+    while [ -z "$(loggit state service_restart)" ] ; do
       sleep 10
       loggit state service_restart
       echo "waiting for node red to start"
