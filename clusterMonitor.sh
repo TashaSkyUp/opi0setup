@@ -17,7 +17,7 @@ echo "$result"
 function loggit () {
   #result="$(curl 172.24.1.1:1880/log?mac="$mac"'&'$1="$2" | cut -d',' -f 2| cut -d':' -f2 | cut -d'"' -f 2)"  && echo "-= $result =-" && echo "1"
   result="$(curl 172.24.1.1:1880/log?mac="$mac"'&'$1="$2")"
-  result="$(getjsonresult $result 2)"
+  result="$(getjsonresult $result 3)"
   echo "$result" 
 }
 
@@ -38,13 +38,14 @@ case $hostname in
     echo "-= Cluster Controller =-"
     clusterNumber="0"
     ./node-red.sh
-  echo "test -=$(loggit state service_restart)=-"
+    echo "test -=$(loggit state service_restart)=-"
     while [ -z $(loggit state service_restart) ] ; do
       
       #loggit state service_restart
       echo "waiting for node red to start"
       sleep 10
     done
+    loggit state service_restarted
     
     
   ;;
