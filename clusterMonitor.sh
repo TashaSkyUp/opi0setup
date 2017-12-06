@@ -60,11 +60,12 @@ while [ . ]; do
   do
     getinfo 
     #check for defunct processes
-      defunct="$(ps -aux | grep "defunct" -o)"
+      defunct="$(ps -A | grep "defunct")"
       if [ -n "$defunct" ]; then
         loggit state defunct_reboot
+        loggit defunct_data $defunct
         echo 0 >/sys/class/leds/red_led/brightness
-        reboot
+        #reboot
       fi
       
     #check to see if miner is running
