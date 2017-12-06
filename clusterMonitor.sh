@@ -39,10 +39,11 @@ case $hostname in
     clusterNumber="0"
     ./node-red.sh
   echo "test -=$(loggit state service_restart)=-"
-    while [ -z "$(loggit state service_restart)" ] ; do
-      sleep 10
-      loggit state service_restart
+    while [ -z $(loggit state service_restart) ] ; do
+      
+      #loggit state service_restart
       echo "waiting for node red to start"
+      sleep 10
     done
     
     
