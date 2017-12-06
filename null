@@ -1,8 +1,0 @@
-found arch: armv7l
-using path wolfarmv7l
---
-rpimonitor is already installed
-using full path: /root/opi0setup/wolfarmv7l
-using workername 73
-using IP 73
-test armv7l73 --workername

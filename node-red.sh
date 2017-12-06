@@ -1,1 +1,1 @@
-node-red -u ./node-red > node-red.log &
+~/node_modules/node-red/red.js -u ./node-red > node-red.log &
