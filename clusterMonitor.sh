@@ -9,7 +9,7 @@ function getinfo () {
 
 function getjsonresult () {
  #result="$(echo "$1"  | cut -d',' -f $2| cut -d':' -f2 | cut -d'"' -f 2)"  && echo "-= $result =-" && echo "1"
-result="$(echo "$1"  | cut -d',' -f $2| cut -d':' -f2 | cut -d'"' -f 2)"  && echo "-= $result =-" && echo "1"
+result="$(echo "$1"  | cut -d',' -f $2| cut -d':' -f2 | cut -d'"' -f 2)"
 
 echo "$result" 
 }
