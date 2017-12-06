@@ -59,7 +59,15 @@ while [ . ]; do
   for ((i=1;i<=50;i++)); 
   do
     getinfo 
-
+    #check for defunct processes
+      defunct="$(ps -aux | grep "defunct" -o)"
+      if [ -n "$defunct" ]; then
+        loggit state defunct_reboot
+        echo 0 >/sys/class/leds/red_led/brightness
+        reboot
+      fi
+      
+    #check to see if miner is running
     result="$(ps all | grep "..:[0-9][0-9] ./minerd" -o)"
     case "$result" in
 
@@ -97,12 +105,7 @@ while [ . ]; do
   ;;
   esac
   
-  defunct="$(ps -aux | grep "defunct" -o)"
-  if [ -n "$defunct" ]; then
-    loggit state defunct_reboot
-    echo 0 >/sys/class/leds/red_led/brightness
-    reboot
-  fi
+ 
   
   case $hostname in
   "cl-controller")
