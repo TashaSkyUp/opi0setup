@@ -90,6 +90,8 @@ while [ . ]; do
   "$clusterNumber")
     loggit state cluster_number_mismatch
     Systemctl restart clusterMonitor
+    exit 0
+    sleep 30
   ;;
   *)
   ;;
