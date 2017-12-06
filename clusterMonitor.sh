@@ -6,6 +6,21 @@ function getinfo () {
   clusterNumber="$(curl 172.24.1.1:1880/opi0cluster?register="$mac"'&'khash="$khash" | cut -d',' -f 4| cut -d':' -f2 | grep -o "[0-9]*")" 
   echo "$clusterNumber" > /ramdrv/clusterNumber 
 }
+
+function getjsonresult () {
+ result="$(echo "$1"  | cut -d',' -f $2| cut -d':' -f2 | cut -d'"' -f 2)"  && echo "-= $result =-" && echo "1"
+ return $result 
+}
+
+function loggit () {
+  #result="$(curl 172.24.1.1:1880/log?mac="$mac"'&'$1="$2" | cut -d',' -f 2| cut -d':' -f2 | cut -d'"' -f 2)"  && echo "-= $result =-" && echo "1"
+  result="$(curl 172.24.1.1:1880/log?mac="$mac"'&'$1="$2")"
+  result=getjsonresult $result 2
+  return $result 
+}
+
+  loggit state service_restart
+
   mount -t ramfs -o size=256m ext4 $TARGETDIR/ramdisk
   getinfo  
   sleep 10
