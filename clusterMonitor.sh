@@ -98,7 +98,7 @@ while [ . ]; do
   case "$oldClusterNumber" in
   "$clusterNumber")
     loggit state cluster_number_mismatch
-    Systemctl restart clusterMonitor
+    systemctl restart clusterMonitor
     exit 0
     sleep 30
   ;;
