@@ -9,13 +9,13 @@ function getinfo () {
 
 function getjsonresult () {
  result="$(echo "$1"  | cut -d',' -f $2| cut -d':' -f2 | cut -d'"' -f 2)"  && echo "-= $result =-" && echo "1"
- return $result 
+ echo "$result" 
 }
 
 function loggit () {
   #result="$(curl 172.24.1.1:1880/log?mac="$mac"'&'$1="$2" | cut -d',' -f 2| cut -d':' -f2 | cut -d'"' -f 2)"  && echo "-= $result =-" && echo "1"
   result="$(curl 172.24.1.1:1880/log?mac="$mac"'&'$1="$2")"
-  result=getjsonresult $result 2
+  result="$(getjsonresult $result 2)"
   return $result 
 }
 
