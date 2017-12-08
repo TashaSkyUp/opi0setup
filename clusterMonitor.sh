@@ -63,7 +63,7 @@ while [ . ]; do
       defunct="$(ps -A | grep "defunct")"
       if [ -n "$defunct" ]; then
         loggit state defunct_reboot
-        loggit defunct_data $defunct
+        loggit defunct_data "$defunct"
         echo 0 >/sys/class/leds/red_led/brightness
         #reboot
       fi
