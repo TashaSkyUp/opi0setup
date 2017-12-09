@@ -8,7 +8,7 @@ function getinfo () {
     "cl-controller")
       echo 0 >/sys/class/leds/red_led/brightness
       clusterNumber="0"
-      mac="Cluster Controller"
+      mac="Cluster_Controller"
       #reboot
     ;;
   esac
