@@ -64,7 +64,7 @@ esac
 
 while [ . ]; do
 
-  for ((i=1;i<=50;i++)); 
+  for ((i=1;i<=10;i++)); 
   do
     getinfo 
     #check for defunct processes
@@ -105,13 +105,15 @@ while [ . ]; do
   
   case "$oldClusterNumber" in
   "$clusterNumber")
+    loggit state cluster_number_match
+  ;;
+  *)
     loggit state cluster_number_mismatch
     systemctl restart clusterMonitor
     exit 0
     sleep 30
   ;;
-  *)
-  ;;
+  
   esac
   
  
