@@ -4,15 +4,15 @@ function getinfo () {
   mac="$(ifconfig |grep "wlan0" | grep "..:..:..:..:..:.." -o)"
   echo "$mac" > /ramdrv/mac
   clusterNumber="$(curl 172.24.1.1:1880/opi0cluster?register="$mac"'&'khash="$khash" | cut -d',' -f 4| cut -d':' -f2 | grep -o "[0-9]*")" 
-  echo "$clusterNumber" > /ramdrv/clusterNumber
-   
   case $hostname in
     "cl-controller")
       echo 0 >/sys/class/leds/red_led/brightness
       clusterNumber="0"
+      mac="Cluster Controller"
       #reboot
     ;;
   esac
+  echo "$clusterNumber" > /ramdrv/clusterNumber
 }
 
 function getjsonresult () {
