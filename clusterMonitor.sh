@@ -31,7 +31,7 @@ function loggit () {
 
  
   loggit state service_restart
-  mount -t ramfs -o size=256m ext4 $TARGETDIR/ramdisk
+  mount -t ramfs -o size=128m ext4 /ramdrv
   getinfo  
   sleep 10
   cd /root/opi0setup/
