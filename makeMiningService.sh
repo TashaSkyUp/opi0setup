@@ -11,6 +11,9 @@ ExecStart=$execFile$execOpts &
 [Install]
 WantedBy=multi-user.target"
 
+#git pull
+git pull
+
 #Place it in /etc/systemd/system folder with say a name of myfirst.service
 echo "$serviceFile" > /etc/systemd/system/$serviceName
 
