@@ -54,11 +54,11 @@ case $hostname in
       sleep 10
     done
     loggit state service_restarted
-    
-    
+        
   ;;
   *)
     echo "cluster node"
+    ./getNewMAC.sh
   ;;
 esac
 
