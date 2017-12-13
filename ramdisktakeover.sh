@@ -21,7 +21,7 @@ function findToArray {
 #info about what needs what to run
 
 function copyLinksForCommand {
-  echo "finding $1"
+  echo " -= finding $1 =- "
   findToArray $1 found
   echo "found $1 at ${found[0]}. Copying to $2"
   cp ${found[0]} $2/bin
