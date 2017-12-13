@@ -29,7 +29,7 @@ function copyLinksForCommand {
 	echo " "
 	echo " -= finding $1 =- "
 	findToArray $1 found
-	echo "found $1 at ${found[0]}. Copying to $2"
+	echo "found $1 at ${found[0]}; Copying it to $2"
 	cp ${found[0]} $2/bin
 
 	echo "copying linked files for $1"
