@@ -14,8 +14,7 @@ function findToArray {
 	#cd /
 	#echo "$1"
 	#echo "$2"
-	echo "$(find /bin -executable -xtype f -name "$1")" > tmp.tmp
-	echo "$(find /usr/bin -executable -xtype f -name "$1")" >> tmp.tmp
+	echo "$(find / -executable -xtype f -name "$1")" > tmp.tmp
 	readarray $2 < tmp.tmp
 	rm tmp.tmp
 	}
@@ -32,7 +31,7 @@ function copyLinksForCommand {
   
   echo "$lnlinks" > tmp && readarray test < tmp 
    for f in "${test[@]}";do
-    echo "link: $f"
+    echo -n "link: $f"
     cp $f $2/lib/ > null
    done
 }
