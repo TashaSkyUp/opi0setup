@@ -13,6 +13,7 @@ TOLINK=(
 function findToArray {
 	echo "$(find /usr/bin -executable -xtype f -name "$1")" >  tmp.tmp
 	echo "$(find /bin     -executable -xtype f -name "$1")" >> tmp.tmp
+	echo "$(find /sbin     -executable -xtype f -name "$1")" >> tmp.tmp
 	a="$(cat tmp.tmp | grep ".*" -o)"
 	echo "$a" > tmp.tmp
 	readarray $2 < tmp.tmp
