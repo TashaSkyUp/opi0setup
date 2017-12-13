@@ -9,6 +9,40 @@ TOLINK=(
 /lib
 /bin
 )
+function lfListToArray {
+	echo "$1" > tmp.tmp
+	a="$(cat tmp.tmp | grep ".*" -o)"
+	echo "$a" > tmp.tmp
+	readarray $2 < tmp.tmp	
+}
+function echoArray {
+	tmp="$1"
+	for s in "${tmp[@]}"
+	do
+	echo -n "$s"
+	
+	done
+}
+function stopAllServices {
+	lfListToArray "$(systemctl | grep "[a-Z].*service" -o)" srvs
+	for s in "${srvs[@]}"
+	do
+	echo -n "$s"
+	systemctl stop $s
+	done
+
+}
+
+function startAllServices {
+	#lfListToArray "$(systemctl | grep "[a-Z].*service" -o)" srvs
+	for s in "${srvs[@]}"
+	do
+	echo -n "$s"
+	systemctl start $s
+	done
+
+}
+
 
 function findToArray {
 	rm -f tmp.tmp
