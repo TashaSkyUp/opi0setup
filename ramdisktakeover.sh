@@ -16,6 +16,7 @@ function findToArray {
 	#echo "$2"
 	echo "$(find /usr/bin -executable -xtype f -name "$1")" >  tmp.tmp
 	echo "$(find /bin     -executable -xtype f -name "$1")" >> tmp.tmp
+	cat tmp.tmp | grep ".*" -o > tmp.tmp
 	readarray $2 < tmp.tmp
 	rm tmp.tmp
 	}
