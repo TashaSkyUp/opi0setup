@@ -65,8 +65,10 @@ echo "Mount Kernel Virtual File Systems"
   copyLinksForCommand hostname $TARGETDIR
   copyLinksForCommand reboot $TARGETDIR
   copyLinksForCommand sudo $TARGETDIR
-  
-  
+  copyLinksForCommand htop $TARGETDIR
+  copyLinksForCommand sudo $TARGETDIR
+  copyLinksForCommand mount $TARGETDIR
+  copyLinksForCommand umount $TARGETDIR
 
   
   mount -t proc proc $TARGETDIR/proc
