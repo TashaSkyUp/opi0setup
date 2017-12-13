@@ -85,6 +85,8 @@ echo "Mount Kernel Virtual File Systems"
   copyLinksForCommand sshd $TARGETDIR
   copyLinksForCommand script $TARGETDIR
   copyLinksForCommand ifconfig $TARGETDIR
+  copyLinksForCommand nmtui $TARGETDIR
+  copyLinksForCommand nmcli $TARGETDIR
   
   mount -t proc proc $TARGETDIR/proc
   mount -t sysfs sysfs $TARGETDIR/sys
