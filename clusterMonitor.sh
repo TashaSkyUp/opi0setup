@@ -31,6 +31,7 @@ function loggit () {
 
  
   loggit state service_restart
+  umount /ramdrv
   mount -t ramfs -o size=128m ext4 /ramdrv
   getinfo  
   sleep 10
