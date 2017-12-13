@@ -37,11 +37,18 @@ function copyLinksForCommand {
 }
 
 TARGETDIR="/takeover"
-umount -f -v ./$TARGETDIR/ramdisk
+
+umount -f -v $TARGETDIR/ramdisk/dev/shm
+umount -f -v $TARGETDIR/ramdisk/dev/pts
+umount -f -v $TARGETDIR/ramdisk/proc
+umount -f -v $TARGETDIR/ramdisk/sys
+umount -f -v $TARGETDIR/ramdisk/dev
+umount -f -v $TARGETDIR/ramdisk
+
 sudo rm $TARGETDIR -r -f > null
 mkdir $TARGETDIR
 mkdir $TARGETDIR/ramdisk
-mount -t ramfs -o size=256m ext4 $TARGETDIR/ramdisk
+mount -t ramfs -o size=128m ext4 $TARGETDIR/ramdisk
 mount | grep ram
 
 
@@ -49,8 +56,6 @@ mount | grep ram
 echo "Mount Kernel Virtual File Systems"
   TARGETDIR="/takeover/ramdisk"
   
-  
-
   for i in "${TOLINK[@]}";do
     mkdir $TARGETDIR$i
   	echo $TARGETDIR$i
