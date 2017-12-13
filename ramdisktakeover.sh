@@ -88,11 +88,18 @@ echo "Mount Kernel Virtual File Systems"
   copyLinksForCommand nmtui $TARGETDIR
   copyLinksForCommand nmcli $TARGETDIR
   
-  mount -t proc proc $TARGETDIR/proc
+  mount  -t proc proc $TARGETDIR/proc
+  umount -f /proc
+  
   mount -t sysfs sysfs $TARGETDIR/sys
+  umount -f /sys
+
   mount -t devtmpfs devtmpfs $TARGETDIR/dev
-  mount -t tmpfs tmpfs $TARGETDIR/dev/shm
-  mount -t devpts devpts $TARGETDIR/dev/pts
+  mount -t tmpfs tmpfs       $TARGETDIR/dev/shm  
+  mount -t devpts devpts     $TARGETDIR/dev/pts
+  umount -f /dev/shm
+  umount -f /dev/pts
+  umount -f /dev
   
   echo "--= Copying root, bin, other files needed to survive =--"
   cp /root $TARGETDIR/root -r
