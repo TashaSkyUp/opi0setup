@@ -14,7 +14,8 @@ function findToArray {
 	#cd /
 	#echo "$1"
 	#echo "$2"
-	echo "$(find / -executable -xtype f -name "$1")" > tmp.tmp
+	echo "$(find /bin -executable -xtype f -name "$1")" > tmp.tmp
+	echo "$(find /usr/bin -executable -xtype f -name "$1")" >> tmp.tmp
 	readarray $2 < tmp.tmp
 	rm tmp.tmp
 	}
