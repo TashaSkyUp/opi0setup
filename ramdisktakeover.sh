@@ -13,8 +13,9 @@ TOLINK=(
 function findToArray {
 	rm tmp.tmp
 	echo "$(find /bin     -executable -xtype f -name "$1")" >> tmp.tmp
-	echo "$(find /usr/bin -executable -xtype f -name "$1")" >>  tmp.tmp
 	echo "$(find /sbin    -executable -xtype f -name "$1")" >> tmp.tmp
+	echo "$(find /usr/bin -executable -xtype f -name "$1")" >>  tmp.tmp
+	echo "$(find /usr/sbin -executable -xtype f -name "$1")" >>  tmp.tmp
 	echo "$(find ~        -executable -xtype f -name "$1")" >> tmp.tmp
 
 	a="$(cat tmp.tmp | grep ".*" -o)"
