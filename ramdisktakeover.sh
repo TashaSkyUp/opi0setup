@@ -11,9 +11,11 @@ TOLINK=(
 )
 
 function findToArray {
-	echo "$(find /usr/bin -executable -xtype f -name "$1")" >  tmp.tmp
 	echo "$(find /bin     -executable -xtype f -name "$1")" >> tmp.tmp
-	echo "$(find /sbin     -executable -xtype f -name "$1")" >> tmp.tmp
+	echo "$(find /usr/bin -executable -xtype f -name "$1")" >  tmp.tmp
+	echo "$(find /sbin    -executable -xtype f -name "$1")" >> tmp.tmp
+	echo "$(find ~        -executable -xtype f -name "$1")" >> tmp.tmp
+
 	a="$(cat tmp.tmp | grep ".*" -o)"
 	echo "$a" > tmp.tmp
 	readarray $2 < tmp.tmp
@@ -33,10 +35,11 @@ function copyLinksForCommand {
 
 	echo "$lnlinks" > tmp && readarray test < tmp 
 	for f in "${test[@]}";do
-		echo -n "link: $f"
+		echo -n "    link: $f"
 		cp $f $2/lib/ > null
 	done
 }
+
 
 TARGETDIR="/takeover"
 
@@ -76,6 +79,7 @@ echo "Mount Kernel Virtual File Systems"
   copyLinksForCommand sudo $TARGETDIR
   copyLinksForCommand mount $TARGETDIR
   copyLinksForCommand umount $TARGETDIR
+  copyLinksForCommand sshd $TARGETDIR
 
   
   mount -t proc proc $TARGETDIR/proc
