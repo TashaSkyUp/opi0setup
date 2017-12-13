@@ -11,7 +11,7 @@ TOLINK=(
 )
 
 function findToArray {
-	rm tmp.tmp
+	rm tmp.tmp > null
 	echo "$(find /bin     -executable -xtype f -name "$1")" >> tmp.tmp
 	echo "$(find /sbin    -executable -xtype f -name "$1")" >> tmp.tmp
 	echo "$(find /usr/bin -executable -xtype f -name "$1")" >>  tmp.tmp
@@ -42,7 +42,7 @@ function copyLinksForCommand {
 	done
 }
 
-
+systemctl stop clusterMonitor
 TARGETDIR="/takeover"
 
 umount -f -v $TARGETDIR/ramdisk/dev/shm
