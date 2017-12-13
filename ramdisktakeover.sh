@@ -11,7 +11,7 @@ TOLINK=(
 )
 
 function findToArray {
-	rm tmp.tmp > null
+	rm -f tmp.tmp
 	echo "$(find /bin     -executable -xtype f -name "$1")" >> tmp.tmp
 	echo "$(find /sbin    -executable -xtype f -name "$1")" >> tmp.tmp
 	echo "$(find /usr/bin -executable -xtype f -name "$1")" >>  tmp.tmp
