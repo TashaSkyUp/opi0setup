@@ -21,19 +21,20 @@ function findToArray {
 #info about what needs what to run
 
 function copyLinksForCommand {
-  echo " -= finding $1 =- "
-  findToArray $1 found
-  echo "found $1 at ${found[0]}. Copying to $2"
-  cp ${found[0]} $2/bin
-  
-  echo "copying linked files for $1"
-  lnlinks="$(ldd $(command -v ${found[0]}) |grep "/.*so.* " -o)"
-  
-  echo "$lnlinks" > tmp && readarray test < tmp 
-   for f in "${test[@]}";do
-    echo -n "link: $f"
-    cp $f $2/lib/ > null
-   done
+	echo " "
+	echo " -= finding $1 =- "
+	findToArray $1 found
+	echo "found $1 at ${found[0]}. Copying to $2"
+	cp ${found[0]} $2/bin
+
+	echo "copying linked files for $1"
+	lnlinks="$(ldd $(command -v ${found[0]}) |grep "/.*so.* " -o)"
+
+	echo "$lnlinks" > tmp && readarray test < tmp 
+	for f in "${test[@]}";do
+		echo -n "link: $f"
+		cp $f $2/lib/ > null
+	done
 }
 
 TARGETDIR="/takeover"
