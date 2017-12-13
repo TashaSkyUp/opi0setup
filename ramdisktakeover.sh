@@ -12,11 +12,11 @@ TOLINK=(
 
 function findToArray {
 	rm -f tmp.tmp
-	echo "$(find /bin     -executable -xtype f -name "$1")" >> tmp.tmp
-	echo "$(find /sbin    -executable -xtype f -name "$1")" >> tmp.tmp
-	echo "$(find /usr/bin -executable -xtype f -name "$1")" >>  tmp.tmp
+	echo "$(find /bin      -executable -xtype f -name "$1")" >> tmp.tmp
+	echo "$(find /sbin     -executable -xtype f -name "$1")" >> tmp.tmp
+	echo "$(find /usr/bin  -executable -xtype f -name "$1")" >>  tmp.tmp
 	echo "$(find /usr/sbin -executable -xtype f -name "$1")" >>  tmp.tmp
-	echo "$(find ~        -executable -xtype f -name "$1")" >> tmp.tmp
+	echo "$(find ~         -executable -xtype f -name "$1")" >> tmp.tmp
 
 	a="$(cat tmp.tmp | grep ".*" -o)"
 	echo "$a" > tmp.tmp
@@ -29,7 +29,8 @@ function copyLinksForCommand {
 	echo " "
 	echo " -= finding $1 =- "
 	findToArray $1 found
-	echo "found $1 at ${found[0]}; Copying it to $2"
+	found="$(echo "${found[0]}" | sed 's/[[:space:]]//g')"
+	echo "found $1 at $found; Copying it to $2"
 	cp ${found[0]} $2/bin
 
 	echo "copying linked files for $1"
