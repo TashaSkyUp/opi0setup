@@ -9,6 +9,40 @@ TOLINK=(
 /lib
 /bin
 )
+function lfListToArray {
+	echo "$1" > tmp.tmp
+	a="$(cat tmp.tmp | grep ".*" -o)"
+	echo "$a" > tmp.tmp
+	readarray $2 < tmp.tmp	
+}
+function echoArray {
+	tmp="$1"
+	for s in "${tmp[@]}"
+	do
+	echo -n "$s"
+	
+	done
+}
+function stopAllServices {
+	lfListToArray "$(systemctl | grep "[a-Z].*service" -o)" srvs
+	for s in "${srvs[@]}"
+	do
+	echo -n "$s"
+	systemctl stop $s
+	done
+
+}
+
+function startAllServices {
+	#lfListToArray "$(systemctl | grep "[a-Z].*service" -o)" srvs
+	for s in "${srvs[@]}"
+	do
+	echo -n "$s"
+	systemctl start $s
+	done
+
+}
+
 
 function findToArray {
 	rm -f tmp.tmp
@@ -88,11 +122,18 @@ echo "Mount Kernel Virtual File Systems"
   copyLinksForCommand nmtui $TARGETDIR
   copyLinksForCommand nmcli $TARGETDIR
   
-  mount -t proc proc $TARGETDIR/proc
+  mount  -t proc proc $TARGETDIR/proc
+  umount -f /proc
+  
   mount -t sysfs sysfs $TARGETDIR/sys
+  umount -f /sys
+
   mount -t devtmpfs devtmpfs $TARGETDIR/dev
-  mount -t tmpfs tmpfs $TARGETDIR/dev/shm
-  mount -t devpts devpts $TARGETDIR/dev/pts
+  mount -t tmpfs tmpfs       $TARGETDIR/dev/shm  
+  mount -t devpts devpts     $TARGETDIR/dev/pts
+  umount -f /dev/shm
+  umount -f /dev/pts
+  umount -f /dev
   
   echo "--= Copying root, bin, other files needed to survive =--"
   cp /root $TARGETDIR/root -r
