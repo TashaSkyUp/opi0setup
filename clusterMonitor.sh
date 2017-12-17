@@ -40,7 +40,7 @@ function loggit () {
   
   #./start.sh --workername $clusterNumber > /mining.log &
   #preserve old log.
-  cp /mining.log /mining.lastboot.log
+  cp /ramdrv/mining.log /ramdrv/mining.lastboot.log
 
 case $hostname in
   "cl-controller")
@@ -85,7 +85,7 @@ while [ . ]; do
       "")
         echo 0 >/sys/class/leds/red_led/brightness
         #echo "zero length"
-        ./start.sh --workername $clusterNumber > /mining.log & pid="$!"
+        ./start.sh --workername $clusterNumber > /ramdrv/mining.log & pid="$!"
         sleep 30
         ;;
 
@@ -93,7 +93,7 @@ while [ . ]; do
       *)
         #echo "non zero len"
         echo 255 >/sys/class/leds/red_led/brightness
-        khash="$(tail -c256 /mining.log | grep "acc" | tail -n 1 | grep "), [0-9]*\.[0-9]*" -o | cut -d' ' -f 2)"
+        khash="$(tail -c256 /ramdrv/mining.log | grep "acc" | tail -n 1 | grep "), [0-9]*\.[0-9]*" -o | cut -d' ' -f 2)"
         ;;
 
     esac
