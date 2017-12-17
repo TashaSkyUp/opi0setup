@@ -38,7 +38,7 @@ pswd="vissago"
 	    echo "using IP $ip"
 	    machine="$(echo $ip| cut -d' ' -f 2)"
 	    machine="$(echo $machine| cut -d'.' -f 4)"
-	    machine="$arch$machine"
+	    machine="$machine"
 	    echo "test $machine $1"
 	    ;;
 	esac
@@ -59,7 +59,7 @@ case $1 in
 	./minerd -q --syslog --background -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p $pswd
 	;;
 "--workername")
-	script -c "./minerd -q -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p $pswd" /mining.log
+	script -c "./minerd -q -a m7mhash -o stratum+tcp://$maddr:3334 -u HaileyUpchurch.$machine -p $pswd" /mining.log
 	;;
 *)
 	./minerd $1 -a m7mhash -o stratum+tcp://$maddr:3334 -u TashaSkyUp.$machine -p $pswd
