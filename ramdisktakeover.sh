@@ -24,11 +24,14 @@ function echoArray {
 	done
 }
 function stopAllServices {
-	lfListToArray "$(systemctl | grep "[a-Z].*service" -o)" srvs
+	#lfListToArray "$(systemctl | grep "[a-Z].*\(service\)\*\(\target\)\*" -o)" srvs
+	#lfListToArray "$(systemctl | grep "[a-Z].*\(service|target\)*" -o)" srvs && echo "${srvs[52]}"
+	lfListToArray "$(systemctl | grep ".*\.\(service\|target\)" -o)" srvs && echo "${srvs[52]}"
+	
 	for s in "${srvs[@]}"
 	do
-	echo -n "$s"
-	systemctl stop $s
+	echo -n "foudn: $s"
+	#systemctl stop $s
 	done
 
 }
