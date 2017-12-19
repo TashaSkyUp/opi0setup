@@ -1,3 +1,4 @@
+find . -name "*bear*"
 #!/bin/bash
 umount /imagemount
 mount /dev/sda1 /imagemount
@@ -12,3 +13,10 @@ gunzip initramfs.gz
 mkdir image
 cd image
 cpio -vid < ../initramfs
+
+
+find . -name "*bear*"
+find . -name "*xr*"
+find . -name "*host*"
+find . -name "*ifconfig*"
+
