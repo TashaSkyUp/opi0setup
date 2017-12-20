@@ -1,12 +1,31 @@
 #!/bin/bash
+if [ -z "$(mount | grep "/imagemount")" ]; then
+else
 umount /imagemount
+fi
+
+if [ -d /dev/sda1 ]; then
 mount /dev/sda1 /imagemount
+else
+mount /dev/mmcblk0p1 /imagemount
+fi
 
 rm -r /myinitram
 mkdir /myinitram
-cp /imagemount/boot/initrd* /myinitram/initramfs.gz
-cd /myinitram
+mkdir /myinitram/image
+
+cp /imagemount/boot/initrd* /myinitram/image/initramfs.gz
+cd /myinitram/image
 gunzip initramfs.gz
-mkdir image
-cd image
-cpio -vid < ../initramfs
+#mkdir image
+#cd image
+
+cd ..
+cpio -vid < ./image/initramfs
+
+find . -name "*bear*"
+find . -name "*xr*"
+find . -name "*host*"
+find . -name "*ifconfig*"
+find . -name "*my*"
+
