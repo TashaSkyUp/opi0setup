@@ -1,7 +1,14 @@
 #!/bin/bash
+if [ -z "$(mount | grep "/imagemount")" ]; then
+else
 umount /imagemount
+fi
+
+if [ -d /dev/sda1 ]; then
 mount /dev/sda1 /imagemount
+else
 mount /dev/mmcblk0p1 /imagemount
+fi
 
 rm -r /myinitram
 mkdir /myinitram
