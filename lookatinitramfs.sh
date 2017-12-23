@@ -1,10 +1,11 @@
 #!/bin/bash
 if [ -z "$(mount | grep "/imagemount")" ]; then
+echo "/imagemount not mounted yet"
 else
 umount /imagemount
 fi
 
-if [ -d /dev/sda1 ]; then
+if [ -e /dev/sda1 ]; then
 mount /dev/sda1 /imagemount
 else
 mount /dev/mmcblk0p1 /imagemount
@@ -28,4 +29,5 @@ find . -name "*xr*"
 find . -name "*host*"
 find . -name "*ifconfig*"
 find . -name "*my*"
+find . -name "*passwd*"
 
