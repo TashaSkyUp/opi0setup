@@ -798,3 +798,4 @@ Welcome to Node-RED
 27 Dec 16:34:41 - [error] [http request:293ecb39.d52984] Error: getaddrinfo ENOTFOUND api.coinmarketcap.com api.coinmarketcap.com:443
 27 Dec 16:35:41 - [error] [http request:293ecb39.d52984] Error: getaddrinfo ENOTFOUND api.coinmarketcap.com api.coinmarketcap.com:443
 27 Dec 16:36:41 - [error] [http request:293ecb39.d52984] Error: getaddrinfo ENOTFOUND api.coinmarketcap.com api.coinmarketcap.com:443
+27 Dec 16:37:41 - [error] [http request:293ecb39.d52984] Error: getaddrinfo ENOTFOUND api.coinmarketcap.com api.coinmarketcap.com:443
