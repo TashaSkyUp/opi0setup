@@ -79,18 +79,23 @@ while [ . ]; do
       
     #check to see if miner is running
     result="$(ps all | grep "..:[0-9][0-9] ./minerd" -o)"
-    case "$result" in
+    
+    case "$result$hostname" in
 
       #is not running
-      "")
+      *cl-controller)
+      ;;
+      
+      #on Node but not running
+      "node")
         echo 0 >/sys/class/leds/red_led/brightness
         #echo "zero length"
         ./start.sh --workername $clusterNumber > /ramdrv/mining.log & pid="$!"
         sleep 30
         ;;
 
-      #is running
-      *)
+      #on node and is running
+      *node*)
         #echo "non zero len"
         echo 255 >/sys/class/leds/red_led/brightness
         khash="$(tail -c256 /ramdrv/mining.log | grep "acc" | tail -n 1 | grep "), [0-9]*\.[0-9]*" -o | cut -d' ' -f 2)"
