@@ -9,6 +9,8 @@ TOLINK=(
 /lib
 /bin
 )
+SKIPSERVICES=""
+
 function lfListToArray {
 	echo "$1" > tmp.tmp
 	a="$(cat tmp.tmp | grep ".*" -o)"
@@ -30,8 +32,15 @@ function stopAllServices {
 	
 	for s in "${srvs[@]}"
 	do
-	echo -n "foudn: $s"
-	#systemctl stop $s
+	case $s in
+	
+	$SKIPSERVICES)
+		echo -n "skipping: $s"	
+	;;
+	*)
+		echo -n "stopping: $s"
+		#systemctl stop $s
+	;;
 	done
 
 }
