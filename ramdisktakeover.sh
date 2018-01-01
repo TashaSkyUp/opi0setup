@@ -89,6 +89,8 @@ function copyLinksForCommand {
 		cp $f $2/lib/ > null
 	done
 }
+stopAllServices
+exit 0
 
 systemctl stop clusterMonitor
 TARGETDIR="/takeover"
