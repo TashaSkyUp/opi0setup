@@ -32,15 +32,16 @@ function stopAllServices {
 	
 	for s in "${srvs[@]}"
 	do
-	case $s in
-	
-	$SKIPSERVICES)
-		echo -n "skipping: $s"	
-	;;
-	*)
-		echo -n "stopping: $s"
-		#systemctl stop $s
-	;;
+		case $s in
+
+		$SKIPSERVICES)
+			echo -n "skipping: $s"	
+		;;
+		*)
+			echo -n "stopping: $s"
+			#systemctl stop $s
+		;;
+		esac
 	done
 
 }
