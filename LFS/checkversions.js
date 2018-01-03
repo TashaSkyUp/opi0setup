@@ -35,11 +35,7 @@ for (var f in x){
        //console.log(`stdout: ${stdout}`);
        //console.log(`stderr: ${stderr}`);
        //var info = '${stdout}+${stderr}';
-       console.log("info: "+info);
-      
-       found = /((([a-Z]*))([0-9]*)(.[0-9]*)*)+/.exec(info);
-      
-       found = /[0-9]+\.[0-9]+\.*[0-9]*/.exec(info);console.log("exec: "+c+", found: "+found);
+  
 
       //found = /^(\d+\.)?(\d+\.)?(\*|\d+)$/.exec(info);
       
@@ -54,7 +50,11 @@ for (var f in x){
       //err.status;
       // etc
     }
+           console.log("info: "+info);
       
+       found = /((([a-Z]*))([0-9]*)(.[0-9]*)*)+/.exec(info);
+      
+       found = /[0-9]+\.[0-9]+\.*[0-9]*/.exec(info);console.log("exec: "+c+", found: "+found);
    
    
   }
