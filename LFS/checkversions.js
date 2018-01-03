@@ -26,17 +26,17 @@ for (var f in x){
   for (var c in x[f]){
     console.log("checking " +c+"...");
     try {
-       execSync(c+" "+ f + " 2>&1", (err, stdout, stderr) => {
+       var info = execSync(c+" "+ f + " 2>&1";
        //if (err) {console.log("some error");return;}
 
        // the *entire* stdout and stderr (buffered)
-       console.log(`stdout: ${stdout}`);
-       console.log(`stderr: ${stderr}`);
-       var info = '${stdout}+${stderr}';
+       //console.log(`stdout: ${stdout}`);
+       //console.log(`stderr: ${stderr}`);
+       //var info = '${stdout}+${stderr}';
        console.log("info: "+info);
        found = /[0-9](.[0-9])*/.exec(info);
        console.log("exec: "+c+", found: "+found);
-      });
+      
     } catch (err2) {
       console.log("err: "+err2.stderr);
       console.log("out: "+err2.stdout);
