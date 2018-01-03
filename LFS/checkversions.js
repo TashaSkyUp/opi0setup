@@ -21,7 +21,7 @@ console.log(x["-v"]);
 const { exec } = require('child_process');
 for (var f in x){
   console.log(f);
-  for (var c in f){
+  for (var c in x[f]){
     console.log(c);
 //   exec('cat *.js bad_file | wc -l', (err, stdout, stderr) => {
 //       if (err) {console.log("some error");return;}
