@@ -23,13 +23,13 @@ for (var f in x){
   console.log(f);
   for (var c in x[f]){
     console.log(c);
-//   exec('cat *.js bad_file | wc -l', (err, stdout, stderr) => {
-//       if (err) {console.log("some error");return;}
+    exec(c+" "+ f, (err, stdout, stderr) => {
+       if (err) {console.log("some error");return;}
 
-//       // the *entire* stdout and stderr (buffered)
-//       console.log(`stdout: ${stdout}`);
-//       console.log(`stderr: ${stderr}`);
-//     });
+       // the *entire* stdout and stderr (buffered)
+       console.log(`stdout: ${stdout}`);
+       console.log(`stderr: ${stderr}`);
+     });
   }
 }
 console.log(arg1);
