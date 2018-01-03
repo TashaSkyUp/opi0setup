@@ -23,13 +23,18 @@ for (var f in x){
   console.log(f);
   for (var c in x[f]){
     console.log(c);
-    exec(c+" "+ f, (err, stdout, stderr) => {
+    exec(c+" "+ f " | grep "[0-9]\.[0-9]" -o", (err, stdout, stderr) => {
        if (err) {console.log("some error");return;}
 
        // the *entire* stdout and stderr (buffered)
-       console.log(`stdout: ${stdout}`);
-       console.log(`stderr: ${stderr}`);
-     });
+       //console.log(`stdout: ${stdout}`);
+       //console.log(`stderr: ${stderr}`);
+       var info = stdout+stderr
+       console.log(info);
+       found = /[0-9].[0-9]/.exec(string)
+       console.log("found: "+found);
+ 
+    });
   }
 }
 console.log(arg1);
