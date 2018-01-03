@@ -23,7 +23,7 @@ for (var f in x){
   console.log(f);
   for (var c in x[f]){
     console.log(c);
-    exec(c+" "+ f, (err, stdout, stderr) => {
+    exec(c+" "+ f, (err, stdout, stderr,com) => {
        if (err) {console.log("some error");return;}
 
        // the *entire* stdout and stderr (buffered)
@@ -32,7 +32,7 @@ for (var f in x){
        var info = stdout+stderr
        console.log(info);
        found = /[0-9](.[0-9])*/.exec(info)
-       console.log("exec: "+c+", found: "+found);
+       console.log("exec: "+com+", found: "+found);
  
     });
   }
