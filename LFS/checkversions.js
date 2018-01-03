@@ -27,11 +27,11 @@ for (var f in x){
     console.log("checking " +c+"...");
     try {
        execSync(c+" "+ f + " 2>&1", (err, stdout, stderr) => {
-       if (err) {console.log("some error");return;}
+       //if (err) {console.log("some error");return;}
 
        // the *entire* stdout and stderr (buffered)
-       //console.log(`stdout: ${stdout}`);
-       //console.log(`stderr: ${stderr}`);
+       console.log(`stdout: ${stdout}`);
+       console.log(`stderr: ${stderr}`);
        var info = '${stdout}+${stderr}';
        console.log("info: "+info);
        found = /[0-9](.[0-9])*/.exec(info);
