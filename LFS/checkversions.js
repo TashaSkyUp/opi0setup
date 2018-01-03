@@ -18,7 +18,7 @@ if(/(crap)*/.test("crap")){
 var x=require('./data/reqver.json');//or require('data');
 console.log(x["-v"]);
 
-const { exec } = require('child_process').execSync;
+const { execSync } = require('child_process').execSync;
 for (var f in x){
   console.log(f);
   for (var c in x[f]){
