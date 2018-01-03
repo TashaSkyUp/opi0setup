@@ -36,7 +36,7 @@ for (var f in x){
        console.log("info: "+info);
        found = /((( |v)[0-9]*)(.[0-9]*)*)+/.exec(info);
        //found = /^(\d+\.)?(\d+\.)?(\*|\d+)$/.exec(info);
-       console.log("exec: "+c+", found: "+found[0]);
+       console.log("exec: "+c+", found: "+found[1]);
       
     } catch (err2) {
       console.log("err: "+err2.stderr);
