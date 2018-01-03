@@ -37,7 +37,8 @@ for (var f in x){
        found = /[0-9](.[0-9])*/.exec(info);
        console.log("exec: "+c+", found: "+found);
       });
-    } catch (err) {
+    } catch (err2) {
+      console.log(err2);
       //err.stdout;
       //err.stderr;
       //err.pid;
