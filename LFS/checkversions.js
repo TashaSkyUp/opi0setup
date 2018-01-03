@@ -38,11 +38,11 @@ for (var f in x){
        console.log("exec: "+c+", found: "+found);
       });
     } catch (err) {
-      err.stdout;
-      err.stderr;
-      err.pid;
-      err.signal;
-      err.status;
+      //err.stdout;
+      //err.stderr;
+      //err.pid;
+      //err.signal;
+      //err.status;
       // etc
     }
       
