@@ -15,13 +15,12 @@ process.stdin.on('data', function(data) {
 //regex as if statment example
 if(/(crap)*/.test("crap")){
 }
+var x=require('./data/reqver.json');//or require('data');
+console.log(x);
 
 const { exec } = require('child_process');
 exec('cat *.js bad_file | wc -l', (err, stdout, stderr) => {
-  if (err) {
-    // node couldn't execute the command
-    return;
-  }
+  if (err) {console.log("some error");return;}
 
   // the *entire* stdout and stderr (buffered)
   console.log(`stdout: ${stdout}`);
