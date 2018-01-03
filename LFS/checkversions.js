@@ -18,12 +18,13 @@ if(/(crap)*/.test("crap")){
 var x=require('./data/reqver.json');//or require('data');
 console.log(x["-v"]);
 
-const { exec } = require('child_process');
+const { exec } = require('child_process').execSync;
 for (var f in x){
   console.log(f);
   for (var c in x[f]){
     console.log(c);
-    exec(c+" "+ f, (err, stdout, stderr,com) => {
+    var done = 0;
+    exec(c+" "+ f, (err, stdout, stderr) => {
        if (err) {console.log("some error");return;}
 
        // the *entire* stdout and stderr (buffered)
@@ -32,9 +33,9 @@ for (var f in x){
        var info = stdout+stderr
        console.log(info);
        found = /[0-9](.[0-9])*/.exec(info)
-       console.log("exec: "+com+", found: "+found);
- 
+       console.log("exec: "+c+", found: "+found);
     });
+    while(done==0)
   }
 }
 console.log(arg1);
