@@ -26,7 +26,7 @@ for (var f in x){
   for (var c in x[f]){
     console.log("checking " +c+"...");
     try {
-       execSync(c+" "+ f, (err, stdout, stderr) => {
+       execSync(c+" "+ f + "2>&1", (err, stdout, stderr) => {
        if (err) {console.log("some error");return;}
 
        // the *entire* stdout and stderr (buffered)
