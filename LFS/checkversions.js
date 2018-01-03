@@ -24,7 +24,7 @@ for (var f in x){
   for (var c in x[f]){
     console.log(c);
     var done = 0;
-    exec(c+" "+ f, (err, stdout, stderr) => {
+    execSync(c+" "+ f, (err, stdout, stderr) => {
        if (err) {console.log("some error");return;}
 
        // the *entire* stdout and stderr (buffered)
