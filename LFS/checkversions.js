@@ -28,21 +28,11 @@ for (var f in x){
     console.log("");
     console.log("checking " +c+"...");
     try {
-       var info = execSync(c+" "+ f + " 2>&1");
-       //if (err) {console.log("some error");return;}
-
-       // the *entire* stdout and stderr (buffered)
-       //console.log(`stdout: ${stdout}`);
-       //console.log(`stderr: ${stderr}`);
-       //var info = '${stdout}+${stderr}';
-  
-
-      //found = /^(\d+\.)?(\d+\.)?(\*|\d+)$/.exec(info);
-      
+       var info = execSync(c+" "+ f + " 2>&1");      
     } catch (err2) {
       console.log("err: "+err2.stderr);
       console.log("out: "+err2.stdout);
-      
+      found = "";
       //err.stdout;
       //err.stderr;
       //err.pid;
