@@ -25,7 +25,8 @@ for (var f in x){
   console.log(f);
   for (var c in x[f]){
     console.log("checking " +c+"...");
-    execSync(c+" "+ f, (err, stdout, stderr) => {
+    try {
+       execSync(c+" "+ f, (err, stdout, stderr) => {
        if (err) {console.log("some error");return;}
 
        // the *entire* stdout and stderr (buffered)
@@ -35,7 +36,17 @@ for (var f in x){
        console.log("info: "+info);
        found = /[0-9](.[0-9])*/.exec(info)
        console.log("exec: "+c+", found: "+found);
-    });
+      });
+    } catch (err) {
+      err.stdout;
+      err.stderr;
+      err.pid;
+      err.signal;
+      err.status;
+      // etc
+    }
+      
+   
    
   }
 }
