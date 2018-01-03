@@ -38,7 +38,7 @@ for (var f in x){
        console.log("exec: "+c+", found: "+found);
       });
     } catch (err2) {
-      console.log(err2);
+      console.log(err2.stderr);
       //err.stdout;
       //err.stderr;
       //err.pid;
