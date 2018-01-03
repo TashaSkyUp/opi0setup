@@ -31,8 +31,8 @@ for (var f in x){
        //console.log(`stderr: ${stderr}`);
        var info = stdout+stderr
        console.log(info);
-       found = /[0-9].[0-9]/.exec(info)
-       console.log("found: "+found);
+       found = /[0-9](.[0-9])*/.exec(info)
+       console.log("exec: "+c+", found: "+found);
  
     });
   }
