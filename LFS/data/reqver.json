@@ -24,8 +24,8 @@
     "-r":{
         "uname":"3.2" 
     },
-    "apt show":{
-        "texinfo":"4.7"
+    "texinfo":{
+        "apt show":"4.7"
     }
 
 }
