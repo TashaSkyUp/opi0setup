@@ -26,12 +26,12 @@ for (var f in x){
   for (var c in x[f]){
     
     console.log("");
-    console.log("checking " +c+"...");
+    console.log("checking " +c+"... for: "+x[f][c]);
     try {
        var info = execSync(c+" "+ f + " 2>&1");      
     } catch (err2) {
       console.log("err: "+err2.stderr);
-      console.log("out: "+err2.stdout);
+      console.log("out: "+err2.stdout);      
       found = "";
       //err.stdout;
       //err.stderr;
