@@ -24,6 +24,8 @@ const execSync = require('child_process').execSync;
 for (var f in x){
   console.log(f);
   for (var c in x[f]){
+    
+    console.log("");
     console.log("checking " +c+"...");
     try {
        var info = execSync(c+" "+ f + " 2>&1");
