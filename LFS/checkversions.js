@@ -35,7 +35,7 @@ for (var f in x){
        found = /[0-9](.[0-9])*/.exec(info)
        console.log("exec: "+c+", found: "+found);
     });
-    while(done==0)
+   
   }
 }
 console.log(arg1);
