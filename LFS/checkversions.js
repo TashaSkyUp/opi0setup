@@ -50,7 +50,7 @@ for (var f in x){
       //err.status;
       // etc
     }
-           console.log("info: "+info);
+           //console.log("info: "+info);
       
        //found = /((([a-Z]*))([0-9]*)(.[0-9]*)*)+/.exec(info);
       
