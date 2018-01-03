@@ -52,7 +52,7 @@ for (var f in x){
     }
            console.log("info: "+info);
       
-       found = /((([a-Z]*))([0-9]*)(.[0-9]*)*)+/.exec(info);
+       //found = /((([a-Z]*))([0-9]*)(.[0-9]*)*)+/.exec(info);
       
        found = /[0-9]+\.[0-9]+\.*[0-9]*/.exec(info);console.log("exec: "+c+", found: "+found);
    
