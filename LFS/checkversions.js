@@ -16,7 +16,7 @@ process.stdin.on('data', function(data) {
 if(/(crap)*/.test("crap")){
 }
 var x=require('./data/reqver.json');//or require('data');
-console.log(x);
+console.log(x["-v"]);
 
 const { exec } = require('child_process');
 exec('cat *.js bad_file | wc -l', (err, stdout, stderr) => {
