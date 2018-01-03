@@ -19,12 +19,12 @@ var x=require('./data/reqver.json');//or require('data');
 console.log(x["-v"]);
 
 const execSync = require('child_process').execSync;
-const { exec } = require('child_process');
+//const { exec } = require('child_process');
+
 for (var f in x){
   console.log(f);
   for (var c in x[f]){
-    console.log(c);
-    var done = 0;
+    console.log("checking " +c+"...");
     execSync(c+" "+ f, (err, stdout, stderr) => {
        if (err) {console.log("some error");return;}
 
