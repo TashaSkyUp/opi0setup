@@ -1,0 +1,364 @@
+# Kinyarwanda translations for grep package.
+# Copyright (C) 2005 Free Software Foundation, Inc.
+# This file is distributed under the same license as the grep package.
+# Steve Murphy <murf@e-tools.com>, 2005.
+# Steve performed initial rough translation from compendium built from translations provided by the following translators:
+# Philibert Ndandali  <ndandali@yahoo.fr>, 2005.
+# Viateur MUGENZI <muvia1@yahoo.fr>, 2005.
+# Noëlla Mupole <s24211045@tuks.co.za>, 2005.
+# Carole Karema <karemacarole@hotmail.com>, 2005.
+# JEAN BAPTISTE NGENDAHAYO <ngenda_denis@yahoo.co.uk>, 2005.
+# Augustin KIBERWA  <akiberwa@yahoo.co.uk>, 2005.
+# Donatien NSENGIYUMVA <ndonatienuk@yahoo.co.uk>, 2005.
+# Antoine Bigirimana <antoine@e-tools.com>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: grep 2.5.1a\n"
+"POT-Creation-Date: 2002-03-26 16:38+0100\n"
+"PO-Revision-Date: 2005-04-04 10:55-0700\n"
+"Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
+"Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/dfa.c:136 src/dfa.c:147 src/dfa.c:158 src/search.c:689
+msgid "Memory exhausted"
+msgstr ""
+
+#: src/dfa.c:489 src/dfa.c:492 src/dfa.c:510 src/dfa.c:521 src/dfa.c:545
+#: src/dfa.c:604 src/dfa.c:609 src/dfa.c:622 src/dfa.c:623 src/dfa.c:1001
+#: src/dfa.c:1004 src/dfa.c:1028 src/dfa.c:1032 src/dfa.c:1033 src/dfa.c:1036
+#: src/dfa.c:1048 src/dfa.c:1049
+msgid "Unbalanced ["
+msgstr ""
+
+#: src/dfa.c:741
+msgid "Unfinished \\ escape"
+msgstr ""
+
+#. Cases:
+#. {M} - exact count
+#. {M,} - minimum count, maximum is infinity
+#. {M,N} - M through N
+#: src/dfa.c:874 src/dfa.c:880 src/dfa.c:890 src/dfa.c:898 src/dfa.c:913
+#, fuzzy
+msgid "unfinished repeat count"
+msgstr "Gusubiramo IBARA"
+
+#: src/dfa.c:887 src/dfa.c:904 src/dfa.c:912 src/dfa.c:916
+#, fuzzy
+msgid "malformed repeat count"
+msgstr "Gusubiramo IBARA"
+
+#: src/dfa.c:1253
+msgid "Unbalanced ("
+msgstr ""
+
+#: src/dfa.c:1378
+msgid "No syntax specified"
+msgstr ""
+
+#: src/dfa.c:1386
+msgid "Unbalanced )"
+msgstr ""
+
+#: src/dfa.c:2956
+msgid "out of memory"
+msgstr "Ububiko bwarenzwe"
+
+#: src/kwset.c:171 src/kwset.c:177 src/search.c:103 src/search.c:209
+#: src/search.c:293 lib/obstack.c:471
+#, fuzzy
+msgid "memory exhausted"
+msgstr "Ububiko"
+
+#: src/grep.c:205
+#, fuzzy
+msgid "invalid context length argument"
+msgstr "Sibyo Imvugiro Uburebure"
+
+#: src/grep.c:479
+#, fuzzy
+msgid "input is too large to count"
+msgstr "Iyinjiza ni Binini Kuri IBARA"
+
+#: src/grep.c:605
+#, fuzzy
+msgid "writing output"
+msgstr "Ibisohoka"
+
+#: src/grep.c:878
+#, fuzzy, c-format
+msgid "Binary file %s matches\n"
+msgstr "IDOSIYE"
+
+#: src/grep.c:892
+#, fuzzy
+msgid "(standard input)"
+msgstr "(Bisanzwe Iyinjiza"
+
+#: src/grep.c:997
+#, fuzzy, c-format
+msgid "warning: %s: %s\n"
+msgstr "Iburira"
+
+#: src/grep.c:998
+#, fuzzy
+msgid "recursive directory loop"
+msgstr "bushyinguro"
+
+#: src/grep.c:1046
+#, c-format
+msgid "Usage: %s [OPTION]... PATTERN [FILE]...\n"
+msgstr ""
+
+#: src/grep.c:1048
+#, fuzzy, c-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "kugirango Birenzeho Ibisobanuro"
+
+#: src/grep.c:1053
+#, c-format
+msgid "Usage: %s [OPTION]... PATTERN [FILE] ...\n"
+msgstr ""
+
+#: src/grep.c:1054
+#, fuzzy, c-format
+msgid ""
+"Search for PATTERN in each FILE or standard input.\n"
+"Example: %s -i 'hello world' menu.h main.c\n"
+"\n"
+"Regexp selection and interpretation:\n"
+msgstr "kugirango in Cyangwa Bisanzwe Iyinjiza Urugero i Muraho Ibikubiyemo h Ihitamo Na"
+
+#: src/grep.c:1059
+#, fuzzy
+msgid ""
+"  -E, --extended-regexp     PATTERN is an extended regular expression\n"
+"  -F, --fixed-strings       PATTERN is a set of newline-separated strings\n"
+"  -G, --basic-regexp        PATTERN is a basic regular expression\n"
+"  -P, --perl-regexp         PATTERN is a Perl regular expression\n"
+msgstr "-E Byongerewe... ni Byongerewe... Ibisanzwe BIHAMYE Ikurikiranyanyuguti ni a Gushyiraho Bya BASIC ni a BASIC Ibisanzwe Perl ni a Ibisanzwe"
+
+#: src/grep.c:1064
+#, fuzzy
+msgid ""
+"  -e, --regexp=PATTERN      use PATTERN as a regular expression\n"
+"  -f, --file=FILE           obtain PATTERN from FILE\n"
+"  -i, --ignore-case         ignore case distinctions\n"
+"  -w, --word-regexp         force PATTERN to match only whole words\n"
+"  -x, --line-regexp         force PATTERN to match only whole lines\n"
+"  -z, --null-data           a data line ends in 0 byte, not newline\n"
+msgstr "-E Gukoresha Nka a Ibisanzwe F IDOSIYE Bivuye i Kwirengagiza Kwirengagiza W ijambo Kuri BIHUYE X Umurongo Kuri BIHUYE Z NTAGIHARI Ibyatanzwe a Ibyatanzwe Umurongo in 0 Bayite OYA"
+
+#: src/grep.c:1071
+#, fuzzy
+msgid ""
+"\n"
+"Miscellaneous:\n"
+"  -s, --no-messages         suppress error messages\n"
+"  -v, --invert-match        select non-matching lines\n"
+"  -V, --version             print version information and exit\n"
+"      --help                display this help and exit\n"
+"      --mmap                use memory-mapped input if possible\n"
+msgstr "S Oya Ubutumwa Ikosa v Gucurika BIHUYE Guhitamo V Verisiyo Gucapa Verisiyo Ibisobanuro Na Ifashayobora Kugaragaza iyi Ifashayobora Na Gukoresha Ububiko Iyinjiza NIBA"
+
+#: src/grep.c:1079
+#, fuzzy
+msgid ""
+"\n"
+"Output control:\n"
+"  -m, --max-count=NUM       stop after NUM matches\n"
+"  -b, --byte-offset         print the byte offset with output lines\n"
+"  -n, --line-number         print line number with output lines\n"
+"      --line-buffered       flush output on every line\n"
+"  -H, --with-filename       print the filename for each match\n"
+"  -h, --no-filename         suppress the prefixing filename on output\n"
+"      --label=LABEL         print LABEL as filename for standard input\n"
+"  -o, --only-matching       show only the part of a line matching PATTERN\n"
+"  -q, --quiet, --silent     suppress all normal output\n"
+"      --binary-files=TYPE   assume that binary files are TYPE\n"
+"                            TYPE is 'binary', 'text', or 'without-match'\n"
+"  -a, --text                equivalent to --binary-files=text\n"
+"  -I                        equivalent to --binary-files=without-match\n"
+"  -d, --directories=ACTION  how to handle directories\n"
+"                            ACTION is 'read', 'recurse', or 'skip'\n"
+"  -D, --devices=ACTION      how to handle devices, FIFOs and sockets\n"
+"                            ACTION is 'read' or 'skip'\n"
+"  -R, -r, --recursive       equivalent to --directories=recurse\n"
+"      --include=PATTERN     files that match PATTERN will be examined\n"
+"      --exclude=PATTERN     files that match PATTERN will be skipped.\n"
+"      --exclude-from=FILE   files that match PATTERN in FILE will be skipped.\n"
+"  -L, --files-without-match only print FILE names containing no match\n"
+"  -l, --files-with-matches  only print FILE names containing matches\n"
+"  -c, --count               only print a count of matching lines per FILE\n"
+"  -Z, --null                print 0 byte after FILE name\n"
+msgstr "Igenzura M KININI IBARA Guhagarara Nyuma B Bayite Nta- boneza Gucapa i Bayite Nta- boneza Na: Ibisohoka N Umurongo Umubare Gucapa Umurongo Umubare Na: Ibisohoka Umurongo Ibisohoka ku buri H Na: Izina ry'idosiye: Gucapa i Izina ry'idosiye: kugirango h Oya Izina ry'idosiye: i Izina ry'idosiye: ku Akarango Gucapa Nka Izina ry'idosiye: kugirango Bisanzwe o Garagaza i Bya a Umurongo Q Byose Bisanzwe Nyabibiri Idosiye Nyabibiri Idosiye ni Cyangwa a Umwandiko Kuri Nyabibiri Idosiye Kuri Nyabibiri Idosiye D ububiko bw'amaderese Kuri ni Cyangwa Kuri Na ni Cyangwa R Kuri ububiko bw'amaderese Gushyiramo Idosiye BIHUYE Idosiye BIHUYE Bivuye Idosiye BIHUYE in Idosiye BIHUYE Gucapa Amazina Oya L Idosiye Na: Gucapa Amazina C IBARA Gucapa a IBARA Bya Imirongo NTAGIHARI Gucapa 0 Bayite Nyuma"
+
+#: src/grep.c:1107
+#, fuzzy
+msgid ""
+"\n"
+"Context control:\n"
+"  -B, --before-context=NUM  print NUM lines of leading context\n"
+"  -A, --after-context=NUM   print NUM lines of trailing context\n"
+"  -C, --context=NUM         print NUM lines of output context\n"
+"  -NUM                      same as --context=NUM\n"
+"      --color[=WHEN],\n"
+"      --colour[=WHEN]       use markers to distinguish the matching string\n"
+"                            WHEN may be `always', `never' or `auto'.\n"
+"  -U, --binary              do not strip CR characters at EOL (MSDOS)\n"
+"  -u, --unix-byte-offsets   report offsets as if CRs were not there (MSDOS)\n"
+"\n"
+"`egrep' means `grep -E'.  `fgrep' means `grep -F'.\n"
+"With no FILE, or when FILE is -, read standard input.  If less than\n"
+"two FILEs given, assume -h.  Exit status is 0 if match, 1 if no match,\n"
+"and 2 if trouble.\n"
+msgstr "Igenzura Mbere Imvugiro Gucapa Imirongo Bya Nyobora A Nyuma Imvugiro Gucapa Imirongo Bya C Imvugiro Gucapa Imirongo Bya Ibisohoka Nka Imvugiro Ibara Gukoresha Kuri i Gicurasi Cyangwa U Nyabibiri OYA Inyuguti ku u Bayite Icyegeranyo Nka NIBA OYA Oya Cyangwa Ryari: ni Gusoma Bisanzwe Iyinjiza Birutwa h Imimerere ni 0 NIBA BIHUYE 1. NIBA Oya BIHUYE Na 2. NIBA"
+
+#: src/grep.c:1124
+#, fuzzy
+msgid ""
+"\n"
+"Report bugs to <bug-grep@gnu.org>.\n"
+msgstr "org."
+
+#: src/grep.c:1134
+msgid "conflicting matchers specified"
+msgstr ""
+
+#: src/grep.c:1376
+#, fuzzy
+msgid "unknown devices method"
+msgstr "Kitazwi Uburyo"
+
+#: src/grep.c:1443
+#, fuzzy
+msgid "unknown directories method"
+msgstr "Kitazwi ububiko bw'amaderese Uburyo"
+
+#: src/grep.c:1510
+#, fuzzy
+msgid "invalid max count"
+msgstr "Sibyo KININI IBARA"
+
+#: src/grep.c:1565
+#, fuzzy
+msgid "unknown binary-files type"
+msgstr "Kitazwi Nyabibiri Idosiye Ubwoko"
+
+#: src/grep.c:1660
+#, c-format
+msgid "%s (GNU grep) %s\n"
+msgstr ""
+
+#: src/grep.c:1662
+msgid "Copyright 1988, 1992-1999, 2000, 2001 Free Software Foundation, Inc.\n"
+msgstr ""
+
+#: src/grep.c:1664
+#, fuzzy
+msgid ""
+"This is free software; see the source for copying conditions. There is NO\n"
+"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
+msgstr "ni Kigenga i Inkomoko kugirango ni OYA ATARIIGIHARWE kugirango Cyangwa A"
+
+#: src/search.c:606
+#, fuzzy
+msgid "The -P option is not supported"
+msgstr "Ihitamo ni OYA"
+
+#: src/search.c:619
+#, fuzzy
+msgid "The -P and -z options cannot be combined"
+msgstr "Na Z Amahitamo"
+
+#: lib/error.c:117
+#, fuzzy
+msgid "Unknown system error"
+msgstr "Sisitemu Ikosa"
+
+#: lib/getopt.c:675
+#, fuzzy, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s:Ihitamo ni"
+
+#: lib/getopt.c:700
+#, fuzzy, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s:Ihitamo Kwemerera"
+
+#: lib/getopt.c:705
+#, fuzzy, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s:Ihitamo Kwemerera"
+
+#: lib/getopt.c:723 lib/getopt.c:896
+#, fuzzy, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s:Ihitamo"
+
+#. --option
+#: lib/getopt.c:752
+#, fuzzy, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s:Ihitamo"
+
+#. +option or -option
+#: lib/getopt.c:756
+#, fuzzy, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s:Ihitamo"
+
+#. 1003.2 specifies the format of this message.
+#: lib/getopt.c:782
+#, fuzzy, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s:Ihitamo"
+
+#: lib/getopt.c:785
+#, fuzzy, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s:Sibyo Ihitamo"
+
+#. 1003.2 specifies the format of this message.
+#: lib/getopt.c:815 lib/getopt.c:945
+#, fuzzy, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s:Ihitamo"
+
+#: lib/getopt.c:862
+#, fuzzy, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s:Ihitamo ni"
+
+#: lib/getopt.c:880
+#, fuzzy, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s:Ihitamo Kwemerera"
+
+# basctl/source\basicide\basidesh.src:RID_IMGBTN_REMOVEWATCH.text
+#. Get translations for open and closing quotation marks.
+#.
+#. The message catalog should translate "`" to a left
+#. quotation mark suitable for the locale, and similarly for
+#. "'".  If the catalog has no translation,
+#. locale_quoting_style quotes `like this', and
+#. clocale_quoting_style quotes "like this".
+#.
+#. For example, an American English Unicode locale should
+#. translate "`" to U+201C (LEFT DOUBLE QUOTATION MARK), and
+#. should translate "'" to U+201D (RIGHT DOUBLE QUOTATION
+#. MARK).  A British English Unicode locale should instead
+#. translate these to U+2018 (LEFT SINGLE QUOTATION MARK) and
+#. U+2019 (RIGHT SINGLE QUOTATION MARK), respectively.
+#: lib/quotearg.c:259
+#, fuzzy
+msgid "`"
+msgstr "`"
+
+#: lib/quotearg.c:260
+msgid "'"
+msgstr "'"

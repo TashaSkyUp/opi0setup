@@ -1,0 +1,55 @@
+mbrtowc.o: mbrtowc.c /usr/include/stdc-predef.h ../config.h wchar.h \
+ /usr/include/features.h /usr/include/arm-linux-gnueabihf/sys/cdefs.h \
+ /usr/include/arm-linux-gnueabihf/bits/wordsize.h \
+ /usr/include/arm-linux-gnueabihf/gnu/stubs.h \
+ /usr/include/arm-linux-gnueabihf/gnu/stubs-hard.h /usr/include/wchar.h \
+ stdio.h /usr/include/stdio.h \
+ /usr/lib/gcc/arm-linux-gnueabihf/5/include/stdarg.h \
+ /usr/include/arm-linux-gnueabihf/bits/wchar.h \
+ /usr/lib/gcc/arm-linux-gnueabihf/5/include/stddef.h \
+ /usr/include/xlocale.h /usr/include/arm-linux-gnueabihf/bits/wchar2.h \
+ hard-locale.h /usr/lib/gcc/arm-linux-gnueabihf/5/include/stdbool.h \
+ locale.h /usr/include/locale.h \
+ /usr/include/arm-linux-gnueabihf/bits/locale.h
+
+/usr/include/stdc-predef.h:
+
+../config.h:
+
+wchar.h:
+
+/usr/include/features.h:
+
+/usr/include/arm-linux-gnueabihf/sys/cdefs.h:
+
+/usr/include/arm-linux-gnueabihf/bits/wordsize.h:
+
+/usr/include/arm-linux-gnueabihf/gnu/stubs.h:
+
+/usr/include/arm-linux-gnueabihf/gnu/stubs-hard.h:
+
+/usr/include/wchar.h:
+
+stdio.h:
+
+/usr/include/stdio.h:
+
+/usr/lib/gcc/arm-linux-gnueabihf/5/include/stdarg.h:
+
+/usr/include/arm-linux-gnueabihf/bits/wchar.h:
+
+/usr/lib/gcc/arm-linux-gnueabihf/5/include/stddef.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/arm-linux-gnueabihf/bits/wchar2.h:
+
+hard-locale.h:
+
+/usr/lib/gcc/arm-linux-gnueabihf/5/include/stdbool.h:
+
+locale.h:
+
+/usr/include/locale.h:
+
+/usr/include/arm-linux-gnueabihf/bits/locale.h:
